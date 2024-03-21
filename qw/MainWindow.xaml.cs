@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using qw.application_frames.view_frames;
+using qw.util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,9 @@ namespace qw
         public MainWindow()
         {
             InitializeComponent();
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            AppFrame.mainFrame = mainWindowFrame;
+            mainWindowFrame.Navigate(new Customer());
         }
     }
 }

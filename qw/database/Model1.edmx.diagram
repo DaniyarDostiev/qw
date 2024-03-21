@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b791968acc3a43dab217d53184f7cc66" Name="Diagram1">
+        <EntityTypeShape EntityType="qw2Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Договор" Width="1.5" PointX="1.5" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Должность" Width="1.5" PointX="1.5" PointY="40.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Заказчик" Width="1.5" PointX="1.5" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Измерительное_оборудование" Width="1.5" PointX="1.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Квалификация" Width="1.5" PointX="1.5" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Координаты_точки" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Методика" Width="1.5" PointX="3.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Обработки_на_профиле" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Пикет" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Пикет_ИзмерительноеОборудование" Width="1.5" PointX="8.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Пикет_ПромежуточныеИзмерения" Width="1.5" PointX="5.25" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Пикет_ПромежуточныеТрансформантыИзмерения" Width="1.5" PointX="11.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Пикет_Сотрудники" Width="1.5" PointX="11.25" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Пикет_ТрансформантаИзмерения" Width="1.5" PointX="8.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Площадь" Width="1.5" PointX="3.75" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Площадь_УглыПериметра" Width="1.5" PointX="6" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Проект" Width="1.5" PointX="1.5" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Профиль" Width="1.5" PointX="6" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Профиль_СписокОбработок" Width="1.5" PointX="8.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Профиль_ТелеметрическиеИзмерения" Width="1.5" PointX="11.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Профиль_ТочкиИзломов" Width="1.5" PointX="8.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Профиль_ЭлектромагнитныеИзмерения" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Результаты_измерения" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Сотрудник" Width="1.5" PointX="1.5" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Список_фильтров_над_обработкой" Width="1.5" PointX="13.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Телеметрические_измерения" Width="1.5" PointX="9" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Трансформанта_измерения" Width="1.5" PointX="9" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Фильтры_обработок" Width="1.5" PointX="11.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="qw2Model.Электромагнитные_измерения" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="qw2Model.FK_Проект_Договор" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Сотрудник_Должность" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Проект_Заказчик" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Методика_Измерительное_оборудование" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Методика_Измерительное_оборудование1" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Методика_Измерительное_оборудование2" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Сотрудник_Квалификация" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_Координаты_точки" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Площадь_УглыПериметра_Координаты_точки" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_Координаты_точки" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_Координаты_точки1" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_ТочкиИзломов_Координаты_точки" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_Методика" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ИзмерительноеОборудование_Пикет" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Пикет" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_Профиль" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_Результаты_измерения" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_Сотрудники_Пикет" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ТрансформантаИзмерения_Пикет" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_Сотрудники_Сотрудник" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ТрансформантаИзмерения_Трансформанта_измерения" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Площадь_Проект" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Площадь_Сотрудник" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Площадь_Сотрудник1" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Площадь_УглыПериметра_Площадь" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_Площадь" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_СписокОбработок_Профиль" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_ТелеметрическиеИзмерения_Профиль" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_ТочкиИзломов_Профиль" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Профиль" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_СписокОбработок_Сотрудник" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения" ManuallyRouted="false" />
+        <AssociationConnector Association="qw2Model.FK_Список_фильтров_над_обработкой_Фильтры_обработок" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

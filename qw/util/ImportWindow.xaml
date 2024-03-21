@@ -1,0 +1,61 @@
+﻿<Window x:Class="qw.util.ImportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:qw.util"
+        mc:Ignorable="d"
+        Title="Окна импорта" Height="600" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Импорт данных из файла" HorizontalContentAlignment="Center"></Label>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="450" Source="../guide_pictures/excel_pic.png"></Image>
+                <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical">
+                    <TextBlock Text="Excel" FontSize="25"></TextBlock>
+                    <TextBlock Text="1. Первая строка - столбцы" FontSize="20"></TextBlock>
+                    <TextBlock Text="2. Вторая строка - значения" FontSize="20"></TextBlock>
+                    <TextBlock Text="3. Один файл - одна запись" FontSize="20"></TextBlock>
+                    <TextBlock Text="4. Столбцы должны совпадать с полями ввода" FontSize="20"></TextBlock>
+                    <TextBlock Text="5. Дата добавления и изменея писать не нужно" FontSize="20"></TextBlock>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="450" Source="../guide_pictures/txt_pic.png"></Image>
+                <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical">
+                    <TextBlock Text="Txt" FontSize="25"></TextBlock>
+                    <TextBlock Text="1. Первая строка - столбцы, через ;" FontSize="20"></TextBlock>
+                    <TextBlock Text="2. Вторая строка - значения, через ;" FontSize="20"></TextBlock>
+                    <TextBlock Text="3. Один файл - одна запись" FontSize="20"></TextBlock>
+                    <TextBlock Text="4. Столбцы должны совпадать с полями ввода" FontSize="20"></TextBlock>
+                    <TextBlock Text="5. Дата добавления и изменея писать не нужно" FontSize="20"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Button Grid.Row="2" Click="closeGuideButtonClick" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Закрыть"></Button>
+    </Grid>
+</Window>

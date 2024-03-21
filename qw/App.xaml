@@ -4,6 +4,47 @@
              xmlns:local="clr-namespace:qw"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="Margin" Value="10"></Setter>
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="stackPanelEditData">
+            <Setter Property="Orientation" Value="Vertical"/>
+            <Setter Property="Margin" Value="5, 0, 5, 10"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5, 0, 5, 0"/>
+        </Style>
     </Application.Resources>
 </Application>
