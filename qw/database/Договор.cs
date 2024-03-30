@@ -27,6 +27,7 @@ namespace qw.database
         public Nullable<int> стоимость_работ { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Проект> Проект { get; set; }

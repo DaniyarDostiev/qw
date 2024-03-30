@@ -19,6 +19,7 @@ namespace qw.database
         public Nullable<int> id_тел__измерения { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         public virtual Профиль Профиль { get; set; }
         public virtual Телеметрические_измерения Телеметрические_измерения { get; set; }

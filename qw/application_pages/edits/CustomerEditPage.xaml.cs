@@ -1,5 +1,7 @@
 ﻿using Microsoft.Win32;
-using qw.application_frames.view_frames;
+using qw.application_pages.views;
+using qw.application_pages.utils;
+using qw.application_pages.edits;
 using qw.database;
 using qw.util;
 using System;
@@ -22,7 +24,7 @@ using System.IO;
 using Path = System.IO.Path;
 using OfficeOpenXml;
 
-namespace qw.application_pages.edit_pages
+namespace qw.application_pages.edits
 {
     /// <summary>
     /// Логика взаимодействия для CustomerEditPage.xaml
@@ -34,6 +36,11 @@ namespace qw.application_pages.edit_pages
         public CustomerEditPage(Заказчик customer)
         {
             InitializeComponent();
+            if (customer.id != 0)
+            {
+                importButton.Visibility = Visibility.Hidden;
+                importInfoButton.Visibility = Visibility.Hidden;
+            }
             this.customer = customer;
             fieldFill();
         }
@@ -41,14 +48,14 @@ namespace qw.application_pages.edit_pages
         private void fieldFill()
         {
             nameTextBox.Text = customer.имя;
-            legalAddressTextBox.Text = customer.юр__адрес;
-            actualAddressTextBox.Text = customer.физ__адрес;
+            legalAddressTextBox.Text = customer.юр_адрес;
+            actualAddressTextBox.Text = customer.физ_адрес;
             innTextBox.Text = customer.инн;
             kpkTextBox.Text = customer.кпк;
             rsTextBox.Text = customer.р_с;
             spokesmanTextBox.Text = customer.представитель;
             phoneNumberTextBox.Text = customer.номер_телефона;
-            emailTextBox.Text = customer.эл__почта;
+            emailTextBox.Text = customer.эл_почта;
             websiteLinkTextBox.Text = customer.ссылка_на_сайт;
 
             addDateTextBox.Text = customer.дата_добавления_записи.ToString();
@@ -65,24 +72,27 @@ namespace qw.application_pages.edit_pages
             try
             {
                 customer.имя = nameTextBox.Text;
-                customer.юр__адрес = legalAddressTextBox.Text;
-                customer.физ__адрес = actualAddressTextBox.Text;
+                customer.юр_адрес = legalAddressTextBox.Text;
+                customer.физ_адрес = actualAddressTextBox.Text;
                 customer.инн = innTextBox.Text;
                 customer.кпк = kpkTextBox.Text;
                 customer.р_с = rsTextBox.Text;
                 customer.представитель = spokesmanTextBox.Text;
                 customer.номер_телефона = phoneNumberTextBox.Text;
-                customer.эл__почта = emailTextBox.Text;
+                customer.эл_почта = emailTextBox.Text;
                 customer.ссылка_на_сайт = websiteLinkTextBox.Text;
 
                 if (customer.дата_добавления_записи != null)
                 {
+                    // изменение записи
                     customer.дата_последнего_изменения_записи = (DateTime?)new SqlDateTime(DateTime.Now);
                 }
                 else
                 {
+                    // добавление новой записи
                     customer.дата_добавления_записи = (DateTime?)new SqlDateTime(DateTime.Now);
                     customer.дата_последнего_изменения_записи = (DateTime?)new SqlDateTime(DateTime.Now);
+                    customer.удален = false;
                     DbWorker.GetContext().Заказчик.Add(customer);
                 }
                 DbWorker.GetContext().SaveChanges();

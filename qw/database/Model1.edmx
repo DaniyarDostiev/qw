@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище qw2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище qw2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -26,6 +26,7 @@
           <Property Name="стоимость работ" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Должность">
           <Key>
@@ -35,6 +36,7 @@
           <Property Name="название" Type="nvarchar" MaxLength="255" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Заказчик">
           <Key>
@@ -42,17 +44,18 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="имя" Type="nvarchar" MaxLength="255" />
-          <Property Name="юр. адрес" Type="nvarchar" MaxLength="255" />
-          <Property Name="физ. адрес" Type="nvarchar" MaxLength="255" />
+          <Property Name="юр адрес" Type="nvarchar" MaxLength="255" />
+          <Property Name="физ адрес" Type="nvarchar" MaxLength="255" />
           <Property Name="инн" Type="nvarchar" MaxLength="255" />
           <Property Name="кпк" Type="nvarchar" MaxLength="255" />
-          <Property Name="р/с" Type="nvarchar" MaxLength="255" />
+          <Property Name="р_с" Type="nvarchar" MaxLength="255" />
           <Property Name="представитель" Type="nvarchar" MaxLength="255" />
           <Property Name="номер телефона" Type="nvarchar" MaxLength="255" />
-          <Property Name="эл. почта" Type="nvarchar" MaxLength="255" />
+          <Property Name="эл почта" Type="nvarchar" MaxLength="255" />
           <Property Name="ссылка на сайт" Type="nvarchar" MaxLength="255" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Измерительное оборудование">
           <Key>
@@ -60,12 +63,13 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="название оборудования" Type="nvarchar" MaxLength="255" />
-          <Property Name="инв. номер" Type="nvarchar" MaxLength="255" />
+          <Property Name="инв номер" Type="nvarchar" MaxLength="255" />
           <Property Name="дата приобретения" Type="date" />
           <Property Name="дата проверки" Type="date" />
-          <Property Name="характеристики/описание" Type="nvarchar(max)" />
+          <Property Name="характеристики_описание" Type="nvarchar(max)" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Квалификация">
           <Key>
@@ -75,6 +79,7 @@
           <Property Name="название" Type="nvarchar" MaxLength="255" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Координаты точки">
           <Key>
@@ -85,6 +90,7 @@
           <Property Name="y" Type="float" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Методика">
           <Key>
@@ -98,6 +104,7 @@
           <Property Name="максимальная скорость БПЛА" Type="float" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Обработки на профиле">
           <Key>
@@ -105,9 +112,10 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="название" Type="nvarchar" MaxLength="255" />
-          <Property Name="характеристики/описание" Type="nvarchar" MaxLength="255" />
+          <Property Name="характеристики_описание" Type="nvarchar" MaxLength="255" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Пикет">
           <Key>
@@ -121,6 +129,7 @@
           <Property Name="дата и время получения окончательного результата измерения" Type="datetime" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Пикет_ИзмерительноеОборудование">
           <Key>
@@ -131,6 +140,7 @@
           <Property Name="id измерительного оборудования" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Пикет_ПромежуточныеИзмерения">
           <Key>
@@ -141,6 +151,7 @@
           <Property Name="id результатов измерения" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Пикет_ПромежуточныеТрансформантыИзмерения">
           <Key>
@@ -151,6 +162,7 @@
           <Property Name="id трансформанта измерения" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Пикет_Сотрудники">
           <Key>
@@ -161,6 +173,7 @@
           <Property Name="id сотрудника" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Пикет_ТрансформантаИзмерения">
           <Key>
@@ -171,6 +184,7 @@
           <Property Name="id трансформанты измерения" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Площадь">
           <Key>
@@ -187,6 +201,7 @@
           <Property Name="дата окончания работ" Type="datetime" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Площадь_УглыПериметра">
           <Key>
@@ -197,6 +212,7 @@
           <Property Name="id координат точки" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Проект">
           <Key>
@@ -208,6 +224,7 @@
           <Property Name="id договора" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Профиль">
           <Key>
@@ -224,6 +241,7 @@
           <Property Name="дата окончания работ" Type="datetime" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Профиль_СписокОбработок">
           <Key>
@@ -235,6 +253,7 @@
           <Property Name="id обработчика" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Профиль_ТелеметрическиеИзмерения">
           <Key>
@@ -245,6 +264,7 @@
           <Property Name="id тел. измерения" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Профиль_ТочкиИзломов">
           <Key>
@@ -253,8 +273,9 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id профиля" Type="int" />
           <Property Name="id координат точки" Type="int" />
-          <Property Name="дата дообавления записи" Type="datetime" />
+          <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Профиль_ЭлектромагнитныеИзмерения">
           <Key>
@@ -262,9 +283,10 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id профиля" Type="int" />
-          <Property Name="id эл. измерений" Type="int" />
+          <Property Name="id эл измерений" Type="int" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Результаты измерения">
           <Key>
@@ -275,6 +297,7 @@
           <Property Name="значение ЭДС" Type="datetime" />
           <Property Name="дата добавления записи" Type="nchar" MaxLength="10" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Сотрудник">
           <Key>
@@ -288,6 +311,9 @@
           <Property Name="дата прохождения медосмотра" Type="date" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
+          <Property Name="логин" Type="nvarchar" MaxLength="255" />
+          <Property Name="пароль" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Список фильтров над обработкой">
           <Key>
@@ -299,6 +325,7 @@
           <Property Name="характеристики фильтра" Type="nvarchar" MaxLength="255" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Телеметрические измерения">
           <Key>
@@ -308,6 +335,7 @@
           <Property Name="путь до бинарного файла, содержащего тел. измерения" Type="nvarchar" MaxLength="255" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Трансформанта измерения">
           <Key>
@@ -318,6 +346,7 @@
           <Property Name="значение кажущегося сопратевления (Rok)" Type="nchar" MaxLength="10" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Фильтры обработок">
           <Key>
@@ -328,15 +357,17 @@
           <Property Name="описание" Type="nvarchar" MaxLength="255" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <EntityType Name="Электромагнитные измерения">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="путь до бинарного файла, содержащего эл. измерения" Type="nvarchar" MaxLength="255" />
+          <Property Name="путь до бинарного файла содержащего эл измерения" Type="nvarchar" MaxLength="255" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
+          <Property Name="удален" Type="bit" />
         </EntityType>
         <Association Name="FK_Методика_Измерительное оборудование">
           <End Role="Измерительное оборудование" Type="Self.Измерительное оборудование" Multiplicity="0..1" />
@@ -766,7 +797,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Профиль_ЭлектромагнитныеИзмерения">
-              <PropertyRef Name="id эл. измерений" />
+              <PropertyRef Name="id эл измерений" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1010,16 +1041,207 @@
             <End Role="Список фильтров над обработкой" EntitySet="Список фильтров над обработкой" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="qw2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="qw2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="qw2Model.sysdiagrams" />
+          <EntitySet Name="Договор" EntityType="qw2Model.Договор" />
+          <EntitySet Name="Должность" EntityType="qw2Model.Должность" />
+          <EntitySet Name="Заказчик" EntityType="qw2Model.Заказчик" />
+          <EntitySet Name="Измерительное_оборудование" EntityType="qw2Model.Измерительное_оборудование" />
+          <EntitySet Name="Квалификация" EntityType="qw2Model.Квалификация" />
+          <EntitySet Name="Координаты_точки" EntityType="qw2Model.Координаты_точки" />
+          <EntitySet Name="Методика" EntityType="qw2Model.Методика" />
+          <EntitySet Name="Обработки_на_профиле" EntityType="qw2Model.Обработки_на_профиле" />
+          <EntitySet Name="Пикет" EntityType="qw2Model.Пикет" />
+          <EntitySet Name="Пикет_ИзмерительноеОборудование" EntityType="qw2Model.Пикет_ИзмерительноеОборудование" />
+          <EntitySet Name="Пикет_ПромежуточныеИзмерения" EntityType="qw2Model.Пикет_ПромежуточныеИзмерения" />
+          <EntitySet Name="Пикет_ПромежуточныеТрансформантыИзмерения" EntityType="qw2Model.Пикет_ПромежуточныеТрансформантыИзмерения" />
+          <EntitySet Name="Пикет_Сотрудники" EntityType="qw2Model.Пикет_Сотрудники" />
+          <EntitySet Name="Пикет_ТрансформантаИзмерения" EntityType="qw2Model.Пикет_ТрансформантаИзмерения" />
+          <EntitySet Name="Площадь" EntityType="qw2Model.Площадь" />
+          <EntitySet Name="Площадь_УглыПериметра" EntityType="qw2Model.Площадь_УглыПериметра" />
+          <EntitySet Name="Проект" EntityType="qw2Model.Проект" />
+          <EntitySet Name="Профиль" EntityType="qw2Model.Профиль" />
+          <EntitySet Name="Профиль_СписокОбработок" EntityType="qw2Model.Профиль_СписокОбработок" />
+          <EntitySet Name="Профиль_ТелеметрическиеИзмерения" EntityType="qw2Model.Профиль_ТелеметрическиеИзмерения" />
+          <EntitySet Name="Профиль_ТочкиИзломов" EntityType="qw2Model.Профиль_ТочкиИзломов" />
+          <EntitySet Name="Профиль_ЭлектромагнитныеИзмерения" EntityType="qw2Model.Профиль_ЭлектромагнитныеИзмерения" />
+          <EntitySet Name="Результаты_измерения" EntityType="qw2Model.Результаты_измерения" />
+          <EntitySet Name="Сотрудник" EntityType="qw2Model.Сотрудник" />
+          <EntitySet Name="Список_фильтров_над_обработкой" EntityType="qw2Model.Список_фильтров_над_обработкой" />
+          <EntitySet Name="Телеметрические_измерения" EntityType="qw2Model.Телеметрические_измерения" />
+          <EntitySet Name="Трансформанта_измерения" EntityType="qw2Model.Трансформанта_измерения" />
+          <EntitySet Name="Фильтры_обработок" EntityType="qw2Model.Фильтры_обработок" />
+          <EntitySet Name="Электромагнитные_измерения" EntityType="qw2Model.Электромагнитные_измерения" />
+          <AssociationSet Name="FK_Проект_Договор" Association="qw2Model.FK_Проект_Договор">
+            <End Role="Договор" EntitySet="Договор" />
+            <End Role="Проект" EntitySet="Проект" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудник_Должность" Association="qw2Model.FK_Сотрудник_Должность">
+            <End Role="Должность" EntitySet="Должность" />
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Проект_Заказчик" Association="qw2Model.FK_Проект_Заказчик">
+            <End Role="Заказчик" EntitySet="Заказчик" />
+            <End Role="Проект" EntitySet="Проект" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Методика_Измерительное_оборудование" Association="qw2Model.FK_Методика_Измерительное_оборудование">
+            <End Role="Измерительное_оборудование" EntitySet="Измерительное_оборудование" />
+            <End Role="Методика" EntitySet="Методика" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Методика_Измерительное_оборудование1" Association="qw2Model.FK_Методика_Измерительное_оборудование1">
+            <End Role="Измерительное_оборудование" EntitySet="Измерительное_оборудование" />
+            <End Role="Методика" EntitySet="Методика" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Методика_Измерительное_оборудование2" Association="qw2Model.FK_Методика_Измерительное_оборудование2">
+            <End Role="Измерительное_оборудование" EntitySet="Измерительное_оборудование" />
+            <End Role="Методика" EntitySet="Методика" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование" Association="qw2Model.FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование">
+            <End Role="Измерительное_оборудование" EntitySet="Измерительное_оборудование" />
+            <End Role="Пикет_ИзмерительноеОборудование" EntitySet="Пикет_ИзмерительноеОборудование" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудник_Квалификация" Association="qw2Model.FK_Сотрудник_Квалификация">
+            <End Role="Квалификация" EntitySet="Квалификация" />
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_Координаты_точки" Association="qw2Model.FK_Пикет_Координаты_точки">
+            <End Role="Координаты_точки" EntitySet="Координаты_точки" />
+            <End Role="Пикет" EntitySet="Пикет" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Площадь_УглыПериметра_Координаты_точки" Association="qw2Model.FK_Площадь_УглыПериметра_Координаты_точки">
+            <End Role="Координаты_точки" EntitySet="Координаты_точки" />
+            <End Role="Площадь_УглыПериметра" EntitySet="Площадь_УглыПериметра" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_Координаты_точки" Association="qw2Model.FK_Профиль_Координаты_точки">
+            <End Role="Координаты_точки" EntitySet="Координаты_точки" />
+            <End Role="Профиль" EntitySet="Профиль" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_Координаты_точки1" Association="qw2Model.FK_Профиль_Координаты_точки1">
+            <End Role="Координаты_точки" EntitySet="Координаты_точки" />
+            <End Role="Профиль" EntitySet="Профиль" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_ТочкиИзломов_Координаты_точки" Association="qw2Model.FK_Профиль_ТочкиИзломов_Координаты_точки">
+            <End Role="Координаты_точки" EntitySet="Координаты_точки" />
+            <End Role="Профиль_ТочкиИзломов" EntitySet="Профиль_ТочкиИзломов" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_Методика" Association="qw2Model.FK_Профиль_Методика">
+            <End Role="Методика" EntitySet="Методика" />
+            <End Role="Профиль" EntitySet="Профиль" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_СписокОбработок_Обработки_на_профиле" Association="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле">
+            <End Role="Обработки_на_профиле" EntitySet="Обработки_на_профиле" />
+            <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_ИзмерительноеОборудование_Пикет" Association="qw2Model.FK_Пикет_ИзмерительноеОборудование_Пикет">
+            <End Role="Пикет" EntitySet="Пикет" />
+            <End Role="Пикет_ИзмерительноеОборудование" EntitySet="Пикет_ИзмерительноеОборудование" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_ПромежуточныеИзмерения_Пикет" Association="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Пикет">
+            <End Role="Пикет" EntitySet="Пикет" />
+            <End Role="Пикет_ПромежуточныеИзмерения" EntitySet="Пикет_ПромежуточныеИзмерения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет" Association="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет">
+            <End Role="Пикет" EntitySet="Пикет" />
+            <End Role="Пикет_ПромежуточныеТрансформантыИзмерения" EntitySet="Пикет_ПромежуточныеТрансформантыИзмерения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_Профиль" Association="qw2Model.FK_Пикет_Профиль">
+            <End Role="Профиль" EntitySet="Профиль" />
+            <End Role="Пикет" EntitySet="Пикет" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_Результаты_измерения" Association="qw2Model.FK_Пикет_Результаты_измерения">
+            <End Role="Результаты_измерения" EntitySet="Результаты_измерения" />
+            <End Role="Пикет" EntitySet="Пикет" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_Сотрудники_Пикет" Association="qw2Model.FK_Пикет_Сотрудники_Пикет">
+            <End Role="Пикет" EntitySet="Пикет" />
+            <End Role="Пикет_Сотрудники" EntitySet="Пикет_Сотрудники" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_ТрансформантаИзмерения_Пикет" Association="qw2Model.FK_Пикет_ТрансформантаИзмерения_Пикет">
+            <End Role="Пикет" EntitySet="Пикет" />
+            <End Role="Пикет_ТрансформантаИзмерения" EntitySet="Пикет_ТрансформантаИзмерения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" Association="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения">
+            <End Role="Результаты_измерения" EntitySet="Результаты_измерения" />
+            <End Role="Пикет_ПромежуточныеИзмерения" EntitySet="Пикет_ПромежуточныеИзмерения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения" Association="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения">
+            <End Role="Трансформанта_измерения" EntitySet="Трансформанта_измерения" />
+            <End Role="Пикет_ПромежуточныеТрансформантыИзмерения" EntitySet="Пикет_ПромежуточныеТрансформантыИзмерения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_Сотрудники_Сотрудник" Association="qw2Model.FK_Пикет_Сотрудники_Сотрудник">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="Пикет_Сотрудники" EntitySet="Пикет_Сотрудники" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_ТрансформантаИзмерения_Трансформанта_измерения" Association="qw2Model.FK_Пикет_ТрансформантаИзмерения_Трансформанта_измерения">
+            <End Role="Трансформанта_измерения" EntitySet="Трансформанта_измерения" />
+            <End Role="Пикет_ТрансформантаИзмерения" EntitySet="Пикет_ТрансформантаИзмерения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Площадь_Проект" Association="qw2Model.FK_Площадь_Проект">
+            <End Role="Проект" EntitySet="Проект" />
+            <End Role="Площадь" EntitySet="Площадь" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Площадь_Сотрудник" Association="qw2Model.FK_Площадь_Сотрудник">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="Площадь" EntitySet="Площадь" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Площадь_Сотрудник1" Association="qw2Model.FK_Площадь_Сотрудник1">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="Площадь" EntitySet="Площадь" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Площадь_УглыПериметра_Площадь" Association="qw2Model.FK_Площадь_УглыПериметра_Площадь">
+            <End Role="Площадь" EntitySet="Площадь" />
+            <End Role="Площадь_УглыПериметра" EntitySet="Площадь_УглыПериметра" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_Площадь" Association="qw2Model.FK_Профиль_Площадь">
+            <End Role="Площадь" EntitySet="Площадь" />
+            <End Role="Профиль" EntitySet="Профиль" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_СписокОбработок_Профиль" Association="qw2Model.FK_Профиль_СписокОбработок_Профиль">
+            <End Role="Профиль" EntitySet="Профиль" />
+            <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_ТелеметрическиеИзмерения_Профиль" Association="qw2Model.FK_Профиль_ТелеметрическиеИзмерения_Профиль">
+            <End Role="Профиль" EntitySet="Профиль" />
+            <End Role="Профиль_ТелеметрическиеИзмерения" EntitySet="Профиль_ТелеметрическиеИзмерения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_ТочкиИзломов_Профиль" Association="qw2Model.FK_Профиль_ТочкиИзломов_Профиль">
+            <End Role="Профиль" EntitySet="Профиль" />
+            <End Role="Профиль_ТочкиИзломов" EntitySet="Профиль_ТочкиИзломов" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_ЭлектромагнитныеИзмерения_Профиль" Association="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Профиль">
+            <End Role="Профиль" EntitySet="Профиль" />
+            <End Role="Профиль_ЭлектромагнитныеИзмерения" EntitySet="Профиль_ЭлектромагнитныеИзмерения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_СписокОбработок_Сотрудник" Association="qw2Model.FK_Профиль_СписокОбработок_Сотрудник">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок" Association="qw2Model.FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок">
+            <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
+            <End Role="Список_фильтров_над_обработкой" EntitySet="Список_фильтров_над_обработкой" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения" Association="qw2Model.FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения">
+            <End Role="Телеметрические_измерения" EntitySet="Телеметрические_измерения" />
+            <End Role="Профиль_ТелеметрическиеИзмерения" EntitySet="Профиль_ТелеметрическиеИзмерения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения" Association="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения">
+            <End Role="Электромагнитные_измерения" EntitySet="Электромагнитные_измерения" />
+            <End Role="Профиль_ЭлектромагнитныеИзмерения" EntitySet="Профиль_ЭлектромагнитныеИзмерения" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Список_фильтров_над_обработкой_Фильтры_обработок" Association="qw2Model.FK_Список_фильтров_над_обработкой_Фильтры_обработок">
+            <End Role="Фильтры_обработок" EntitySet="Фильтры_обработок" />
+            <End Role="Список_фильтров_над_обработкой" EntitySet="Список_фильтров_над_обработкой" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -1036,7 +1258,8 @@
           <Property Name="стоимость_работ" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Проект" Relationship="Self.FK_Проект_Договор" FromRole="Договор" ToRole="Проект" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Проект" Relationship="qw2Model.FK_Проект_Договор" FromRole="Договор" ToRole="Проект" />
         </EntityType>
         <EntityType Name="Должность">
           <Key>
@@ -1046,7 +1269,8 @@
           <Property Name="название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Сотрудник_Должность" FromRole="Должность" ToRole="Сотрудник" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Сотрудник" Relationship="qw2Model.FK_Сотрудник_Должность" FromRole="Должность" ToRole="Сотрудник" />
         </EntityType>
         <EntityType Name="Заказчик">
           <Key>
@@ -1054,18 +1278,19 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="имя" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="юр__адрес" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="физ__адрес" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="юр_адрес" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="физ_адрес" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="инн" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="кпк" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="р_с" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="представитель" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="номер_телефона" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="эл__почта" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="эл_почта" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="ссылка_на_сайт" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Проект" Relationship="Self.FK_Проект_Заказчик" FromRole="Заказчик" ToRole="Проект" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Проект" Relationship="qw2Model.FK_Проект_Заказчик" FromRole="Заказчик" ToRole="Проект" />
         </EntityType>
         <EntityType Name="Измерительное_оборудование">
           <Key>
@@ -1073,16 +1298,17 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="название_оборудования" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="инв__номер" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="инв_номер" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="дата_приобретения" Type="DateTime" Precision="0" />
           <Property Name="дата_проверки" Type="DateTime" Precision="0" />
           <Property Name="характеристики_описание" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Методика" Relationship="Self.FK_Методика_Измерительное_оборудование" FromRole="Измерительное_оборудование" ToRole="Методика" />
-          <NavigationProperty Name="Методика1" Relationship="Self.FK_Методика_Измерительное_оборудование1" FromRole="Измерительное_оборудование" ToRole="Методика" />
-          <NavigationProperty Name="Методика2" Relationship="Self.FK_Методика_Измерительное_оборудование2" FromRole="Измерительное_оборудование" ToRole="Методика" />
-          <NavigationProperty Name="Пикет_ИзмерительноеОборудование" Relationship="Self.FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование" FromRole="Измерительное_оборудование" ToRole="Пикет_ИзмерительноеОборудование" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Методика" Relationship="qw2Model.FK_Методика_Измерительное_оборудование" FromRole="Измерительное_оборудование" ToRole="Методика" />
+          <NavigationProperty Name="Методика1" Relationship="qw2Model.FK_Методика_Измерительное_оборудование1" FromRole="Измерительное_оборудование" ToRole="Методика" />
+          <NavigationProperty Name="Методика2" Relationship="qw2Model.FK_Методика_Измерительное_оборудование2" FromRole="Измерительное_оборудование" ToRole="Методика" />
+          <NavigationProperty Name="Пикет_ИзмерительноеОборудование" Relationship="qw2Model.FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование" FromRole="Измерительное_оборудование" ToRole="Пикет_ИзмерительноеОборудование" />
         </EntityType>
         <EntityType Name="Квалификация">
           <Key>
@@ -1092,7 +1318,8 @@
           <Property Name="название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Сотрудник_Квалификация" FromRole="Квалификация" ToRole="Сотрудник" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Сотрудник" Relationship="qw2Model.FK_Сотрудник_Квалификация" FromRole="Квалификация" ToRole="Сотрудник" />
         </EntityType>
         <EntityType Name="Координаты_точки">
           <Key>
@@ -1103,11 +1330,12 @@
           <Property Name="y" Type="Double" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Пикет" Relationship="Self.FK_Пикет_Координаты_точки" FromRole="Координаты_точки" ToRole="Пикет" />
-          <NavigationProperty Name="Площадь_УглыПериметра" Relationship="Self.FK_Площадь_УглыПериметра_Координаты_точки" FromRole="Координаты_точки" ToRole="Площадь_УглыПериметра" />
-          <NavigationProperty Name="Профиль" Relationship="Self.FK_Профиль_Координаты_точки" FromRole="Координаты_точки" ToRole="Профиль" />
-          <NavigationProperty Name="Профиль1" Relationship="Self.FK_Профиль_Координаты_точки1" FromRole="Координаты_точки" ToRole="Профиль" />
-          <NavigationProperty Name="Профиль_ТочкиИзломов" Relationship="Self.FK_Профиль_ТочкиИзломов_Координаты_точки" FromRole="Координаты_точки" ToRole="Профиль_ТочкиИзломов" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_Координаты_точки" FromRole="Координаты_точки" ToRole="Пикет" />
+          <NavigationProperty Name="Площадь_УглыПериметра" Relationship="qw2Model.FK_Площадь_УглыПериметра_Координаты_точки" FromRole="Координаты_точки" ToRole="Площадь_УглыПериметра" />
+          <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Профиль_Координаты_точки" FromRole="Координаты_точки" ToRole="Профиль" />
+          <NavigationProperty Name="Профиль1" Relationship="qw2Model.FK_Профиль_Координаты_точки1" FromRole="Координаты_точки" ToRole="Профиль" />
+          <NavigationProperty Name="Профиль_ТочкиИзломов" Relationship="qw2Model.FK_Профиль_ТочкиИзломов_Координаты_точки" FromRole="Координаты_точки" ToRole="Профиль_ТочкиИзломов" />
         </EntityType>
         <EntityType Name="Методика">
           <Key>
@@ -1121,10 +1349,11 @@
           <Property Name="максимальная_скорость_БПЛА" Type="Double" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Измерительное_оборудование" Relationship="Self.FK_Методика_Измерительное_оборудование" FromRole="Методика" ToRole="Измерительное_оборудование" />
-          <NavigationProperty Name="Измерительное_оборудование1" Relationship="Self.FK_Методика_Измерительное_оборудование1" FromRole="Методика" ToRole="Измерительное_оборудование" />
-          <NavigationProperty Name="Измерительное_оборудование2" Relationship="Self.FK_Методика_Измерительное_оборудование2" FromRole="Методика" ToRole="Измерительное_оборудование" />
-          <NavigationProperty Name="Профиль" Relationship="Self.FK_Профиль_Методика" FromRole="Методика" ToRole="Профиль" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Измерительное_оборудование" Relationship="qw2Model.FK_Методика_Измерительное_оборудование" FromRole="Методика" ToRole="Измерительное_оборудование" />
+          <NavigationProperty Name="Измерительное_оборудование1" Relationship="qw2Model.FK_Методика_Измерительное_оборудование1" FromRole="Методика" ToRole="Измерительное_оборудование" />
+          <NavigationProperty Name="Измерительное_оборудование2" Relationship="qw2Model.FK_Методика_Измерительное_оборудование2" FromRole="Методика" ToRole="Измерительное_оборудование" />
+          <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Профиль_Методика" FromRole="Методика" ToRole="Профиль" />
         </EntityType>
         <EntityType Name="Обработки_на_профиле">
           <Key>
@@ -1135,7 +1364,8 @@
           <Property Name="характеристики_описание" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="Self.FK_Профиль_СписокОбработок_Обработки_на_профиле" FromRole="Обработки_на_профиле" ToRole="Профиль_СписокОбработок" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле" FromRole="Обработки_на_профиле" ToRole="Профиль_СписокОбработок" />
         </EntityType>
         <EntityType Name="Пикет">
           <Key>
@@ -1149,14 +1379,15 @@
           <Property Name="дата_и_время_получения_окончательного_результата_измерения" Type="DateTime" Precision="3" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Координаты_точки" Relationship="Self.FK_Пикет_Координаты_точки" FromRole="Пикет" ToRole="Координаты_точки" />
-          <NavigationProperty Name="Пикет_ИзмерительноеОборудование" Relationship="Self.FK_Пикет_ИзмерительноеОборудование_Пикет" FromRole="Пикет" ToRole="Пикет_ИзмерительноеОборудование" />
-          <NavigationProperty Name="Пикет_ПромежуточныеИзмерения" Relationship="Self.FK_Пикет_ПромежуточныеИзмерения_Пикет" FromRole="Пикет" ToRole="Пикет_ПромежуточныеИзмерения" />
-          <NavigationProperty Name="Пикет_ПромежуточныеТрансформантыИзмерения" Relationship="Self.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет" FromRole="Пикет" ToRole="Пикет_ПромежуточныеТрансформантыИзмерения" />
-          <NavigationProperty Name="Профиль" Relationship="Self.FK_Пикет_Профиль" FromRole="Пикет" ToRole="Профиль" />
-          <NavigationProperty Name="Результаты_измерения" Relationship="Self.FK_Пикет_Результаты_измерения" FromRole="Пикет" ToRole="Результаты_измерения" />
-          <NavigationProperty Name="Пикет_Сотрудники" Relationship="Self.FK_Пикет_Сотрудники_Пикет" FromRole="Пикет" ToRole="Пикет_Сотрудники" />
-          <NavigationProperty Name="Пикет_ТрансформантаИзмерения" Relationship="Self.FK_Пикет_ТрансформантаИзмерения_Пикет" FromRole="Пикет" ToRole="Пикет_ТрансформантаИзмерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Координаты_точки" Relationship="qw2Model.FK_Пикет_Координаты_точки" FromRole="Пикет" ToRole="Координаты_точки" />
+          <NavigationProperty Name="Пикет_ИзмерительноеОборудование" Relationship="qw2Model.FK_Пикет_ИзмерительноеОборудование_Пикет" FromRole="Пикет" ToRole="Пикет_ИзмерительноеОборудование" />
+          <NavigationProperty Name="Пикет_ПромежуточныеИзмерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Пикет" FromRole="Пикет" ToRole="Пикет_ПромежуточныеИзмерения" />
+          <NavigationProperty Name="Пикет_ПромежуточныеТрансформантыИзмерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет" FromRole="Пикет" ToRole="Пикет_ПромежуточныеТрансформантыИзмерения" />
+          <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Пикет_Профиль" FromRole="Пикет" ToRole="Профиль" />
+          <NavigationProperty Name="Результаты_измерения" Relationship="qw2Model.FK_Пикет_Результаты_измерения" FromRole="Пикет" ToRole="Результаты_измерения" />
+          <NavigationProperty Name="Пикет_Сотрудники" Relationship="qw2Model.FK_Пикет_Сотрудники_Пикет" FromRole="Пикет" ToRole="Пикет_Сотрудники" />
+          <NavigationProperty Name="Пикет_ТрансформантаИзмерения" Relationship="qw2Model.FK_Пикет_ТрансформантаИзмерения_Пикет" FromRole="Пикет" ToRole="Пикет_ТрансформантаИзмерения" />
         </EntityType>
         <EntityType Name="Пикет_ИзмерительноеОборудование">
           <Key>
@@ -1167,8 +1398,9 @@
           <Property Name="id_измерительного_оборудования" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Измерительное_оборудование" Relationship="Self.FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование" FromRole="Пикет_ИзмерительноеОборудование" ToRole="Измерительное_оборудование" />
-          <NavigationProperty Name="Пикет" Relationship="Self.FK_Пикет_ИзмерительноеОборудование_Пикет" FromRole="Пикет_ИзмерительноеОборудование" ToRole="Пикет" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Измерительное_оборудование" Relationship="qw2Model.FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование" FromRole="Пикет_ИзмерительноеОборудование" ToRole="Измерительное_оборудование" />
+          <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_ИзмерительноеОборудование_Пикет" FromRole="Пикет_ИзмерительноеОборудование" ToRole="Пикет" />
         </EntityType>
         <EntityType Name="Пикет_ПромежуточныеИзмерения">
           <Key>
@@ -1179,8 +1411,9 @@
           <Property Name="id_результатов_измерения" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Пикет" Relationship="Self.FK_Пикет_ПромежуточныеИзмерения_Пикет" FromRole="Пикет_ПромежуточныеИзмерения" ToRole="Пикет" />
-          <NavigationProperty Name="Результаты_измерения" Relationship="Self.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" FromRole="Пикет_ПромежуточныеИзмерения" ToRole="Результаты_измерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Пикет" FromRole="Пикет_ПромежуточныеИзмерения" ToRole="Пикет" />
+          <NavigationProperty Name="Результаты_измерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" FromRole="Пикет_ПромежуточныеИзмерения" ToRole="Результаты_измерения" />
         </EntityType>
         <EntityType Name="Пикет_ПромежуточныеТрансформантыИзмерения">
           <Key>
@@ -1191,8 +1424,9 @@
           <Property Name="id_трансформанта_измерения" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Пикет" Relationship="Self.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет" FromRole="Пикет_ПромежуточныеТрансформантыИзмерения" ToRole="Пикет" />
-          <NavigationProperty Name="Трансформанта_измерения" Relationship="Self.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения" FromRole="Пикет_ПромежуточныеТрансформантыИзмерения" ToRole="Трансформанта_измерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет" FromRole="Пикет_ПромежуточныеТрансформантыИзмерения" ToRole="Пикет" />
+          <NavigationProperty Name="Трансформанта_измерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения" FromRole="Пикет_ПромежуточныеТрансформантыИзмерения" ToRole="Трансформанта_измерения" />
         </EntityType>
         <EntityType Name="Пикет_Сотрудники">
           <Key>
@@ -1203,8 +1437,9 @@
           <Property Name="id_сотрудника" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Пикет" Relationship="Self.FK_Пикет_Сотрудники_Пикет" FromRole="Пикет_Сотрудники" ToRole="Пикет" />
-          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Пикет_Сотрудники_Сотрудник" FromRole="Пикет_Сотрудники" ToRole="Сотрудник" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_Сотрудники_Пикет" FromRole="Пикет_Сотрудники" ToRole="Пикет" />
+          <NavigationProperty Name="Сотрудник" Relationship="qw2Model.FK_Пикет_Сотрудники_Сотрудник" FromRole="Пикет_Сотрудники" ToRole="Сотрудник" />
         </EntityType>
         <EntityType Name="Пикет_ТрансформантаИзмерения">
           <Key>
@@ -1215,8 +1450,9 @@
           <Property Name="id_трансформанты_измерения" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Пикет" Relationship="Self.FK_Пикет_ТрансформантаИзмерения_Пикет" FromRole="Пикет_ТрансформантаИзмерения" ToRole="Пикет" />
-          <NavigationProperty Name="Трансформанта_измерения" Relationship="Self.FK_Пикет_ТрансформантаИзмерения_Трансформанта_измерения" FromRole="Пикет_ТрансформантаИзмерения" ToRole="Трансформанта_измерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_ТрансформантаИзмерения_Пикет" FromRole="Пикет_ТрансформантаИзмерения" ToRole="Пикет" />
+          <NavigationProperty Name="Трансформанта_измерения" Relationship="qw2Model.FK_Пикет_ТрансформантаИзмерения_Трансформанта_измерения" FromRole="Пикет_ТрансформантаИзмерения" ToRole="Трансформанта_измерения" />
         </EntityType>
         <EntityType Name="Площадь">
           <Key>
@@ -1233,11 +1469,12 @@
           <Property Name="дата_окончания_работ" Type="DateTime" Precision="3" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Проект" Relationship="Self.FK_Площадь_Проект" FromRole="Площадь" ToRole="Проект" />
-          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Площадь_Сотрудник" FromRole="Площадь" ToRole="Сотрудник" />
-          <NavigationProperty Name="Сотрудник1" Relationship="Self.FK_Площадь_Сотрудник1" FromRole="Площадь" ToRole="Сотрудник" />
-          <NavigationProperty Name="Площадь_УглыПериметра" Relationship="Self.FK_Площадь_УглыПериметра_Площадь" FromRole="Площадь" ToRole="Площадь_УглыПериметра" />
-          <NavigationProperty Name="Профиль" Relationship="Self.FK_Профиль_Площадь" FromRole="Площадь" ToRole="Профиль" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Проект" Relationship="qw2Model.FK_Площадь_Проект" FromRole="Площадь" ToRole="Проект" />
+          <NavigationProperty Name="Сотрудник" Relationship="qw2Model.FK_Площадь_Сотрудник" FromRole="Площадь" ToRole="Сотрудник" />
+          <NavigationProperty Name="Сотрудник1" Relationship="qw2Model.FK_Площадь_Сотрудник1" FromRole="Площадь" ToRole="Сотрудник" />
+          <NavigationProperty Name="Площадь_УглыПериметра" Relationship="qw2Model.FK_Площадь_УглыПериметра_Площадь" FromRole="Площадь" ToRole="Площадь_УглыПериметра" />
+          <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Профиль_Площадь" FromRole="Площадь" ToRole="Профиль" />
         </EntityType>
         <EntityType Name="Площадь_УглыПериметра">
           <Key>
@@ -1248,8 +1485,9 @@
           <Property Name="id_координат_точки" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Координаты_точки" Relationship="Self.FK_Площадь_УглыПериметра_Координаты_точки" FromRole="Площадь_УглыПериметра" ToRole="Координаты_точки" />
-          <NavigationProperty Name="Площадь" Relationship="Self.FK_Площадь_УглыПериметра_Площадь" FromRole="Площадь_УглыПериметра" ToRole="Площадь" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Координаты_точки" Relationship="qw2Model.FK_Площадь_УглыПериметра_Координаты_точки" FromRole="Площадь_УглыПериметра" ToRole="Координаты_точки" />
+          <NavigationProperty Name="Площадь" Relationship="qw2Model.FK_Площадь_УглыПериметра_Площадь" FromRole="Площадь_УглыПериметра" ToRole="Площадь" />
         </EntityType>
         <EntityType Name="Проект">
           <Key>
@@ -1261,9 +1499,10 @@
           <Property Name="id_договора" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Договор" Relationship="Self.FK_Проект_Договор" FromRole="Проект" ToRole="Договор" />
-          <NavigationProperty Name="Заказчик" Relationship="Self.FK_Проект_Заказчик" FromRole="Проект" ToRole="Заказчик" />
-          <NavigationProperty Name="Площадь" Relationship="Self.FK_Площадь_Проект" FromRole="Проект" ToRole="Площадь" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Договор" Relationship="qw2Model.FK_Проект_Договор" FromRole="Проект" ToRole="Договор" />
+          <NavigationProperty Name="Заказчик" Relationship="qw2Model.FK_Проект_Заказчик" FromRole="Проект" ToRole="Заказчик" />
+          <NavigationProperty Name="Площадь" Relationship="qw2Model.FK_Площадь_Проект" FromRole="Проект" ToRole="Площадь" />
         </EntityType>
         <EntityType Name="Профиль">
           <Key>
@@ -1280,15 +1519,16 @@
           <Property Name="дата_окончания_работ" Type="DateTime" Precision="3" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Координаты_точки" Relationship="Self.FK_Профиль_Координаты_точки" FromRole="Профиль" ToRole="Координаты_точки" />
-          <NavigationProperty Name="Координаты_точки1" Relationship="Self.FK_Профиль_Координаты_точки1" FromRole="Профиль" ToRole="Координаты_точки" />
-          <NavigationProperty Name="Методика" Relationship="Self.FK_Профиль_Методика" FromRole="Профиль" ToRole="Методика" />
-          <NavigationProperty Name="Пикет" Relationship="Self.FK_Пикет_Профиль" FromRole="Профиль" ToRole="Пикет" />
-          <NavigationProperty Name="Площадь" Relationship="Self.FK_Профиль_Площадь" FromRole="Профиль" ToRole="Площадь" />
-          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="Self.FK_Профиль_СписокОбработок_Профиль" FromRole="Профиль" ToRole="Профиль_СписокОбработок" />
-          <NavigationProperty Name="Профиль_ТелеметрическиеИзмерения" Relationship="Self.FK_Профиль_ТелеметрическиеИзмерения_Профиль" FromRole="Профиль" ToRole="Профиль_ТелеметрическиеИзмерения" />
-          <NavigationProperty Name="Профиль_ТочкиИзломов" Relationship="Self.FK_Профиль_ТочкиИзломов_Профиль" FromRole="Профиль" ToRole="Профиль_ТочкиИзломов" />
-          <NavigationProperty Name="Профиль_ЭлектромагнитныеИзмерения" Relationship="Self.FK_Профиль_ЭлектромагнитныеИзмерения_Профиль" FromRole="Профиль" ToRole="Профиль_ЭлектромагнитныеИзмерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Координаты_точки" Relationship="qw2Model.FK_Профиль_Координаты_точки" FromRole="Профиль" ToRole="Координаты_точки" />
+          <NavigationProperty Name="Координаты_точки1" Relationship="qw2Model.FK_Профиль_Координаты_точки1" FromRole="Профиль" ToRole="Координаты_точки" />
+          <NavigationProperty Name="Методика" Relationship="qw2Model.FK_Профиль_Методика" FromRole="Профиль" ToRole="Методика" />
+          <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_Профиль" FromRole="Профиль" ToRole="Пикет" />
+          <NavigationProperty Name="Площадь" Relationship="qw2Model.FK_Профиль_Площадь" FromRole="Профиль" ToRole="Площадь" />
+          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="qw2Model.FK_Профиль_СписокОбработок_Профиль" FromRole="Профиль" ToRole="Профиль_СписокОбработок" />
+          <NavigationProperty Name="Профиль_ТелеметрическиеИзмерения" Relationship="qw2Model.FK_Профиль_ТелеметрическиеИзмерения_Профиль" FromRole="Профиль" ToRole="Профиль_ТелеметрическиеИзмерения" />
+          <NavigationProperty Name="Профиль_ТочкиИзломов" Relationship="qw2Model.FK_Профиль_ТочкиИзломов_Профиль" FromRole="Профиль" ToRole="Профиль_ТочкиИзломов" />
+          <NavigationProperty Name="Профиль_ЭлектромагнитныеИзмерения" Relationship="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Профиль" FromRole="Профиль" ToRole="Профиль_ЭлектромагнитныеИзмерения" />
         </EntityType>
         <EntityType Name="Профиль_СписокОбработок">
           <Key>
@@ -1300,10 +1540,11 @@
           <Property Name="id_обработчика" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Обработки_на_профиле" Relationship="Self.FK_Профиль_СписокОбработок_Обработки_на_профиле" FromRole="Профиль_СписокОбработок" ToRole="Обработки_на_профиле" />
-          <NavigationProperty Name="Профиль" Relationship="Self.FK_Профиль_СписокОбработок_Профиль" FromRole="Профиль_СписокОбработок" ToRole="Профиль" />
-          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Профиль_СписокОбработок_Сотрудник" FromRole="Профиль_СписокОбработок" ToRole="Сотрудник" />
-          <NavigationProperty Name="Список_фильтров_над_обработкой" Relationship="Self.FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок" FromRole="Профиль_СписокОбработок" ToRole="Список_фильтров_над_обработкой" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Обработки_на_профиле" Relationship="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле" FromRole="Профиль_СписокОбработок" ToRole="Обработки_на_профиле" />
+          <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Профиль_СписокОбработок_Профиль" FromRole="Профиль_СписокОбработок" ToRole="Профиль" />
+          <NavigationProperty Name="Сотрудник" Relationship="qw2Model.FK_Профиль_СписокОбработок_Сотрудник" FromRole="Профиль_СписокОбработок" ToRole="Сотрудник" />
+          <NavigationProperty Name="Список_фильтров_над_обработкой" Relationship="qw2Model.FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок" FromRole="Профиль_СписокОбработок" ToRole="Список_фильтров_над_обработкой" />
         </EntityType>
         <EntityType Name="Профиль_ТелеметрическиеИзмерения">
           <Key>
@@ -1314,8 +1555,9 @@
           <Property Name="id_тел__измерения" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Профиль" Relationship="Self.FK_Профиль_ТелеметрическиеИзмерения_Профиль" FromRole="Профиль_ТелеметрическиеИзмерения" ToRole="Профиль" />
-          <NavigationProperty Name="Телеметрические_измерения" Relationship="Self.FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения" FromRole="Профиль_ТелеметрическиеИзмерения" ToRole="Телеметрические_измерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Профиль_ТелеметрическиеИзмерения_Профиль" FromRole="Профиль_ТелеметрическиеИзмерения" ToRole="Профиль" />
+          <NavigationProperty Name="Телеметрические_измерения" Relationship="qw2Model.FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения" FromRole="Профиль_ТелеметрическиеИзмерения" ToRole="Телеметрические_измерения" />
         </EntityType>
         <EntityType Name="Профиль_ТочкиИзломов">
           <Key>
@@ -1324,10 +1566,11 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_профиля" Type="Int32" />
           <Property Name="id_координат_точки" Type="Int32" />
-          <Property Name="дата_дообавления_записи" Type="DateTime" Precision="3" />
+          <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Координаты_точки" Relationship="Self.FK_Профиль_ТочкиИзломов_Координаты_точки" FromRole="Профиль_ТочкиИзломов" ToRole="Координаты_точки" />
-          <NavigationProperty Name="Профиль" Relationship="Self.FK_Профиль_ТочкиИзломов_Профиль" FromRole="Профиль_ТочкиИзломов" ToRole="Профиль" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Координаты_точки" Relationship="qw2Model.FK_Профиль_ТочкиИзломов_Координаты_точки" FromRole="Профиль_ТочкиИзломов" ToRole="Координаты_точки" />
+          <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Профиль_ТочкиИзломов_Профиль" FromRole="Профиль_ТочкиИзломов" ToRole="Профиль" />
         </EntityType>
         <EntityType Name="Профиль_ЭлектромагнитныеИзмерения">
           <Key>
@@ -1335,11 +1578,12 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_профиля" Type="Int32" />
-          <Property Name="id_эл__измерений" Type="Int32" />
+          <Property Name="id_эл_измерений" Type="Int32" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Профиль" Relationship="Self.FK_Профиль_ЭлектромагнитныеИзмерения_Профиль" FromRole="Профиль_ЭлектромагнитныеИзмерения" ToRole="Профиль" />
-          <NavigationProperty Name="Электромагнитные_измерения" Relationship="Self.FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения" FromRole="Профиль_ЭлектромагнитныеИзмерения" ToRole="Электромагнитные_измерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Профиль" FromRole="Профиль_ЭлектромагнитныеИзмерения" ToRole="Профиль" />
+          <NavigationProperty Name="Электромагнитные_измерения" Relationship="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения" FromRole="Профиль_ЭлектромагнитныеИзмерения" ToRole="Электромагнитные_измерения" />
         </EntityType>
         <EntityType Name="Результаты_измерения">
           <Key>
@@ -1350,8 +1594,9 @@
           <Property Name="значение_ЭДС" Type="DateTime" Precision="3" />
           <Property Name="дата_добавления_записи" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Пикет" Relationship="Self.FK_Пикет_Результаты_измерения" FromRole="Результаты_измерения" ToRole="Пикет" />
-          <NavigationProperty Name="Пикет_ПромежуточныеИзмерения" Relationship="Self.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" FromRole="Результаты_измерения" ToRole="Пикет_ПромежуточныеИзмерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_Результаты_измерения" FromRole="Результаты_измерения" ToRole="Пикет" />
+          <NavigationProperty Name="Пикет_ПромежуточныеИзмерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" FromRole="Результаты_измерения" ToRole="Пикет_ПромежуточныеИзмерения" />
         </EntityType>
         <EntityType Name="Сотрудник">
           <Key>
@@ -1365,12 +1610,15 @@
           <Property Name="дата_прохождения_медосмотра" Type="DateTime" Precision="0" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Должность" Relationship="Self.FK_Сотрудник_Должность" FromRole="Сотрудник" ToRole="Должность" />
-          <NavigationProperty Name="Квалификация" Relationship="Self.FK_Сотрудник_Квалификация" FromRole="Сотрудник" ToRole="Квалификация" />
-          <NavigationProperty Name="Пикет_Сотрудники" Relationship="Self.FK_Пикет_Сотрудники_Сотрудник" FromRole="Сотрудник" ToRole="Пикет_Сотрудники" />
-          <NavigationProperty Name="Площадь" Relationship="Self.FK_Площадь_Сотрудник" FromRole="Сотрудник" ToRole="Площадь" />
-          <NavigationProperty Name="Площадь1" Relationship="Self.FK_Площадь_Сотрудник1" FromRole="Сотрудник" ToRole="Площадь" />
-          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="Self.FK_Профиль_СписокОбработок_Сотрудник" FromRole="Сотрудник" ToRole="Профиль_СписокОбработок" />
+          <Property Name="удален" Type="Boolean" />
+          <Property Name="логин" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="пароль" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Должность" Relationship="qw2Model.FK_Сотрудник_Должность" FromRole="Сотрудник" ToRole="Должность" />
+          <NavigationProperty Name="Квалификация" Relationship="qw2Model.FK_Сотрудник_Квалификация" FromRole="Сотрудник" ToRole="Квалификация" />
+          <NavigationProperty Name="Пикет_Сотрудники" Relationship="qw2Model.FK_Пикет_Сотрудники_Сотрудник" FromRole="Сотрудник" ToRole="Пикет_Сотрудники" />
+          <NavigationProperty Name="Площадь" Relationship="qw2Model.FK_Площадь_Сотрудник" FromRole="Сотрудник" ToRole="Площадь" />
+          <NavigationProperty Name="Площадь1" Relationship="qw2Model.FK_Площадь_Сотрудник1" FromRole="Сотрудник" ToRole="Площадь" />
+          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="qw2Model.FK_Профиль_СписокОбработок_Сотрудник" FromRole="Сотрудник" ToRole="Профиль_СписокОбработок" />
         </EntityType>
         <EntityType Name="Список_фильтров_над_обработкой">
           <Key>
@@ -1382,8 +1630,9 @@
           <Property Name="характеристики_фильтра" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="Self.FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок" FromRole="Список_фильтров_над_обработкой" ToRole="Профиль_СписокОбработок" />
-          <NavigationProperty Name="Фильтры_обработок" Relationship="Self.FK_Список_фильтров_над_обработкой_Фильтры_обработок" FromRole="Список_фильтров_над_обработкой" ToRole="Фильтры_обработок" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="qw2Model.FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок" FromRole="Список_фильтров_над_обработкой" ToRole="Профиль_СписокОбработок" />
+          <NavigationProperty Name="Фильтры_обработок" Relationship="qw2Model.FK_Список_фильтров_над_обработкой_Фильтры_обработок" FromRole="Список_фильтров_над_обработкой" ToRole="Фильтры_обработок" />
         </EntityType>
         <EntityType Name="Телеметрические_измерения">
           <Key>
@@ -1393,7 +1642,8 @@
           <Property Name="путь_до_бинарного_файла__содержащего_тел__измерения" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Профиль_ТелеметрическиеИзмерения" Relationship="Self.FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения" FromRole="Телеметрические_измерения" ToRole="Профиль_ТелеметрическиеИзмерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Профиль_ТелеметрическиеИзмерения" Relationship="qw2Model.FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения" FromRole="Телеметрические_измерения" ToRole="Профиль_ТелеметрическиеИзмерения" />
         </EntityType>
         <EntityType Name="Трансформанта_измерения">
           <Key>
@@ -1404,8 +1654,9 @@
           <Property Name="значение_кажущегося_сопратевления__Rok_" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Пикет_ПромежуточныеТрансформантыИзмерения" Relationship="Self.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения" FromRole="Трансформанта_измерения" ToRole="Пикет_ПромежуточныеТрансформантыИзмерения" />
-          <NavigationProperty Name="Пикет_ТрансформантаИзмерения" Relationship="Self.FK_Пикет_ТрансформантаИзмерения_Трансформанта_измерения" FromRole="Трансформанта_измерения" ToRole="Пикет_ТрансформантаИзмерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Пикет_ПромежуточныеТрансформантыИзмерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения" FromRole="Трансформанта_измерения" ToRole="Пикет_ПромежуточныеТрансформантыИзмерения" />
+          <NavigationProperty Name="Пикет_ТрансформантаИзмерения" Relationship="qw2Model.FK_Пикет_ТрансформантаИзмерения_Трансформанта_измерения" FromRole="Трансформанта_измерения" ToRole="Пикет_ТрансформантаИзмерения" />
         </EntityType>
         <EntityType Name="Фильтры_обработок">
           <Key>
@@ -1416,21 +1667,23 @@
           <Property Name="описание" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Список_фильтров_над_обработкой" Relationship="Self.FK_Список_фильтров_над_обработкой_Фильтры_обработок" FromRole="Фильтры_обработок" ToRole="Список_фильтров_над_обработкой" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Список_фильтров_над_обработкой" Relationship="qw2Model.FK_Список_фильтров_над_обработкой_Фильтры_обработок" FromRole="Фильтры_обработок" ToRole="Список_фильтров_над_обработкой" />
         </EntityType>
         <EntityType Name="Электромагнитные_измерения">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="путь_до_бинарного_файла__содержащего_эл__измерения" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="путь_до_бинарного_файла_содержащего_эл_измерения" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Профиль_ЭлектромагнитныеИзмерения" Relationship="Self.FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения" FromRole="Электромагнитные_измерения" ToRole="Профиль_ЭлектромагнитныеИзмерения" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Профиль_ЭлектромагнитныеИзмерения" Relationship="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения" FromRole="Электромагнитные_измерения" ToRole="Профиль_ЭлектромагнитныеИзмерения" />
         </EntityType>
         <Association Name="FK_Проект_Договор">
-          <End Role="Договор" Type="Self.Договор" Multiplicity="0..1" />
-          <End Role="Проект" Type="Self.Проект" Multiplicity="*" />
+          <End Type="qw2Model.Договор" Role="Договор" Multiplicity="0..1" />
+          <End Type="qw2Model.Проект" Role="Проект" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Договор">
               <PropertyRef Name="id" />
@@ -1441,8 +1694,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Сотрудник_Должность">
-          <End Role="Должность" Type="Self.Должность" Multiplicity="0..1" />
-          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="*" />
+          <End Type="qw2Model.Должность" Role="Должность" Multiplicity="0..1" />
+          <End Type="qw2Model.Сотрудник" Role="Сотрудник" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Должность">
               <PropertyRef Name="id" />
@@ -1453,8 +1706,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Проект_Заказчик">
-          <End Role="Заказчик" Type="Self.Заказчик" Multiplicity="0..1" />
-          <End Role="Проект" Type="Self.Проект" Multiplicity="*" />
+          <End Type="qw2Model.Заказчик" Role="Заказчик" Multiplicity="0..1" />
+          <End Type="qw2Model.Проект" Role="Проект" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Заказчик">
               <PropertyRef Name="id" />
@@ -1465,8 +1718,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Методика_Измерительное_оборудование">
-          <End Role="Измерительное_оборудование" Type="Self.Измерительное_оборудование" Multiplicity="0..1" />
-          <End Role="Методика" Type="Self.Методика" Multiplicity="*" />
+          <End Type="qw2Model.Измерительное_оборудование" Role="Измерительное_оборудование" Multiplicity="0..1" />
+          <End Type="qw2Model.Методика" Role="Методика" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Измерительное_оборудование">
               <PropertyRef Name="id" />
@@ -1477,8 +1730,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Методика_Измерительное_оборудование1">
-          <End Role="Измерительное_оборудование" Type="Self.Измерительное_оборудование" Multiplicity="0..1" />
-          <End Role="Методика" Type="Self.Методика" Multiplicity="*" />
+          <End Type="qw2Model.Измерительное_оборудование" Role="Измерительное_оборудование" Multiplicity="0..1" />
+          <End Type="qw2Model.Методика" Role="Методика" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Измерительное_оборудование">
               <PropertyRef Name="id" />
@@ -1489,8 +1742,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Методика_Измерительное_оборудование2">
-          <End Role="Измерительное_оборудование" Type="Self.Измерительное_оборудование" Multiplicity="0..1" />
-          <End Role="Методика" Type="Self.Методика" Multiplicity="*" />
+          <End Type="qw2Model.Измерительное_оборудование" Role="Измерительное_оборудование" Multiplicity="0..1" />
+          <End Type="qw2Model.Методика" Role="Методика" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Измерительное_оборудование">
               <PropertyRef Name="id" />
@@ -1501,8 +1754,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование">
-          <End Role="Измерительное_оборудование" Type="Self.Измерительное_оборудование" Multiplicity="0..1" />
-          <End Role="Пикет_ИзмерительноеОборудование" Type="Self.Пикет_ИзмерительноеОборудование" Multiplicity="*" />
+          <End Type="qw2Model.Измерительное_оборудование" Role="Измерительное_оборудование" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_ИзмерительноеОборудование" Role="Пикет_ИзмерительноеОборудование" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Измерительное_оборудование">
               <PropertyRef Name="id" />
@@ -1513,8 +1766,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Сотрудник_Квалификация">
-          <End Role="Квалификация" Type="Self.Квалификация" Multiplicity="0..1" />
-          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="*" />
+          <End Type="qw2Model.Квалификация" Role="Квалификация" Multiplicity="0..1" />
+          <End Type="qw2Model.Сотрудник" Role="Сотрудник" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Квалификация">
               <PropertyRef Name="id" />
@@ -1525,8 +1778,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_Координаты_точки">
-          <End Role="Координаты_точки" Type="Self.Координаты_точки" Multiplicity="0..1" />
-          <End Role="Пикет" Type="Self.Пикет" Multiplicity="*" />
+          <End Type="qw2Model.Координаты_точки" Role="Координаты_точки" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Координаты_точки">
               <PropertyRef Name="id" />
@@ -1537,8 +1790,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Площадь_УглыПериметра_Координаты_точки">
-          <End Role="Координаты_точки" Type="Self.Координаты_точки" Multiplicity="0..1" />
-          <End Role="Площадь_УглыПериметра" Type="Self.Площадь_УглыПериметра" Multiplicity="*" />
+          <End Type="qw2Model.Координаты_точки" Role="Координаты_точки" Multiplicity="0..1" />
+          <End Type="qw2Model.Площадь_УглыПериметра" Role="Площадь_УглыПериметра" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Координаты_точки">
               <PropertyRef Name="id" />
@@ -1549,8 +1802,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_Координаты_точки">
-          <End Role="Координаты_точки" Type="Self.Координаты_точки" Multiplicity="0..1" />
-          <End Role="Профиль" Type="Self.Профиль" Multiplicity="*" />
+          <End Type="qw2Model.Координаты_точки" Role="Координаты_точки" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль" Role="Профиль" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Координаты_точки">
               <PropertyRef Name="id" />
@@ -1561,8 +1814,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_Координаты_точки1">
-          <End Role="Координаты_точки" Type="Self.Координаты_точки" Multiplicity="0..1" />
-          <End Role="Профиль" Type="Self.Профиль" Multiplicity="*" />
+          <End Type="qw2Model.Координаты_точки" Role="Координаты_точки" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль" Role="Профиль" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Координаты_точки">
               <PropertyRef Name="id" />
@@ -1573,8 +1826,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_ТочкиИзломов_Координаты_точки">
-          <End Role="Координаты_точки" Type="Self.Координаты_точки" Multiplicity="0..1" />
-          <End Role="Профиль_ТочкиИзломов" Type="Self.Профиль_ТочкиИзломов" Multiplicity="*" />
+          <End Type="qw2Model.Координаты_точки" Role="Координаты_точки" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль_ТочкиИзломов" Role="Профиль_ТочкиИзломов" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Координаты_точки">
               <PropertyRef Name="id" />
@@ -1585,8 +1838,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_Методика">
-          <End Role="Методика" Type="Self.Методика" Multiplicity="0..1" />
-          <End Role="Профиль" Type="Self.Профиль" Multiplicity="*" />
+          <End Type="qw2Model.Методика" Role="Методика" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль" Role="Профиль" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Методика">
               <PropertyRef Name="id" />
@@ -1597,8 +1850,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_СписокОбработок_Обработки_на_профиле">
-          <End Role="Обработки_на_профиле" Type="Self.Обработки_на_профиле" Multiplicity="0..1" />
-          <End Role="Профиль_СписокОбработок" Type="Self.Профиль_СписокОбработок" Multiplicity="*" />
+          <End Type="qw2Model.Обработки_на_профиле" Role="Обработки_на_профиле" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль_СписокОбработок" Role="Профиль_СписокОбработок" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Обработки_на_профиле">
               <PropertyRef Name="id" />
@@ -1609,8 +1862,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_ИзмерительноеОборудование_Пикет">
-          <End Role="Пикет" Type="Self.Пикет" Multiplicity="0..1" />
-          <End Role="Пикет_ИзмерительноеОборудование" Type="Self.Пикет_ИзмерительноеОборудование" Multiplicity="*" />
+          <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_ИзмерительноеОборудование" Role="Пикет_ИзмерительноеОборудование" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Пикет">
               <PropertyRef Name="id" />
@@ -1621,8 +1874,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_ПромежуточныеИзмерения_Пикет">
-          <End Role="Пикет" Type="Self.Пикет" Multiplicity="0..1" />
-          <End Role="Пикет_ПромежуточныеИзмерения" Type="Self.Пикет_ПромежуточныеИзмерения" Multiplicity="*" />
+          <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_ПромежуточныеИзмерения" Role="Пикет_ПромежуточныеИзмерения" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Пикет">
               <PropertyRef Name="id" />
@@ -1633,8 +1886,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет">
-          <End Role="Пикет" Type="Self.Пикет" Multiplicity="0..1" />
-          <End Role="Пикет_ПромежуточныеТрансформантыИзмерения" Type="Self.Пикет_ПромежуточныеТрансформантыИзмерения" Multiplicity="*" />
+          <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_ПромежуточныеТрансформантыИзмерения" Role="Пикет_ПромежуточныеТрансформантыИзмерения" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Пикет">
               <PropertyRef Name="id" />
@@ -1645,8 +1898,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_Профиль">
-          <End Role="Профиль" Type="Self.Профиль" Multiplicity="0..1" />
-          <End Role="Пикет" Type="Self.Пикет" Multiplicity="*" />
+          <End Type="qw2Model.Профиль" Role="Профиль" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Профиль">
               <PropertyRef Name="id" />
@@ -1657,8 +1910,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_Результаты_измерения">
-          <End Role="Результаты_измерения" Type="Self.Результаты_измерения" Multiplicity="0..1" />
-          <End Role="Пикет" Type="Self.Пикет" Multiplicity="*" />
+          <End Type="qw2Model.Результаты_измерения" Role="Результаты_измерения" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Результаты_измерения">
               <PropertyRef Name="id" />
@@ -1669,8 +1922,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_Сотрудники_Пикет">
-          <End Role="Пикет" Type="Self.Пикет" Multiplicity="0..1" />
-          <End Role="Пикет_Сотрудники" Type="Self.Пикет_Сотрудники" Multiplicity="*" />
+          <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_Сотрудники" Role="Пикет_Сотрудники" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Пикет">
               <PropertyRef Name="id" />
@@ -1681,8 +1934,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_ТрансформантаИзмерения_Пикет">
-          <End Role="Пикет" Type="Self.Пикет" Multiplicity="0..1" />
-          <End Role="Пикет_ТрансформантаИзмерения" Type="Self.Пикет_ТрансформантаИзмерения" Multiplicity="*" />
+          <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_ТрансформантаИзмерения" Role="Пикет_ТрансформантаИзмерения" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Пикет">
               <PropertyRef Name="id" />
@@ -1693,8 +1946,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения">
-          <End Role="Результаты_измерения" Type="Self.Результаты_измерения" Multiplicity="0..1" />
-          <End Role="Пикет_ПромежуточныеИзмерения" Type="Self.Пикет_ПромежуточныеИзмерения" Multiplicity="*" />
+          <End Type="qw2Model.Результаты_измерения" Role="Результаты_измерения" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_ПромежуточныеИзмерения" Role="Пикет_ПромежуточныеИзмерения" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Результаты_измерения">
               <PropertyRef Name="id" />
@@ -1705,8 +1958,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения">
-          <End Role="Трансформанта_измерения" Type="Self.Трансформанта_измерения" Multiplicity="0..1" />
-          <End Role="Пикет_ПромежуточныеТрансформантыИзмерения" Type="Self.Пикет_ПромежуточныеТрансформантыИзмерения" Multiplicity="*" />
+          <End Type="qw2Model.Трансформанта_измерения" Role="Трансформанта_измерения" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_ПромежуточныеТрансформантыИзмерения" Role="Пикет_ПромежуточныеТрансформантыИзмерения" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Трансформанта_измерения">
               <PropertyRef Name="id" />
@@ -1717,8 +1970,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_Сотрудники_Сотрудник">
-          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
-          <End Role="Пикет_Сотрудники" Type="Self.Пикет_Сотрудники" Multiplicity="*" />
+          <End Type="qw2Model.Сотрудник" Role="Сотрудник" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_Сотрудники" Role="Пикет_Сотрудники" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Сотрудник">
               <PropertyRef Name="id" />
@@ -1729,8 +1982,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Пикет_ТрансформантаИзмерения_Трансформанта_измерения">
-          <End Role="Трансформанта_измерения" Type="Self.Трансформанта_измерения" Multiplicity="0..1" />
-          <End Role="Пикет_ТрансформантаИзмерения" Type="Self.Пикет_ТрансформантаИзмерения" Multiplicity="*" />
+          <End Type="qw2Model.Трансформанта_измерения" Role="Трансформанта_измерения" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_ТрансформантаИзмерения" Role="Пикет_ТрансформантаИзмерения" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Трансформанта_измерения">
               <PropertyRef Name="id" />
@@ -1741,8 +1994,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Площадь_Проект">
-          <End Role="Проект" Type="Self.Проект" Multiplicity="0..1" />
-          <End Role="Площадь" Type="Self.Площадь" Multiplicity="*" />
+          <End Type="qw2Model.Проект" Role="Проект" Multiplicity="0..1" />
+          <End Type="qw2Model.Площадь" Role="Площадь" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Проект">
               <PropertyRef Name="id" />
@@ -1753,8 +2006,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Площадь_Сотрудник">
-          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
-          <End Role="Площадь" Type="Self.Площадь" Multiplicity="*" />
+          <End Type="qw2Model.Сотрудник" Role="Сотрудник" Multiplicity="0..1" />
+          <End Type="qw2Model.Площадь" Role="Площадь" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Сотрудник">
               <PropertyRef Name="id" />
@@ -1765,8 +2018,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Площадь_Сотрудник1">
-          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
-          <End Role="Площадь" Type="Self.Площадь" Multiplicity="*" />
+          <End Type="qw2Model.Сотрудник" Role="Сотрудник" Multiplicity="0..1" />
+          <End Type="qw2Model.Площадь" Role="Площадь" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Сотрудник">
               <PropertyRef Name="id" />
@@ -1777,8 +2030,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Площадь_УглыПериметра_Площадь">
-          <End Role="Площадь" Type="Self.Площадь" Multiplicity="0..1" />
-          <End Role="Площадь_УглыПериметра" Type="Self.Площадь_УглыПериметра" Multiplicity="*" />
+          <End Type="qw2Model.Площадь" Role="Площадь" Multiplicity="0..1" />
+          <End Type="qw2Model.Площадь_УглыПериметра" Role="Площадь_УглыПериметра" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Площадь">
               <PropertyRef Name="id" />
@@ -1789,8 +2042,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_Площадь">
-          <End Role="Площадь" Type="Self.Площадь" Multiplicity="0..1" />
-          <End Role="Профиль" Type="Self.Профиль" Multiplicity="*" />
+          <End Type="qw2Model.Площадь" Role="Площадь" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль" Role="Профиль" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Площадь">
               <PropertyRef Name="id" />
@@ -1801,8 +2054,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_СписокОбработок_Профиль">
-          <End Role="Профиль" Type="Self.Профиль" Multiplicity="0..1" />
-          <End Role="Профиль_СписокОбработок" Type="Self.Профиль_СписокОбработок" Multiplicity="*" />
+          <End Type="qw2Model.Профиль" Role="Профиль" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль_СписокОбработок" Role="Профиль_СписокОбработок" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Профиль">
               <PropertyRef Name="id" />
@@ -1813,8 +2066,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_ТелеметрическиеИзмерения_Профиль">
-          <End Role="Профиль" Type="Self.Профиль" Multiplicity="0..1" />
-          <End Role="Профиль_ТелеметрическиеИзмерения" Type="Self.Профиль_ТелеметрическиеИзмерения" Multiplicity="*" />
+          <End Type="qw2Model.Профиль" Role="Профиль" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль_ТелеметрическиеИзмерения" Role="Профиль_ТелеметрическиеИзмерения" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Профиль">
               <PropertyRef Name="id" />
@@ -1825,8 +2078,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_ТочкиИзломов_Профиль">
-          <End Role="Профиль" Type="Self.Профиль" Multiplicity="0..1" />
-          <End Role="Профиль_ТочкиИзломов" Type="Self.Профиль_ТочкиИзломов" Multiplicity="*" />
+          <End Type="qw2Model.Профиль" Role="Профиль" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль_ТочкиИзломов" Role="Профиль_ТочкиИзломов" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Профиль">
               <PropertyRef Name="id" />
@@ -1837,8 +2090,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_ЭлектромагнитныеИзмерения_Профиль">
-          <End Role="Профиль" Type="Self.Профиль" Multiplicity="0..1" />
-          <End Role="Профиль_ЭлектромагнитныеИзмерения" Type="Self.Профиль_ЭлектромагнитныеИзмерения" Multiplicity="*" />
+          <End Type="qw2Model.Профиль" Role="Профиль" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль_ЭлектромагнитныеИзмерения" Role="Профиль_ЭлектромагнитныеИзмерения" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Профиль">
               <PropertyRef Name="id" />
@@ -1849,8 +2102,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_СписокОбработок_Сотрудник">
-          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
-          <End Role="Профиль_СписокОбработок" Type="Self.Профиль_СписокОбработок" Multiplicity="*" />
+          <End Type="qw2Model.Сотрудник" Role="Сотрудник" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль_СписокОбработок" Role="Профиль_СписокОбработок" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Сотрудник">
               <PropertyRef Name="id" />
@@ -1861,8 +2114,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок">
-          <End Role="Профиль_СписокОбработок" Type="Self.Профиль_СписокОбработок" Multiplicity="0..1" />
-          <End Role="Список_фильтров_над_обработкой" Type="Self.Список_фильтров_над_обработкой" Multiplicity="*" />
+          <End Type="qw2Model.Профиль_СписокОбработок" Role="Профиль_СписокОбработок" Multiplicity="0..1" />
+          <End Type="qw2Model.Список_фильтров_над_обработкой" Role="Список_фильтров_над_обработкой" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Профиль_СписокОбработок">
               <PropertyRef Name="id" />
@@ -1873,8 +2126,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения">
-          <End Role="Телеметрические_измерения" Type="Self.Телеметрические_измерения" Multiplicity="0..1" />
-          <End Role="Профиль_ТелеметрическиеИзмерения" Type="Self.Профиль_ТелеметрическиеИзмерения" Multiplicity="*" />
+          <End Type="qw2Model.Телеметрические_измерения" Role="Телеметрические_измерения" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль_ТелеметрическиеИзмерения" Role="Профиль_ТелеметрическиеИзмерения" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Телеметрические_измерения">
               <PropertyRef Name="id" />
@@ -1885,20 +2138,20 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения">
-          <End Role="Электромагнитные_измерения" Type="Self.Электромагнитные_измерения" Multiplicity="0..1" />
-          <End Role="Профиль_ЭлектромагнитныеИзмерения" Type="Self.Профиль_ЭлектромагнитныеИзмерения" Multiplicity="*" />
+          <End Type="qw2Model.Электромагнитные_измерения" Role="Электромагнитные_измерения" Multiplicity="0..1" />
+          <End Type="qw2Model.Профиль_ЭлектромагнитныеИзмерения" Role="Профиль_ЭлектромагнитныеИзмерения" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Электромагнитные_измерения">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Профиль_ЭлектромагнитныеИзмерения">
-              <PropertyRef Name="id_эл__измерений" />
+              <PropertyRef Name="id_эл_измерений" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Список_фильтров_над_обработкой_Фильтры_обработок">
-          <End Role="Фильтры_обработок" Type="Self.Фильтры_обработок" Multiplicity="0..1" />
-          <End Role="Список_фильтров_над_обработкой" Type="Self.Список_фильтров_над_обработкой" Multiplicity="*" />
+          <End Type="qw2Model.Фильтры_обработок" Role="Фильтры_обработок" Multiplicity="0..1" />
+          <End Type="qw2Model.Список_фильтров_над_обработкой" Role="Список_фильтров_над_обработкой" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Фильтры_обработок">
               <PropertyRef Name="id" />
@@ -1908,199 +2161,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="qw2Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Договор" EntityType="Self.Договор" />
-          <EntitySet Name="Должность" EntityType="Self.Должность" />
-          <EntitySet Name="Заказчик" EntityType="Self.Заказчик" />
-          <EntitySet Name="Измерительное_оборудование" EntityType="Self.Измерительное_оборудование" />
-          <EntitySet Name="Квалификация" EntityType="Self.Квалификация" />
-          <EntitySet Name="Координаты_точки" EntityType="Self.Координаты_точки" />
-          <EntitySet Name="Методика" EntityType="Self.Методика" />
-          <EntitySet Name="Обработки_на_профиле" EntityType="Self.Обработки_на_профиле" />
-          <EntitySet Name="Пикет" EntityType="Self.Пикет" />
-          <EntitySet Name="Пикет_ИзмерительноеОборудование" EntityType="Self.Пикет_ИзмерительноеОборудование" />
-          <EntitySet Name="Пикет_ПромежуточныеИзмерения" EntityType="Self.Пикет_ПромежуточныеИзмерения" />
-          <EntitySet Name="Пикет_ПромежуточныеТрансформантыИзмерения" EntityType="Self.Пикет_ПромежуточныеТрансформантыИзмерения" />
-          <EntitySet Name="Пикет_Сотрудники" EntityType="Self.Пикет_Сотрудники" />
-          <EntitySet Name="Пикет_ТрансформантаИзмерения" EntityType="Self.Пикет_ТрансформантаИзмерения" />
-          <EntitySet Name="Площадь" EntityType="Self.Площадь" />
-          <EntitySet Name="Площадь_УглыПериметра" EntityType="Self.Площадь_УглыПериметра" />
-          <EntitySet Name="Проект" EntityType="Self.Проект" />
-          <EntitySet Name="Профиль" EntityType="Self.Профиль" />
-          <EntitySet Name="Профиль_СписокОбработок" EntityType="Self.Профиль_СписокОбработок" />
-          <EntitySet Name="Профиль_ТелеметрическиеИзмерения" EntityType="Self.Профиль_ТелеметрическиеИзмерения" />
-          <EntitySet Name="Профиль_ТочкиИзломов" EntityType="Self.Профиль_ТочкиИзломов" />
-          <EntitySet Name="Профиль_ЭлектромагнитныеИзмерения" EntityType="Self.Профиль_ЭлектромагнитныеИзмерения" />
-          <EntitySet Name="Результаты_измерения" EntityType="Self.Результаты_измерения" />
-          <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" />
-          <EntitySet Name="Список_фильтров_над_обработкой" EntityType="Self.Список_фильтров_над_обработкой" />
-          <EntitySet Name="Телеметрические_измерения" EntityType="Self.Телеметрические_измерения" />
-          <EntitySet Name="Трансформанта_измерения" EntityType="Self.Трансформанта_измерения" />
-          <EntitySet Name="Фильтры_обработок" EntityType="Self.Фильтры_обработок" />
-          <EntitySet Name="Электромагнитные_измерения" EntityType="Self.Электромагнитные_измерения" />
-          <AssociationSet Name="FK_Проект_Договор" Association="Self.FK_Проект_Договор">
-            <End Role="Договор" EntitySet="Договор" />
-            <End Role="Проект" EntitySet="Проект" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Сотрудник_Должность" Association="Self.FK_Сотрудник_Должность">
-            <End Role="Должность" EntitySet="Должность" />
-            <End Role="Сотрудник" EntitySet="Сотрудник" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Проект_Заказчик" Association="Self.FK_Проект_Заказчик">
-            <End Role="Заказчик" EntitySet="Заказчик" />
-            <End Role="Проект" EntitySet="Проект" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Методика_Измерительное_оборудование" Association="Self.FK_Методика_Измерительное_оборудование">
-            <End Role="Измерительное_оборудование" EntitySet="Измерительное_оборудование" />
-            <End Role="Методика" EntitySet="Методика" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Методика_Измерительное_оборудование1" Association="Self.FK_Методика_Измерительное_оборудование1">
-            <End Role="Измерительное_оборудование" EntitySet="Измерительное_оборудование" />
-            <End Role="Методика" EntitySet="Методика" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Методика_Измерительное_оборудование2" Association="Self.FK_Методика_Измерительное_оборудование2">
-            <End Role="Измерительное_оборудование" EntitySet="Измерительное_оборудование" />
-            <End Role="Методика" EntitySet="Методика" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование" Association="Self.FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование">
-            <End Role="Измерительное_оборудование" EntitySet="Измерительное_оборудование" />
-            <End Role="Пикет_ИзмерительноеОборудование" EntitySet="Пикет_ИзмерительноеОборудование" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Сотрудник_Квалификация" Association="Self.FK_Сотрудник_Квалификация">
-            <End Role="Квалификация" EntitySet="Квалификация" />
-            <End Role="Сотрудник" EntitySet="Сотрудник" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_Координаты_точки" Association="Self.FK_Пикет_Координаты_точки">
-            <End Role="Координаты_точки" EntitySet="Координаты_точки" />
-            <End Role="Пикет" EntitySet="Пикет" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Площадь_УглыПериметра_Координаты_точки" Association="Self.FK_Площадь_УглыПериметра_Координаты_точки">
-            <End Role="Координаты_точки" EntitySet="Координаты_точки" />
-            <End Role="Площадь_УглыПериметра" EntitySet="Площадь_УглыПериметра" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_Координаты_точки" Association="Self.FK_Профиль_Координаты_точки">
-            <End Role="Координаты_точки" EntitySet="Координаты_точки" />
-            <End Role="Профиль" EntitySet="Профиль" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_Координаты_точки1" Association="Self.FK_Профиль_Координаты_точки1">
-            <End Role="Координаты_точки" EntitySet="Координаты_точки" />
-            <End Role="Профиль" EntitySet="Профиль" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_ТочкиИзломов_Координаты_точки" Association="Self.FK_Профиль_ТочкиИзломов_Координаты_точки">
-            <End Role="Координаты_точки" EntitySet="Координаты_точки" />
-            <End Role="Профиль_ТочкиИзломов" EntitySet="Профиль_ТочкиИзломов" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_Методика" Association="Self.FK_Профиль_Методика">
-            <End Role="Методика" EntitySet="Методика" />
-            <End Role="Профиль" EntitySet="Профиль" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_СписокОбработок_Обработки_на_профиле" Association="Self.FK_Профиль_СписокОбработок_Обработки_на_профиле">
-            <End Role="Обработки_на_профиле" EntitySet="Обработки_на_профиле" />
-            <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_ИзмерительноеОборудование_Пикет" Association="Self.FK_Пикет_ИзмерительноеОборудование_Пикет">
-            <End Role="Пикет" EntitySet="Пикет" />
-            <End Role="Пикет_ИзмерительноеОборудование" EntitySet="Пикет_ИзмерительноеОборудование" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_ПромежуточныеИзмерения_Пикет" Association="Self.FK_Пикет_ПромежуточныеИзмерения_Пикет">
-            <End Role="Пикет" EntitySet="Пикет" />
-            <End Role="Пикет_ПромежуточныеИзмерения" EntitySet="Пикет_ПромежуточныеИзмерения" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет" Association="Self.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет">
-            <End Role="Пикет" EntitySet="Пикет" />
-            <End Role="Пикет_ПромежуточныеТрансформантыИзмерения" EntitySet="Пикет_ПромежуточныеТрансформантыИзмерения" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_Профиль" Association="Self.FK_Пикет_Профиль">
-            <End Role="Профиль" EntitySet="Профиль" />
-            <End Role="Пикет" EntitySet="Пикет" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_Результаты_измерения" Association="Self.FK_Пикет_Результаты_измерения">
-            <End Role="Результаты_измерения" EntitySet="Результаты_измерения" />
-            <End Role="Пикет" EntitySet="Пикет" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_Сотрудники_Пикет" Association="Self.FK_Пикет_Сотрудники_Пикет">
-            <End Role="Пикет" EntitySet="Пикет" />
-            <End Role="Пикет_Сотрудники" EntitySet="Пикет_Сотрудники" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_ТрансформантаИзмерения_Пикет" Association="Self.FK_Пикет_ТрансформантаИзмерения_Пикет">
-            <End Role="Пикет" EntitySet="Пикет" />
-            <End Role="Пикет_ТрансформантаИзмерения" EntitySet="Пикет_ТрансформантаИзмерения" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" Association="Self.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения">
-            <End Role="Результаты_измерения" EntitySet="Результаты_измерения" />
-            <End Role="Пикет_ПромежуточныеИзмерения" EntitySet="Пикет_ПромежуточныеИзмерения" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения" Association="Self.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения">
-            <End Role="Трансформанта_измерения" EntitySet="Трансформанта_измерения" />
-            <End Role="Пикет_ПромежуточныеТрансформантыИзмерения" EntitySet="Пикет_ПромежуточныеТрансформантыИзмерения" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_Сотрудники_Сотрудник" Association="Self.FK_Пикет_Сотрудники_Сотрудник">
-            <End Role="Сотрудник" EntitySet="Сотрудник" />
-            <End Role="Пикет_Сотрудники" EntitySet="Пикет_Сотрудники" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_ТрансформантаИзмерения_Трансформанта_измерения" Association="Self.FK_Пикет_ТрансформантаИзмерения_Трансформанта_измерения">
-            <End Role="Трансформанта_измерения" EntitySet="Трансформанта_измерения" />
-            <End Role="Пикет_ТрансформантаИзмерения" EntitySet="Пикет_ТрансформантаИзмерения" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Площадь_Проект" Association="Self.FK_Площадь_Проект">
-            <End Role="Проект" EntitySet="Проект" />
-            <End Role="Площадь" EntitySet="Площадь" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Площадь_Сотрудник" Association="Self.FK_Площадь_Сотрудник">
-            <End Role="Сотрудник" EntitySet="Сотрудник" />
-            <End Role="Площадь" EntitySet="Площадь" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Площадь_Сотрудник1" Association="Self.FK_Площадь_Сотрудник1">
-            <End Role="Сотрудник" EntitySet="Сотрудник" />
-            <End Role="Площадь" EntitySet="Площадь" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Площадь_УглыПериметра_Площадь" Association="Self.FK_Площадь_УглыПериметра_Площадь">
-            <End Role="Площадь" EntitySet="Площадь" />
-            <End Role="Площадь_УглыПериметра" EntitySet="Площадь_УглыПериметра" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_Площадь" Association="Self.FK_Профиль_Площадь">
-            <End Role="Площадь" EntitySet="Площадь" />
-            <End Role="Профиль" EntitySet="Профиль" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_СписокОбработок_Профиль" Association="Self.FK_Профиль_СписокОбработок_Профиль">
-            <End Role="Профиль" EntitySet="Профиль" />
-            <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_ТелеметрическиеИзмерения_Профиль" Association="Self.FK_Профиль_ТелеметрическиеИзмерения_Профиль">
-            <End Role="Профиль" EntitySet="Профиль" />
-            <End Role="Профиль_ТелеметрическиеИзмерения" EntitySet="Профиль_ТелеметрическиеИзмерения" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_ТочкиИзломов_Профиль" Association="Self.FK_Профиль_ТочкиИзломов_Профиль">
-            <End Role="Профиль" EntitySet="Профиль" />
-            <End Role="Профиль_ТочкиИзломов" EntitySet="Профиль_ТочкиИзломов" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_ЭлектромагнитныеИзмерения_Профиль" Association="Self.FK_Профиль_ЭлектромагнитныеИзмерения_Профиль">
-            <End Role="Профиль" EntitySet="Профиль" />
-            <End Role="Профиль_ЭлектромагнитныеИзмерения" EntitySet="Профиль_ЭлектромагнитныеИзмерения" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_СписокОбработок_Сотрудник" Association="Self.FK_Профиль_СписокОбработок_Сотрудник">
-            <End Role="Сотрудник" EntitySet="Сотрудник" />
-            <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок" Association="Self.FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок">
-            <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
-            <End Role="Список_фильтров_над_обработкой" EntitySet="Список_фильтров_над_обработкой" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения" Association="Self.FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения">
-            <End Role="Телеметрические_измерения" EntitySet="Телеметрические_измерения" />
-            <End Role="Профиль_ТелеметрическиеИзмерения" EntitySet="Профиль_ТелеметрическиеИзмерения" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения" Association="Self.FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения">
-            <End Role="Электромагнитные_измерения" EntitySet="Электромагнитные_измерения" />
-            <End Role="Профиль_ЭлектромагнитныеИзмерения" EntitySet="Профиль_ЭлектромагнитныеИзмерения" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Список_фильтров_над_обработкой_Фильтры_обработок" Association="Self.FK_Список_фильтров_над_обработкой_Фильтры_обработок">
-            <End Role="Фильтры_обработок" EntitySet="Фильтры_обработок" />
-            <End Role="Список_фильтров_над_обработкой" EntitySet="Список_фильтров_над_обработкой" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -2109,363 +2170,394 @@
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="qw2Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Договор">
             <EntityTypeMapping TypeName="qw2Model.Договор">
               <MappingFragment StoreEntitySet="Договор">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название" ColumnName="название" />
-                <ScalarProperty Name="дата_начала_действия" ColumnName="дата начала действия" />
-                <ScalarProperty Name="дата_окончания_дейсвтия" ColumnName="дата окончания дейсвтия" />
-                <ScalarProperty Name="стоимость_работ" ColumnName="стоимость работ" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="стоимость_работ" ColumnName="стоимость работ" />
+                <ScalarProperty Name="дата_окончания_дейсвтия" ColumnName="дата окончания дейсвтия" />
+                <ScalarProperty Name="дата_начала_действия" ColumnName="дата начала действия" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Должность">
             <EntityTypeMapping TypeName="qw2Model.Должность">
               <MappingFragment StoreEntitySet="Должность">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название" ColumnName="название" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Заказчик">
             <EntityTypeMapping TypeName="qw2Model.Заказчик">
               <MappingFragment StoreEntitySet="Заказчик">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="имя" ColumnName="имя" />
-                <ScalarProperty Name="юр__адрес" ColumnName="юр. адрес" />
-                <ScalarProperty Name="физ__адрес" ColumnName="физ. адрес" />
-                <ScalarProperty Name="инн" ColumnName="инн" />
-                <ScalarProperty Name="кпк" ColumnName="кпк" />
-                <ScalarProperty Name="р_с" ColumnName="р/с" />
-                <ScalarProperty Name="представитель" ColumnName="представитель" />
-                <ScalarProperty Name="номер_телефона" ColumnName="номер телефона" />
-                <ScalarProperty Name="эл__почта" ColumnName="эл. почта" />
-                <ScalarProperty Name="ссылка_на_сайт" ColumnName="ссылка на сайт" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="ссылка_на_сайт" ColumnName="ссылка на сайт" />
+                <ScalarProperty Name="эл_почта" ColumnName="эл почта" />
+                <ScalarProperty Name="номер_телефона" ColumnName="номер телефона" />
+                <ScalarProperty Name="представитель" ColumnName="представитель" />
+                <ScalarProperty Name="р_с" ColumnName="р_с" />
+                <ScalarProperty Name="кпк" ColumnName="кпк" />
+                <ScalarProperty Name="инн" ColumnName="инн" />
+                <ScalarProperty Name="физ_адрес" ColumnName="физ адрес" />
+                <ScalarProperty Name="юр_адрес" ColumnName="юр адрес" />
+                <ScalarProperty Name="имя" ColumnName="имя" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Измерительное_оборудование">
             <EntityTypeMapping TypeName="qw2Model.Измерительное_оборудование">
               <MappingFragment StoreEntitySet="Измерительное оборудование">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название_оборудования" ColumnName="название оборудования" />
-                <ScalarProperty Name="инв__номер" ColumnName="инв. номер" />
-                <ScalarProperty Name="дата_приобретения" ColumnName="дата приобретения" />
-                <ScalarProperty Name="дата_проверки" ColumnName="дата проверки" />
-                <ScalarProperty Name="характеристики_описание" ColumnName="характеристики/описание" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="характеристики_описание" ColumnName="характеристики_описание" />
+                <ScalarProperty Name="дата_проверки" ColumnName="дата проверки" />
+                <ScalarProperty Name="дата_приобретения" ColumnName="дата приобретения" />
+                <ScalarProperty Name="инв_номер" ColumnName="инв номер" />
+                <ScalarProperty Name="название_оборудования" ColumnName="название оборудования" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Квалификация">
             <EntityTypeMapping TypeName="qw2Model.Квалификация">
               <MappingFragment StoreEntitySet="Квалификация">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название" ColumnName="название" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Координаты_точки">
             <EntityTypeMapping TypeName="qw2Model.Координаты_точки">
               <MappingFragment StoreEntitySet="Координаты точки">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="x" ColumnName="x" />
-                <ScalarProperty Name="y" ColumnName="y" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Методика">
             <EntityTypeMapping TypeName="qw2Model.Методика">
               <MappingFragment StoreEntitySet="Методика">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название_методики" ColumnName="название методики" />
-                <ScalarProperty Name="id_генератора_установки" ColumnName="id генератора установки" />
-                <ScalarProperty Name="id_измерительной_установки" ColumnName="id измерительной установки" />
-                <ScalarProperty Name="id_телеметрической_установки" ColumnName="id телеметрической установки" />
-                <ScalarProperty Name="максимальная_скорость_БПЛА" ColumnName="максимальная скорость БПЛА" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="максимальная_скорость_БПЛА" ColumnName="максимальная скорость БПЛА" />
+                <ScalarProperty Name="id_телеметрической_установки" ColumnName="id телеметрической установки" />
+                <ScalarProperty Name="id_измерительной_установки" ColumnName="id измерительной установки" />
+                <ScalarProperty Name="id_генератора_установки" ColumnName="id генератора установки" />
+                <ScalarProperty Name="название_методики" ColumnName="название методики" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Обработки_на_профиле">
             <EntityTypeMapping TypeName="qw2Model.Обработки_на_профиле">
               <MappingFragment StoreEntitySet="Обработки на профиле">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название" ColumnName="название" />
-                <ScalarProperty Name="характеристики_описание" ColumnName="характеристики/описание" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="характеристики_описание" ColumnName="характеристики_описание" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Пикет">
             <EntityTypeMapping TypeName="qw2Model.Пикет">
               <MappingFragment StoreEntitySet="Пикет">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название_пикета" ColumnName="название пикета" />
-                <ScalarProperty Name="id_профиля" ColumnName="id профиля" />
-                <ScalarProperty Name="id_координат_нахождения" ColumnName="id координат нахождения" />
-                <ScalarProperty Name="id_окончательного_результата" ColumnName="id окончательного результата" />
-                <ScalarProperty Name="дата_и_время_получения_окончательного_результата_измерения" ColumnName="дата и время получения окончательного результата измерения" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="дата_и_время_получения_окончательного_результата_измерения" ColumnName="дата и время получения окончательного результата измерения" />
+                <ScalarProperty Name="id_окончательного_результата" ColumnName="id окончательного результата" />
+                <ScalarProperty Name="id_координат_нахождения" ColumnName="id координат нахождения" />
+                <ScalarProperty Name="id_профиля" ColumnName="id профиля" />
+                <ScalarProperty Name="название_пикета" ColumnName="название пикета" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Пикет_ИзмерительноеОборудование">
             <EntityTypeMapping TypeName="qw2Model.Пикет_ИзмерительноеОборудование">
               <MappingFragment StoreEntitySet="Пикет_ИзмерительноеОборудование">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_пикета" ColumnName="id пикета" />
-                <ScalarProperty Name="id_измерительного_оборудования" ColumnName="id измерительного оборудования" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_измерительного_оборудования" ColumnName="id измерительного оборудования" />
+                <ScalarProperty Name="id_пикета" ColumnName="id пикета" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Пикет_ПромежуточныеИзмерения">
             <EntityTypeMapping TypeName="qw2Model.Пикет_ПромежуточныеИзмерения">
               <MappingFragment StoreEntitySet="Пикет_ПромежуточныеИзмерения">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_пикета" ColumnName="id пикета" />
-                <ScalarProperty Name="id_результатов_измерения" ColumnName="id результатов измерения" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_результатов_измерения" ColumnName="id результатов измерения" />
+                <ScalarProperty Name="id_пикета" ColumnName="id пикета" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Пикет_ПромежуточныеТрансформантыИзмерения">
             <EntityTypeMapping TypeName="qw2Model.Пикет_ПромежуточныеТрансформантыИзмерения">
               <MappingFragment StoreEntitySet="Пикет_ПромежуточныеТрансформантыИзмерения">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_пикета" ColumnName="id пикета" />
-                <ScalarProperty Name="id_трансформанта_измерения" ColumnName="id трансформанта измерения" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_трансформанта_измерения" ColumnName="id трансформанта измерения" />
+                <ScalarProperty Name="id_пикета" ColumnName="id пикета" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Пикет_Сотрудники">
             <EntityTypeMapping TypeName="qw2Model.Пикет_Сотрудники">
               <MappingFragment StoreEntitySet="Пикет_Сотрудники">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_пикета" ColumnName="id пикета" />
-                <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+                <ScalarProperty Name="id_пикета" ColumnName="id пикета" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Пикет_ТрансформантаИзмерения">
             <EntityTypeMapping TypeName="qw2Model.Пикет_ТрансформантаИзмерения">
               <MappingFragment StoreEntitySet="Пикет_ТрансформантаИзмерения">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_пикета" ColumnName="id пикета" />
-                <ScalarProperty Name="id_трансформанты_измерения" ColumnName="id трансформанты измерения" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_трансформанты_измерения" ColumnName="id трансформанты измерения" />
+                <ScalarProperty Name="id_пикета" ColumnName="id пикета" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Площадь">
             <EntityTypeMapping TypeName="qw2Model.Площадь">
               <MappingFragment StoreEntitySet="Площадь">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название" ColumnName="название" />
-                <ScalarProperty Name="id_проекта" ColumnName="id проекта" />
-                <ScalarProperty Name="id_супервайзера_полевых_работ" ColumnName="id супервайзера полевых работ" />
-                <ScalarProperty Name="id_супервайзера_обработки_данных" ColumnName="id супервайзера обработки данных" />
-                <ScalarProperty Name="длина_периметра" ColumnName="длина периметра" />
-                <ScalarProperty Name="площадь_периметра" ColumnName="площадь периметра" />
-                <ScalarProperty Name="дата_начала_работ" ColumnName="дата начала работ" />
-                <ScalarProperty Name="дата_окончания_работ" ColumnName="дата окончания работ" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="дата_окончания_работ" ColumnName="дата окончания работ" />
+                <ScalarProperty Name="дата_начала_работ" ColumnName="дата начала работ" />
+                <ScalarProperty Name="площадь_периметра" ColumnName="площадь периметра" />
+                <ScalarProperty Name="длина_периметра" ColumnName="длина периметра" />
+                <ScalarProperty Name="id_супервайзера_обработки_данных" ColumnName="id супервайзера обработки данных" />
+                <ScalarProperty Name="id_супервайзера_полевых_работ" ColumnName="id супервайзера полевых работ" />
+                <ScalarProperty Name="id_проекта" ColumnName="id проекта" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Площадь_УглыПериметра">
             <EntityTypeMapping TypeName="qw2Model.Площадь_УглыПериметра">
               <MappingFragment StoreEntitySet="Площадь_УглыПериметра">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_площади" ColumnName="id площади" />
-                <ScalarProperty Name="id_координат_точки" ColumnName="id координат точки" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_координат_точки" ColumnName="id координат точки" />
+                <ScalarProperty Name="id_площади" ColumnName="id площади" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Проект">
             <EntityTypeMapping TypeName="qw2Model.Проект">
               <MappingFragment StoreEntitySet="Проект">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название" ColumnName="название" />
-                <ScalarProperty Name="id_заказчика" ColumnName="id заказчика" />
-                <ScalarProperty Name="id_договора" ColumnName="id договора" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_договора" ColumnName="id договора" />
+                <ScalarProperty Name="id_заказчика" ColumnName="id заказчика" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Профиль">
             <EntityTypeMapping TypeName="qw2Model.Профиль">
               <MappingFragment StoreEntitySet="Профиль">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название_профиля" ColumnName="название профиля" />
-                <ScalarProperty Name="id_координат_начала" ColumnName="id координат начала" />
-                <ScalarProperty Name="Id_координат_конца" ColumnName="Id координат конца" />
-                <ScalarProperty Name="id_площади" ColumnName="id площади" />
-                <ScalarProperty Name="id_методики" ColumnName="id методики" />
-                <ScalarProperty Name="длина_профиля" ColumnName="длина профиля" />
-                <ScalarProperty Name="дата_начала_работ" ColumnName="дата начала работ" />
-                <ScalarProperty Name="дата_окончания_работ" ColumnName="дата окончания работ" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="дата_окончания_работ" ColumnName="дата окончания работ" />
+                <ScalarProperty Name="дата_начала_работ" ColumnName="дата начала работ" />
+                <ScalarProperty Name="длина_профиля" ColumnName="длина профиля" />
+                <ScalarProperty Name="id_методики" ColumnName="id методики" />
+                <ScalarProperty Name="id_площади" ColumnName="id площади" />
+                <ScalarProperty Name="Id_координат_конца" ColumnName="Id координат конца" />
+                <ScalarProperty Name="id_координат_начала" ColumnName="id координат начала" />
+                <ScalarProperty Name="название_профиля" ColumnName="название профиля" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Профиль_СписокОбработок">
             <EntityTypeMapping TypeName="qw2Model.Профиль_СписокОбработок">
               <MappingFragment StoreEntitySet="Профиль_СписокОбработок">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_профиля" ColumnName="id профиля" />
-                <ScalarProperty Name="id_обработки_на_профиле" ColumnName="id обработки на профиле" />
-                <ScalarProperty Name="id_обработчика" ColumnName="id обработчика" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_обработчика" ColumnName="id обработчика" />
+                <ScalarProperty Name="id_обработки_на_профиле" ColumnName="id обработки на профиле" />
+                <ScalarProperty Name="id_профиля" ColumnName="id профиля" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Профиль_ТелеметрическиеИзмерения">
             <EntityTypeMapping TypeName="qw2Model.Профиль_ТелеметрическиеИзмерения">
               <MappingFragment StoreEntitySet="Профиль_ТелеметрическиеИзмерения">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_профиля" ColumnName="id профиля" />
-                <ScalarProperty Name="id_тел__измерения" ColumnName="id тел. измерения" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_тел__измерения" ColumnName="id тел. измерения" />
+                <ScalarProperty Name="id_профиля" ColumnName="id профиля" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Профиль_ТочкиИзломов">
             <EntityTypeMapping TypeName="qw2Model.Профиль_ТочкиИзломов">
               <MappingFragment StoreEntitySet="Профиль_ТочкиИзломов">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_профиля" ColumnName="id профиля" />
-                <ScalarProperty Name="id_координат_точки" ColumnName="id координат точки" />
-                <ScalarProperty Name="дата_дообавления_записи" ColumnName="дата дообавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_координат_точки" ColumnName="id координат точки" />
+                <ScalarProperty Name="id_профиля" ColumnName="id профиля" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Профиль_ЭлектромагнитныеИзмерения">
             <EntityTypeMapping TypeName="qw2Model.Профиль_ЭлектромагнитныеИзмерения">
               <MappingFragment StoreEntitySet="Профиль_ЭлектромагнитныеИзмерения">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_профиля" ColumnName="id профиля" />
-                <ScalarProperty Name="id_эл__измерений" ColumnName="id эл. измерений" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="id_эл_измерений" ColumnName="id эл измерений" />
+                <ScalarProperty Name="id_профиля" ColumnName="id профиля" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Результаты_измерения">
             <EntityTypeMapping TypeName="qw2Model.Результаты_измерения">
               <MappingFragment StoreEntitySet="Результаты измерения">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="частота" ColumnName="частота" />
-                <ScalarProperty Name="значение_ЭДС" ColumnName="значение ЭДС" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="значение_ЭДС" ColumnName="значение ЭДС" />
+                <ScalarProperty Name="частота" ColumnName="частота" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Сотрудник">
             <EntityTypeMapping TypeName="qw2Model.Сотрудник">
               <MappingFragment StoreEntitySet="Сотрудник">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_должности" ColumnName="id должности" />
-                <ScalarProperty Name="id_квалификации" ColumnName="id квалификации" />
-                <ScalarProperty Name="опыт_работы_в_коллективе" ColumnName="опыт работы в коллективе" />
-                <ScalarProperty Name="опят_работы_по_специальности" ColumnName="опят работы по специальности" />
-                <ScalarProperty Name="дата_прохождения_медосмотра" ColumnName="дата прохождения медосмотра" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="пароль" ColumnName="пароль" />
+                <ScalarProperty Name="логин" ColumnName="логин" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="дата_прохождения_медосмотра" ColumnName="дата прохождения медосмотра" />
+                <ScalarProperty Name="опят_работы_по_специальности" ColumnName="опят работы по специальности" />
+                <ScalarProperty Name="опыт_работы_в_коллективе" ColumnName="опыт работы в коллективе" />
+                <ScalarProperty Name="id_квалификации" ColumnName="id квалификации" />
+                <ScalarProperty Name="id_должности" ColumnName="id должности" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Список_фильтров_над_обработкой">
             <EntityTypeMapping TypeName="qw2Model.Список_фильтров_над_обработкой">
               <MappingFragment StoreEntitySet="Список фильтров над обработкой">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_профиль_списокОбработок" ColumnName="id профиль_списокОбработок" />
-                <ScalarProperty Name="id_фильтра_обработки" ColumnName="id фильтра обработки" />
-                <ScalarProperty Name="характеристики_фильтра" ColumnName="характеристики фильтра" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="характеристики_фильтра" ColumnName="характеристики фильтра" />
+                <ScalarProperty Name="id_фильтра_обработки" ColumnName="id фильтра обработки" />
+                <ScalarProperty Name="id_профиль_списокОбработок" ColumnName="id профиль_списокОбработок" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Телеметрические_измерения">
             <EntityTypeMapping TypeName="qw2Model.Телеметрические_измерения">
               <MappingFragment StoreEntitySet="Телеметрические измерения">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="путь_до_бинарного_файла__содержащего_тел__измерения" ColumnName="путь до бинарного файла, содержащего тел. измерения" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="путь_до_бинарного_файла__содержащего_тел__измерения" ColumnName="путь до бинарного файла, содержащего тел. измерения" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Трансформанта_измерения">
             <EntityTypeMapping TypeName="qw2Model.Трансформанта_измерения">
               <MappingFragment StoreEntitySet="Трансформанта измерения">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="частота" ColumnName="частота" />
-                <ScalarProperty Name="значение_кажущегося_сопратевления__Rok_" ColumnName="значение кажущегося сопратевления (Rok)" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="значение_кажущегося_сопратевления__Rok_" ColumnName="значение кажущегося сопратевления (Rok)" />
+                <ScalarProperty Name="частота" ColumnName="частота" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Фильтры_обработок">
             <EntityTypeMapping TypeName="qw2Model.Фильтры_обработок">
               <MappingFragment StoreEntitySet="Фильтры обработок">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="название" ColumnName="название" />
-                <ScalarProperty Name="описание" ColumnName="описание" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="описание" ColumnName="описание" />
+                <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Электромагнитные_измерения">
             <EntityTypeMapping TypeName="qw2Model.Электромагнитные_измерения">
               <MappingFragment StoreEntitySet="Электромагнитные измерения">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="путь_до_бинарного_файла__содержащего_эл__измерения" ColumnName="путь до бинарного файла, содержащего эл. измерения" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="путь_до_бинарного_файла_содержащего_эл_измерения" ColumnName="путь до бинарного файла содержащего эл измерения" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

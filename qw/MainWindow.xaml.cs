@@ -1,5 +1,6 @@
 ﻿using OfficeOpenXml;
-using qw.application_frames.view_frames;
+using qw.application_pages.views;
+using qw.application_pages.utils;
 using qw.util;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace qw
             InitializeComponent();
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             AppFrame.mainFrame = mainWindowFrame;
-            mainWindowFrame.Navigate(new Customer());
+            mainWindowFrame.Navigate(new SqlServerSelection());
         }
     }
 }

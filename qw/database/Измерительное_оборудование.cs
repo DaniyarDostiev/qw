@@ -25,12 +25,13 @@ namespace qw.database
     
         public int id { get; set; }
         public string название_оборудования { get; set; }
-        public string инв__номер { get; set; }
+        public string инв_номер { get; set; }
         public Nullable<System.DateTime> дата_приобретения { get; set; }
         public Nullable<System.DateTime> дата_проверки { get; set; }
         public string характеристики_описание { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Методика> Методика { get; set; }

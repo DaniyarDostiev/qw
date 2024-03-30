@@ -32,6 +32,7 @@ namespace qw.database
         public Nullable<System.DateTime> дата_окончания_работ { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         public virtual Проект Проект { get; set; }
         public virtual Сотрудник Сотрудник { get; set; }

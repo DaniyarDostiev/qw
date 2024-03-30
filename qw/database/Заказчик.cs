@@ -22,24 +22,20 @@ namespace qw.database
     
         public int id { get; set; }
         public string имя { get; set; }
-        public string юр__адрес { get; set; }
-        public string физ__адрес { get; set; }
+        public string юр_адрес { get; set; }
+        public string физ_адрес { get; set; }
         public string инн { get; set; }
         public string кпк { get; set; }
         public string р_с { get; set; }
         public string представитель { get; set; }
         public string номер_телефона { get; set; }
-        public string эл__почта { get; set; }
+        public string эл_почта { get; set; }
         public string ссылка_на_сайт { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Проект> Проект { get; set; }
-
-        public int количество_проектов
-        {
-            get { return this.Проект.Count; } // Используем Count для подсчета количества проектов
-        }
     }
 }

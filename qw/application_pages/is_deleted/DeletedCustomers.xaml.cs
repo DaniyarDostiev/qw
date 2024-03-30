@@ -1,10 +1,9 @@
-﻿using qw.application_pages.edit_pages;
+﻿using qw.application_pages.views;
+using qw.application_pages.edits;
 using qw.database;
 using qw.util;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,15 +17,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace qw.application_frames.view_frames
+namespace qw.application_pages.is_deleted
 {
     /// <summary>
-    /// Логика взаимодействия для Customer.xaml
+    /// Логика взаимодействия для DeletedCustomers.xaml
     /// </summary>
-    public partial class Customer : Page
+    public partial class DeletedCustomers : Page
     {
-        
-        public Customer()
+        public DeletedCustomers()
         {
             InitializeComponent();
 
@@ -38,7 +36,8 @@ namespace qw.application_frames.view_frames
 
         private void updateElementList()
         {
-            List<Заказчик> customers = DbWorker.GetContext().Заказчик.Where(x => x.имя.Contains(textBoxFinder.Text)).ToList();
+            List<Заказчик> customers = DbWorker.GetContext().Заказчик.
+                Where(x => x.имя.Contains(textBoxFinder.Text) && x.удален != false).ToList();
 
             switch (comboBoxSort.SelectedIndex)
             {
@@ -60,7 +59,12 @@ namespace qw.application_frames.view_frames
             updateElementList();
         }
 
-        private void deleteButtonClick(object sender, RoutedEventArgs e)
+        private void backButtonClick(object sender, RoutedEventArgs e)
+        {
+            AppFrame.mainFrame.Navigate(new Customer());
+        }
+
+        private void recoverEntryButtonClick(object sender, RoutedEventArgs e)
         {
             var selectedElement = ListBoxCustomers.SelectedItem as Заказчик;
             if (selectedElement == null)
@@ -69,39 +73,16 @@ namespace qw.application_frames.view_frames
             }
             else
             {
-                MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить запись?", "Подтверждение", 
+                MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите восстановить запись?", "Подтверждение",
                     MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    DbWorker.GetContext().Заказчик.Remove(selectedElement);
+                    selectedElement.удален = false;
                     DbWorker.GetContext().SaveChanges();
-                    updateElementList();
+                    AppFrame.mainFrame.Navigate(new Customer());
                 }
             }
-                
-        }
-
-        private void addButtonClick(object sender, RoutedEventArgs e)
-        {
-            AppFrame.mainFrame.Navigate(new CustomerEditPage(new Заказчик()));
-        }
-
-        private void editButtonClick(object sender, RoutedEventArgs e)
-        {
-            var selectedElement = ListBoxCustomers.SelectedItem as Заказчик;
-            if (selectedElement == null)
-            {
-                MessageBox.Show("выберите элемент из списка");
-            }
-            else
-            {
-                AppFrame.mainFrame.Navigate(new CustomerEditPage(selectedElement));
-            }
-        }
-
-        private void projectsButtonClick(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
+

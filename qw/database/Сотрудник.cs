@@ -31,6 +31,9 @@ namespace qw.database
         public Nullable<System.DateTime> дата_прохождения_медосмотра { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
+        public string логин { get; set; }
+        public string пароль { get; set; }
     
         public virtual Должность Должность { get; set; }
         public virtual Квалификация Квалификация { get; set; }

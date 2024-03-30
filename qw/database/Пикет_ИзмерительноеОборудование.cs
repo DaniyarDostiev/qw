@@ -19,6 +19,7 @@ namespace qw.database
         public Nullable<int> id_измерительного_оборудования { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         public virtual Измерительное_оборудование Измерительное_оборудование { get; set; }
         public virtual Пикет Пикет { get; set; }

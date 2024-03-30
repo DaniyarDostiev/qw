@@ -16,9 +16,10 @@ namespace qw.database
     {
         public int id { get; set; }
         public Nullable<int> id_профиля { get; set; }
-        public Nullable<int> id_эл__измерений { get; set; }
+        public Nullable<int> id_эл_измерений { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         public virtual Профиль Профиль { get; set; }
         public virtual Электромагнитные_измерения Электромагнитные_измерения { get; set; }

@@ -19,6 +19,7 @@ namespace qw.database
         public Nullable<int> id_координат_точки { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         public virtual Координаты_точки Координаты_точки { get; set; }
         public virtual Площадь Площадь { get; set; }

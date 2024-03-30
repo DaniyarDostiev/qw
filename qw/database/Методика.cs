@@ -28,6 +28,7 @@ namespace qw.database
         public Nullable<double> максимальная_скорость_БПЛА { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         public virtual Измерительное_оборудование Измерительное_оборудование { get; set; }
         public virtual Измерительное_оборудование Измерительное_оборудование1 { get; set; }

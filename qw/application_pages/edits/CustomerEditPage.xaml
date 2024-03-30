@@ -1,9 +1,9 @@
-﻿<Page x:Class="qw.application_pages.edit_pages.CustomerEditPage"
+﻿<Page x:Class="qw.application_pages.edits.CustomerEditPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:qw.application_pages.edit_pages"
+      xmlns:local="clr-namespace:qw.application_pages.edits"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="1000"
       Title="CustomerEditPage">
@@ -87,8 +87,8 @@
             <Button Click="backButtonClick" Grid.Column="0" Content="Назад" HorizontalAlignment="Left"></Button>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <Button Click="importInfoButtonClick" Content="Руководство"></Button>
-                <Button Click="importButtonClick" Content="Импорт"></Button>
+                <Button Name="importInfoButton" Click="importInfoButtonClick" Content="Руководство"></Button>
+                <Button Name="importButton" Click="importButtonClick" Content="Импорт"></Button>
                 <Button Click="saveButtonClick" Content="Сохранить"></Button>
             </StackPanel>
         </Grid>

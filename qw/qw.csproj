@@ -36,6 +36,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -95,22 +104,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="application_pages\edit_pages\CustomerEditPage.xaml.cs">
+    <Compile Include="application_pages\edits\CustomerEditPage.xaml.cs">
       <DependentUpon>CustomerEditPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="application_pages\view_pages\Customer.xaml.cs">
+    <Compile Include="application_pages\is_deleted\DeletedCustomers.xaml.cs">
+      <DependentUpon>DeletedCustomers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\utils\AuthPage.xaml.cs">
+      <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\views\Customer.xaml.cs">
       <DependentUpon>Customer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\utils\SqlServerSelection.xaml.cs">
+      <DependentUpon>SqlServerSelection.xaml</DependentUpon>
     </Compile>
     <Compile Include="util\AppFrame.cs" />
     <Compile Include="util\DbWorker.cs" />
     <Compile Include="util\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="application_pages\edit_pages\CustomerEditPage.xaml">
+    <Page Include="application_pages\edits\CustomerEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="application_pages\view_pages\Customer.xaml">
+    <Page Include="application_pages\is_deleted\DeletedCustomers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\utils\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\views\Customer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\utils\SqlServerSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -262,6 +292,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

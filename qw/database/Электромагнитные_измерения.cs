@@ -21,9 +21,10 @@ namespace qw.database
         }
     
         public int id { get; set; }
-        public string путь_до_бинарного_файла__содержащего_эл__измерения { get; set; }
+        public string путь_до_бинарного_файла_содержащего_эл_измерения { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Профиль_ЭлектромагнитныеИзмерения> Профиль_ЭлектромагнитныеИзмерения { get; set; }

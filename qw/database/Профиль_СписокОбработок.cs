@@ -26,6 +26,7 @@ namespace qw.database
         public Nullable<int> id_обработчика { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
+        public Nullable<bool> удален { get; set; }
     
         public virtual Обработки_на_профиле Обработки_на_профиле { get; set; }
         public virtual Профиль Профиль { get; set; }
