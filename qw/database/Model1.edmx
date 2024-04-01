@@ -320,9 +320,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id профиль_списокОбработок" Type="int" />
+          <Property Name="id обработки на профиле" Type="int" />
           <Property Name="id фильтра обработки" Type="int" />
-          <Property Name="характеристики фильтра" Type="nvarchar" MaxLength="255" />
           <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
           <Property Name="удален" Type="bit" />
@@ -693,7 +692,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Профиль_СписокОбработок_Обработки на профиле">
+        <Association Name="FK_Профиль_СписокОбработок_Обработки на профиле1">
           <End Role="Обработки на профиле" Type="Self.Обработки на профиле" Multiplicity="0..1" />
           <End Role="Профиль_СписокОбработок" Type="Self.Профиль_СписокОбработок" Multiplicity="*" />
           <ReferentialConstraint>
@@ -825,15 +824,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Список фильтров над обработкой_Профиль_СписокОбработок">
-          <End Role="Профиль_СписокОбработок" Type="Self.Профиль_СписокОбработок" Multiplicity="0..1" />
+        <Association Name="FK_Список фильтров над обработкой_Обработки на профиле">
+          <End Role="Обработки на профиле" Type="Self.Обработки на профиле" Multiplicity="0..1" />
           <End Role="Список фильтров над обработкой" Type="Self.Список фильтров над обработкой" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Профиль_СписокОбработок">
+            <Principal Role="Обработки на профиле">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Список фильтров над обработкой">
-              <PropertyRef Name="id профиль_списокОбработок" />
+              <PropertyRef Name="id обработки на профиле" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -988,7 +987,7 @@
             <End Role="Площадь" EntitySet="Площадь" />
             <End Role="Профиль" EntitySet="Профиль" />
           </AssociationSet>
-          <AssociationSet Name="FK_Профиль_СписокОбработок_Обработки на профиле" Association="Self.FK_Профиль_СписокОбработок_Обработки на профиле">
+          <AssociationSet Name="FK_Профиль_СписокОбработок_Обработки на профиле1" Association="Self.FK_Профиль_СписокОбработок_Обработки на профиле1">
             <End Role="Обработки на профиле" EntitySet="Обработки на профиле" />
             <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
           </AssociationSet>
@@ -1032,8 +1031,8 @@
             <End Role="Квалификация" EntitySet="Квалификация" />
             <End Role="Сотрудник" EntitySet="Сотрудник" />
           </AssociationSet>
-          <AssociationSet Name="FK_Список фильтров над обработкой_Профиль_СписокОбработок" Association="Self.FK_Список фильтров над обработкой_Профиль_СписокОбработок">
-            <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
+          <AssociationSet Name="FK_Список фильтров над обработкой_Обработки на профиле" Association="Self.FK_Список фильтров над обработкой_Обработки на профиле">
+            <End Role="Обработки на профиле" EntitySet="Обработки на профиле" />
             <End Role="Список фильтров над обработкой" EntitySet="Список фильтров над обработкой" />
           </AssociationSet>
           <AssociationSet Name="FK_Список фильтров над обработкой_Фильтры обработок" Association="Self.FK_Список фильтров над обработкой_Фильтры обработок">
@@ -1132,9 +1131,13 @@
             <End Role="Методика" EntitySet="Методика" />
             <End Role="Профиль" EntitySet="Профиль" />
           </AssociationSet>
-          <AssociationSet Name="FK_Профиль_СписокОбработок_Обработки_на_профиле" Association="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле">
+          <AssociationSet Name="FK_Профиль_СписокОбработок_Обработки_на_профиле1" Association="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле1">
             <End Role="Обработки_на_профиле" EntitySet="Обработки_на_профиле" />
             <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Список_фильтров_над_обработкой_Обработки_на_профиле" Association="qw2Model.FK_Список_фильтров_над_обработкой_Обработки_на_профиле">
+            <End Role="Обработки_на_профиле" EntitySet="Обработки_на_профиле" />
+            <End Role="Список_фильтров_над_обработкой" EntitySet="Список_фильтров_над_обработкой" />
           </AssociationSet>
           <AssociationSet Name="FK_Пикет_ИзмерительноеОборудование_Пикет" Association="qw2Model.FK_Пикет_ИзмерительноеОборудование_Пикет">
             <End Role="Пикет" EntitySet="Пикет" />
@@ -1219,10 +1222,6 @@
           <AssociationSet Name="FK_Профиль_СписокОбработок_Сотрудник" Association="qw2Model.FK_Профиль_СписокОбработок_Сотрудник">
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок" Association="qw2Model.FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок">
-            <End Role="Профиль_СписокОбработок" EntitySet="Профиль_СписокОбработок" />
-            <End Role="Список_фильтров_над_обработкой" EntitySet="Список_фильтров_над_обработкой" />
           </AssociationSet>
           <AssociationSet Name="FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения" Association="qw2Model.FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения">
             <End Role="Телеметрические_измерения" EntitySet="Телеметрические_измерения" />
@@ -1365,7 +1364,8 @@
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
           <Property Name="удален" Type="Boolean" />
-          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле" FromRole="Обработки_на_профиле" ToRole="Профиль_СписокОбработок" />
+          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле1" FromRole="Обработки_на_профиле" ToRole="Профиль_СписокОбработок" />
+          <NavigationProperty Name="Список_фильтров_над_обработкой" Relationship="qw2Model.FK_Список_фильтров_над_обработкой_Обработки_на_профиле" FromRole="Обработки_на_профиле" ToRole="Список_фильтров_над_обработкой" />
         </EntityType>
         <EntityType Name="Пикет">
           <Key>
@@ -1541,10 +1541,9 @@
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
           <Property Name="удален" Type="Boolean" />
-          <NavigationProperty Name="Обработки_на_профиле" Relationship="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле" FromRole="Профиль_СписокОбработок" ToRole="Обработки_на_профиле" />
+          <NavigationProperty Name="Обработки_на_профиле" Relationship="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле1" FromRole="Профиль_СписокОбработок" ToRole="Обработки_на_профиле" />
           <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Профиль_СписокОбработок_Профиль" FromRole="Профиль_СписокОбработок" ToRole="Профиль" />
           <NavigationProperty Name="Сотрудник" Relationship="qw2Model.FK_Профиль_СписокОбработок_Сотрудник" FromRole="Профиль_СписокОбработок" ToRole="Сотрудник" />
-          <NavigationProperty Name="Список_фильтров_над_обработкой" Relationship="qw2Model.FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок" FromRole="Профиль_СписокОбработок" ToRole="Список_фильтров_над_обработкой" />
         </EntityType>
         <EntityType Name="Профиль_ТелеметрическиеИзмерения">
           <Key>
@@ -1625,13 +1624,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_профиль_списокОбработок" Type="Int32" />
+          <Property Name="id_обработки_на_профиле" Type="Int32" />
           <Property Name="id_фильтра_обработки" Type="Int32" />
-          <Property Name="характеристики_фильтра" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
           <Property Name="удален" Type="Boolean" />
-          <NavigationProperty Name="Профиль_СписокОбработок" Relationship="qw2Model.FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок" FromRole="Список_фильтров_над_обработкой" ToRole="Профиль_СписокОбработок" />
+          <NavigationProperty Name="Обработки_на_профиле" Relationship="qw2Model.FK_Список_фильтров_над_обработкой_Обработки_на_профиле" FromRole="Список_фильтров_над_обработкой" ToRole="Обработки_на_профиле" />
           <NavigationProperty Name="Фильтры_обработок" Relationship="qw2Model.FK_Список_фильтров_над_обработкой_Фильтры_обработок" FromRole="Список_фильтров_над_обработкой" ToRole="Фильтры_обработок" />
         </EntityType>
         <EntityType Name="Телеметрические_измерения">
@@ -1849,7 +1847,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Профиль_СписокОбработок_Обработки_на_профиле">
+        <Association Name="FK_Профиль_СписокОбработок_Обработки_на_профиле1">
           <End Type="qw2Model.Обработки_на_профиле" Role="Обработки_на_профиле" Multiplicity="0..1" />
           <End Type="qw2Model.Профиль_СписокОбработок" Role="Профиль_СписокОбработок" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1857,6 +1855,18 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Профиль_СписокОбработок">
+              <PropertyRef Name="id_обработки_на_профиле" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Список_фильтров_над_обработкой_Обработки_на_профиле">
+          <End Type="qw2Model.Обработки_на_профиле" Role="Обработки_на_профиле" Multiplicity="0..1" />
+          <End Type="qw2Model.Список_фильтров_над_обработкой" Role="Список_фильтров_над_обработкой" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Обработки_на_профиле">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Список_фильтров_над_обработкой">
               <PropertyRef Name="id_обработки_на_профиле" />
             </Dependent>
           </ReferentialConstraint>
@@ -2110,18 +2120,6 @@
             </Principal>
             <Dependent Role="Профиль_СписокОбработок">
               <PropertyRef Name="id_обработчика" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Список_фильтров_над_обработкой_Профиль_СписокОбработок">
-          <End Type="qw2Model.Профиль_СписокОбработок" Role="Профиль_СписокОбработок" Multiplicity="0..1" />
-          <End Type="qw2Model.Список_фильтров_над_обработкой" Role="Список_фильтров_над_обработкой" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Профиль_СписокОбработок">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Список_фильтров_над_обработкой">
-              <PropertyRef Name="id_профиль_списокОбработок" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2508,9 +2506,8 @@
                 <ScalarProperty Name="удален" ColumnName="удален" />
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
                 <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
-                <ScalarProperty Name="характеристики_фильтра" ColumnName="характеристики фильтра" />
                 <ScalarProperty Name="id_фильтра_обработки" ColumnName="id фильтра обработки" />
-                <ScalarProperty Name="id_профиль_списокОбработок" ColumnName="id профиль_списокОбработок" />
+                <ScalarProperty Name="id_обработки_на_профиле" ColumnName="id обработки на профиле" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

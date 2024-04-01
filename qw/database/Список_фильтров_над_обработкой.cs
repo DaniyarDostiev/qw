@@ -15,14 +15,13 @@ namespace qw.database
     public partial class Список_фильтров_над_обработкой
     {
         public int id { get; set; }
-        public Nullable<int> id_профиль_списокОбработок { get; set; }
+        public Nullable<int> id_обработки_на_профиле { get; set; }
         public Nullable<int> id_фильтра_обработки { get; set; }
-        public string характеристики_фильтра { get; set; }
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
         public Nullable<bool> удален { get; set; }
     
-        public virtual Профиль_СписокОбработок Профиль_СписокОбработок { get; set; }
+        public virtual Обработки_на_профиле Обработки_на_профиле { get; set; }
         public virtual Фильтры_обработок Фильтры_обработок { get; set; }
     }
 }

@@ -14,12 +14,6 @@ namespace qw.database
     
     public partial class Профиль_СписокОбработок
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Профиль_СписокОбработок()
-        {
-            this.Список_фильтров_над_обработкой = new HashSet<Список_фильтров_над_обработкой>();
-        }
-    
         public int id { get; set; }
         public Nullable<int> id_профиля { get; set; }
         public Nullable<int> id_обработки_на_профиле { get; set; }
@@ -31,7 +25,5 @@ namespace qw.database
         public virtual Обработки_на_профиле Обработки_на_профиле { get; set; }
         public virtual Профиль Профиль { get; set; }
         public virtual Сотрудник Сотрудник { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Список_фильтров_над_обработкой> Список_фильтров_над_обработкой { get; set; }
     }
 }

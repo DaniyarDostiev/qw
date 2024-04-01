@@ -18,6 +18,7 @@ namespace qw.database
         public Обработки_на_профиле()
         {
             this.Профиль_СписокОбработок = new HashSet<Профиль_СписокОбработок>();
+            this.Список_фильтров_над_обработкой = new HashSet<Список_фильтров_над_обработкой>();
         }
     
         public int id { get; set; }
@@ -29,5 +30,7 @@ namespace qw.database
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Профиль_СписокОбработок> Профиль_СписокОбработок { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Список_фильтров_над_обработкой> Список_фильтров_над_обработкой { get; set; }
     }
 }

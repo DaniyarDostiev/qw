@@ -37,5 +37,10 @@ namespace qw.database
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Проект> Проект { get; set; }
+
+        public int количество_проектов
+        {
+            get { return this.Проект.Count; } // Используем Count для подсчета количества проектов
+        }
     }
 }
