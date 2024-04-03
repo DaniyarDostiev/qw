@@ -1,4 +1,4 @@
-﻿<Page x:Class="qw.application_pages.views.Customer"
+﻿<Page x:Class="qw.application_pages.views.ProjectPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:qw.application_pages.views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Customer"
-      Background="White">
+      Title="ProjectPage">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -23,10 +22,10 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Выйти" Click="logoutButtonClick" VerticalAlignment="Bottom"
-                    HorizontalAlignment="Left" Margin="10"></Button>
-            
-            <Label Grid.Column="1" Content="Заказчик" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"></Label>
+            <Button Grid.Column="0" Content="Назад" Click="backButtonClick" VerticalAlignment="Bottom"
+            HorizontalAlignment="Left" Margin="10"></Button>
+
+            <Label Grid.Column="1" Content="Проекты" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"></Label>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">
                 <TextBox Name="textBoxFinder" TextChanged="textBoxFinderChanged"></TextBox>
@@ -34,7 +33,7 @@
             </StackPanel>
         </Grid>
 
-        <ListBox Name="ListBoxCustomers" Grid.Row="1" Margin="5" HorizontalContentAlignment="Center" 
+        <ListBox Name="ListBoxOfEntries" Grid.Row="1" Margin="5" HorizontalContentAlignment="Center" 
                  VerticalAlignment="Top" d:ItemsSource="{d:SampleData}" BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -45,12 +44,12 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="3">
-                            <Run Text="Название компании: "></Run>
-                            <Run Text="{Binding имя}"></Run>
+                            <Run Text="Название проекта: "></Run>
+                            <Run Text="{Binding название}"></Run>
                         </TextBlock>
                         <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3">
-                            <Run Text="Количество проектов: "></Run>
-                            <Run Text="{Binding количество_проектов, Mode=OneWay}"></Run>
+                            <Run Text="Количество площадей: "></Run>
+                            <Run Text="{Binding количество_площадей, Mode=OneWay}"></Run>
                         </TextBlock>
                     </Grid>
                 </DataTemplate>
@@ -63,16 +62,22 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Проекты" Click="projectsButtonClick" Margin="10" 
+            <Button Grid.Column="0" Content="Площади" Click="nextButtonClick" Margin="10" 
                     VerticalAlignment="Center" HorizontalAlignment="Left"></Button>
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
+            <StackPanel Name="crudButtonStackPanel" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
                 <Button Click="deletedEntriesButtonClick">
                     <TextBlock Text="Скрытые записи" TextWrapping="Wrap" FontSize="11"/>
                 </Button>
                 <Button Content="Изменить" Click="editButtonClick"></Button>
                 <Button Content="Добавить" Click="addButtonClick"></Button>
                 <Button Content="Удалить" Click="deleteButtonClick"></Button>
+            </StackPanel>
+
+            <StackPanel Name="deletedEntriesButtonStackPanel" Visibility="Hidden" Grid.Column="1" Orientation="Horizontal" 
+            HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
+                <Button Content="Закрыть" Click="closeDeletedEntriesButtonClick"></Button>
+                <Button Content="Восстановить" Click="recoverEntryButtonClick"></Button>
             </StackPanel>
         </Grid>
     </Grid>

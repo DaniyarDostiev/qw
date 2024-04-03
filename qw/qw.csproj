@@ -104,8 +104,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="application_pages\additional_views\ContractCrudPage.xaml.cs">
+      <DependentUpon>ContractCrudPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\edits\CustomerEditPage.xaml.cs">
       <DependentUpon>CustomerEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\edits\ProjectEditPage.xaml.cs">
+      <DependentUpon>ProjectEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\is_deleted\DeletedCustomers.xaml.cs">
       <DependentUpon>DeletedCustomers.xaml</DependentUpon>
@@ -119,12 +125,23 @@
     <Compile Include="application_pages\utils\SqlServerSelection.xaml.cs">
       <DependentUpon>SqlServerSelection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="application_pages\views\ProjectPage.xaml.cs">
+      <DependentUpon>ProjectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="util\AppFrame.cs" />
     <Compile Include="util\DbWorker.cs" />
     <Compile Include="util\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="application_pages\additional_views\ContractCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="application_pages\edits\CustomerEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\edits\ProjectEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="application_pages\utils\SqlServerSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\views\ProjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

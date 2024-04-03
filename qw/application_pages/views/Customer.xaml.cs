@@ -81,7 +81,6 @@ namespace qw.application_pages.views
                     updateElementList();
                 }
             }
-                
         }
 
         private void addButtonClick(object sender, RoutedEventArgs e)
@@ -114,7 +113,15 @@ namespace qw.application_pages.views
 
         private void projectsButtonClick(object sender, RoutedEventArgs e)
         {
-
+            var selectedElement = ListBoxCustomers.SelectedItem as Заказчик;
+            if (selectedElement == null)
+            {
+                MessageBox.Show("выберите элемент из списка");
+            }
+            else
+            {
+                AppFrame.mainFrame.Navigate(new ProjectPage(selectedElement));
+            }
         }
     }
 }

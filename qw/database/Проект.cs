@@ -32,5 +32,10 @@ namespace qw.database
         public virtual Заказчик Заказчик { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Площадь> Площадь { get; set; }
+
+        public int количество_площадей
+        {
+            get { return this.Площадь.Count; }
+        }
     }
 }
