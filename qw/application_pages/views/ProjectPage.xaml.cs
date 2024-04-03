@@ -149,7 +149,15 @@ namespace qw.application_pages.views
 
         private void nextButtonClick(object sender, RoutedEventArgs e)
         {
-
+            var selectedElement = ListBoxOfEntries.SelectedItem as Проект;
+            if (selectedElement == null)
+            {
+                MessageBox.Show("выберите элемент из списка");
+            }
+            else
+            {
+                AppFrame.mainFrame.Navigate(new AreaPage(selectedElement));
+            }
         }
     }
 }

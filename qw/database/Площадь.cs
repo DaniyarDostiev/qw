@@ -41,5 +41,10 @@ namespace qw.database
         public virtual ICollection<Площадь_УглыПериметра> Площадь_УглыПериметра { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Профиль> Профиль { get; set; }
+
+        public int количество_профилей
+        {
+            get { return this.Профиль.Count; }
+        }
     }
 }

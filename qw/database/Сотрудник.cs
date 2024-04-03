@@ -9,9 +9,12 @@
 
 namespace qw.database
 {
+    using qw.util;
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity;
+    using System.Linq;
+
     public partial class Сотрудник
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -45,5 +48,25 @@ namespace qw.database
         public virtual ICollection<Площадь> Площадь1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Профиль_СписокОбработок> Профиль_СписокОбработок { get; set; }
+
+        // Дополнительное свойство для списка всех должностей
+        public List<Должность> все_должности 
+        {
+            get 
+            {
+                DbWorker.GetContext().Должность.Load();
+                return DbWorker.GetContext().Должность.ToList(); 
+            }
+        }
+
+        // Дополнительное свойство для списка всех квалификаций
+        public List<Квалификация> все_квалификации 
+        { 
+            get 
+            {
+                DbWorker.GetContext().Квалификация.Load();
+                return DbWorker.GetContext().Квалификация.ToList(); 
+            }
+        }
     }
 }

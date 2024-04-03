@@ -104,8 +104,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="application_pages\additional_views\AreaPerimeterAngles.xaml.cs">
+      <DependentUpon>AreaPerimeterAngles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\additional_views\ContractCrudPage.xaml.cs">
       <DependentUpon>ContractCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\EmployeeCrudPage.xaml.cs">
+      <DependentUpon>EmployeeCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\PositionCrudPage.xaml.cs">
+      <DependentUpon>PositionCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\QualificationCrudPage.xaml.cs">
+      <DependentUpon>QualificationCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\edits\AreaEditPage.xaml.cs">
+      <DependentUpon>AreaEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\edits\CustomerEditPage.xaml.cs">
       <DependentUpon>CustomerEditPage.xaml</DependentUpon>
@@ -118,6 +133,9 @@
     </Compile>
     <Compile Include="application_pages\utils\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\views\AreaPage.xaml.cs">
+      <DependentUpon>AreaPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\views\Customer.xaml.cs">
       <DependentUpon>Customer.xaml</DependentUpon>
@@ -133,7 +151,27 @@
     <Compile Include="util\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="application_pages\additional_views\AreaPerimeterAngles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="application_pages\additional_views\ContractCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\EmployeeCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\PositionCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\QualificationCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\edits\AreaEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="application_pages\utils\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\views\AreaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
