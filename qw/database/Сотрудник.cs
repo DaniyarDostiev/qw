@@ -50,22 +50,22 @@ namespace qw.database
         public virtual ICollection<Профиль_СписокОбработок> Профиль_СписокОбработок { get; set; }
 
         // Дополнительное свойство для списка всех должностей
-        public List<Должность> все_должности 
+        public List<Должность> все_должности
         {
-            get 
+            get
             {
                 DbWorker.GetContext().Должность.Load();
-                return DbWorker.GetContext().Должность.ToList(); 
+                return DbWorker.GetContext().Должность.ToList();
             }
         }
 
         // Дополнительное свойство для списка всех квалификаций
-        public List<Квалификация> все_квалификации 
-        { 
-            get 
+        public List<Квалификация> все_квалификации
+        {
+            get
             {
                 DbWorker.GetContext().Квалификация.Load();
-                return DbWorker.GetContext().Квалификация.ToList(); 
+                return DbWorker.GetContext().Квалификация.ToList();
             }
         }
     }

@@ -9,9 +9,12 @@
 
 namespace qw.database
 {
+    using qw.util;
     using System;
     using System.Collections.Generic;
-    
+    using System.Data.Entity;
+    using System.Linq;
+
     public partial class Методика
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -35,5 +38,15 @@ namespace qw.database
         public virtual Измерительное_оборудование Измерительное_оборудование2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Профиль> Профиль { get; set; }
+
+        // отображение всего доступного оборудования
+        public List<Измерительное_оборудование> все_оборудование
+        {
+            get
+            {
+                DbWorker.GetContext().Измерительное_оборудование.Load();
+                return DbWorker.GetContext().Измерительное_оборудование.ToList();
+            }
+        }
     }
 }

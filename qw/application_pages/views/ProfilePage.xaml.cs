@@ -19,16 +19,16 @@ using System.Windows.Shapes;
 namespace qw.application_pages.views
 {
     /// <summary>
-    /// Логика взаимодействия для AreaPage.xaml
+    /// Логика взаимодействия для ProfilePage.xaml
     /// </summary>
-    public partial class AreaPage : Page
+    public partial class ProfilePage : Page
     {
-        private Проект project;
-        public AreaPage(Проект project)
+        private Площадь area;
+        public ProfilePage(Площадь area)
         {
             InitializeComponent();
 
-            this.project = project;
+            this.area = area;
 
             comboBoxSort.Items.Add("Сортировка");
             comboBoxSort.Items.Add("По возрастанию");
@@ -38,14 +38,14 @@ namespace qw.application_pages.views
 
         private void updateElementList()
         {
-            List<Площадь> listBoxItems = DbWorker.GetContext().Площадь.
-                Where(x => x.название.Contains(textBoxFinder.Text) && x.удален != true && x.id_проекта == project.id).ToList();
+            List<Профиль> listBoxItems = DbWorker.GetContext().Профиль.
+                Where(x => x.название_профиля.Contains(textBoxFinder.Text) && x.удален != true && x.id_площади == area.id).ToList();
 
             switch (comboBoxSort.SelectedIndex)
             {
                 case 0:; break;
-                case 1: listBoxItems = listBoxItems.OrderBy(x => x.название).ToList(); break;
-                case 2: listBoxItems = listBoxItems.OrderByDescending(x => x.название).ToList(); break;
+                case 1: listBoxItems = listBoxItems.OrderBy(x => x.название_профиля).ToList(); break;
+                case 2: listBoxItems = listBoxItems.OrderByDescending(x => x.название_профиля).ToList(); break;
             }
 
             ListBoxOfEntries.ItemsSource = listBoxItems;
@@ -53,8 +53,8 @@ namespace qw.application_pages.views
 
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            Заказчик customer = DbWorker.GetContext().Заказчик.FirstOrDefault(x => x.id == project.id_заказчика);
-            AppFrame.mainFrame.Navigate(new ProjectPage(customer));
+            Проект project = DbWorker.GetContext().Проект.FirstOrDefault(x => x.id == area.id_проекта);
+            AppFrame.mainFrame.Navigate(new AreaPage(project));
         }
 
         private void textBoxFinderChanged(object sender, TextChangedEventArgs e)
@@ -69,7 +69,7 @@ namespace qw.application_pages.views
 
         private void showDeletedEntries()
         {
-            ListBoxOfEntries.ItemsSource = DbWorker.GetContext().Площадь.Where(x => x.удален == true).ToList();
+            ListBoxOfEntries.ItemsSource = DbWorker.GetContext().Профиль.Where(x => x.удален == true).ToList();
         }
 
         private void deletedEntriesButtonClick(object sender, RoutedEventArgs e)
@@ -88,7 +88,7 @@ namespace qw.application_pages.views
 
         private void recoverEntryButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = ListBoxOfEntries.SelectedItem as Площадь;
+            var selectedElement = ListBoxOfEntries.SelectedItem as Профиль;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
@@ -108,25 +108,25 @@ namespace qw.application_pages.views
 
         private void editButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = ListBoxOfEntries.SelectedItem as Площадь;
+            var selectedElement = ListBoxOfEntries.SelectedItem as Профиль;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
             }
             else
             {
-                AppFrame.mainFrame.Navigate(new AreaEditPage(project, selectedElement));
+                AppFrame.mainFrame.Navigate(new ProfileEditPage(area, selectedElement));
             }
         }
 
         private void addButtonClick(object sender, RoutedEventArgs e)
         {
-            AppFrame.mainFrame.Navigate(new AreaEditPage(project, new Площадь()));
+            AppFrame.mainFrame.Navigate(new ProfileEditPage(area, new Профиль()));
         }
 
         private void deleteButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = ListBoxOfEntries.SelectedItem as Площадь;
+            var selectedElement = ListBoxOfEntries.SelectedItem as Профиль;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
@@ -146,15 +146,7 @@ namespace qw.application_pages.views
 
         private void nextButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = ListBoxOfEntries.SelectedItem as Площадь;
-            if (selectedElement == null)
-            {
-                MessageBox.Show("выберите элемент из списка");
-            }
-            else
-            {
-                AppFrame.mainFrame.Navigate(new ProfilePage(selectedElement));
-            }
+
         }
     }
 }

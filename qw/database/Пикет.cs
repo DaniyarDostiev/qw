@@ -33,7 +33,9 @@ namespace qw.database
         public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
         public Nullable<bool> удален { get; set; }
+        public Nullable<int> вид_пикета { get; set; }
     
+        public virtual Виды_пикетов Виды_пикетов { get; set; }
         public virtual Координаты_точки Координаты_точки { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Пикет_ИзмерительноеОборудование> Пикет_ИзмерительноеОборудование { get; set; }

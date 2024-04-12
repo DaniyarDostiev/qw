@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b791968acc3a43dab217d53184f7cc66" Name="Diagram1" ZoomLevel="40">
+      <Diagram DiagramId="b791968acc3a43dab217d53184f7cc66" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="qw2Model.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.875" />
         <EntityTypeShape EntityType="qw2Model.Договор" Width="1.5" PointX="1.5" PointY="21.75" />
         <EntityTypeShape EntityType="qw2Model.Должность" Width="1.5" PointX="1.5" PointY="40.25" />
@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="qw2Model.Координаты_точки" Width="1.5" PointX="0.75" PointY="17.375" />
         <EntityTypeShape EntityType="qw2Model.Методика" Width="1.5" PointX="0.75" PointY="43.125" />
         <EntityTypeShape EntityType="qw2Model.Обработки_на_профиле" Width="1.5" PointX="6" PointY="4.625" />
-        <EntityTypeShape EntityType="qw2Model.Пикет" Width="1.5" PointX="6" PointY="16.75" />
         <EntityTypeShape EntityType="qw2Model.Пикет_ИзмерительноеОборудование" Width="1.5" PointX="11.25" PointY="13.625" />
         <EntityTypeShape EntityType="qw2Model.Пикет_ПромежуточныеИзмерения" Width="1.5" PointX="11.25" PointY="21.625" />
         <EntityTypeShape EntityType="qw2Model.Пикет_ПромежуточныеТрансформантыИзмерения" Width="1.5" PointX="11.25" PointY="17.625" />
@@ -43,7 +42,6 @@
         <AssociationConnector Association="qw2Model.FK_Методика_Измерительное_оборудование2" />
         <AssociationConnector Association="qw2Model.FK_Пикет_ИзмерительноеОборудование_Измерительное_оборудование" />
         <AssociationConnector Association="qw2Model.FK_Сотрудник_Квалификация" />
-        <AssociationConnector Association="qw2Model.FK_Пикет_Координаты_точки" />
         <AssociationConnector Association="qw2Model.FK_Площадь_УглыПериметра_Координаты_точки" />
         <AssociationConnector Association="qw2Model.FK_Профиль_Координаты_точки" />
         <AssociationConnector Association="qw2Model.FK_Профиль_Координаты_точки1" />
@@ -51,13 +49,6 @@
         <AssociationConnector Association="qw2Model.FK_Профиль_Методика" />
         <AssociationConnector Association="qw2Model.FK_Профиль_СписокОбработок_Обработки_на_профиле1" />
         <AssociationConnector Association="qw2Model.FK_Список_фильтров_над_обработкой_Обработки_на_профиле" />
-        <AssociationConnector Association="qw2Model.FK_Пикет_ИзмерительноеОборудование_Пикет" />
-        <AssociationConnector Association="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Пикет" />
-        <AssociationConnector Association="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет" />
-        <AssociationConnector Association="qw2Model.FK_Пикет_Профиль" />
-        <AssociationConnector Association="qw2Model.FK_Пикет_Результаты_измерения" />
-        <AssociationConnector Association="qw2Model.FK_Пикет_Сотрудники_Пикет" />
-        <AssociationConnector Association="qw2Model.FK_Пикет_ТрансформантаИзмерения_Пикет" />
         <AssociationConnector Association="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" />
         <AssociationConnector Association="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения" />
         <AssociationConnector Association="qw2Model.FK_Пикет_Сотрудники_Сотрудник" />
@@ -75,6 +66,17 @@
         <AssociationConnector Association="qw2Model.FK_Профиль_ТелеметрическиеИзмерения_Телеметрические_измерения" />
         <AssociationConnector Association="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения" />
         <AssociationConnector Association="qw2Model.FK_Список_фильтров_над_обработкой_Фильтры_обработок" />
+        <EntityTypeShape EntityType="qw2Model.Виды_пикетов" Width="1.5" PointX="3.75" PointY="25" />
+        <EntityTypeShape EntityType="qw2Model.Пикет" Width="1.5" PointX="6" PointY="16.5" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_Виды_пикетов" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_Координаты_точки" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ИзмерительноеОборудование_Пикет" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Пикет" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_Профиль" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_Результаты_измерения" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_Сотрудники_Пикет" />
+        <AssociationConnector Association="qw2Model.FK_Пикет_ТрансформантаИзмерения_Пикет" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

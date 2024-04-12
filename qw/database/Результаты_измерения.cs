@@ -17,8 +17,8 @@ namespace qw.database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Результаты_измерения()
         {
-            this.Пикет = new HashSet<Пикет>();
             this.Пикет_ПромежуточныеИзмерения = new HashSet<Пикет_ПромежуточныеИзмерения>();
+            this.Пикет = new HashSet<Пикет>();
         }
     
         public int id { get; set; }
@@ -29,8 +29,8 @@ namespace qw.database
         public Nullable<bool> удален { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Пикет> Пикет { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Пикет_ПромежуточныеИзмерения> Пикет_ПромежуточныеИзмерения { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Пикет> Пикет { get; set; }
     }
 }

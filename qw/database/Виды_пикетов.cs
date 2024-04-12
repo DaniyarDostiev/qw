@@ -12,16 +12,18 @@ namespace qw.database
     using System;
     using System.Collections.Generic;
     
-    public partial class Пикет_ПромежуточныеИзмерения
+    public partial class Виды_пикетов
     {
-        public int id { get; set; }
-        public Nullable<int> id_пикета { get; set; }
-        public Nullable<int> id_результатов_измерения { get; set; }
-        public Nullable<System.DateTime> дата_добавления_записи { get; set; }
-        public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
-        public Nullable<bool> удален { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Виды_пикетов()
+        {
+            this.Пикет = new HashSet<Пикет>();
+        }
     
-        public virtual Результаты_измерения Результаты_измерения { get; set; }
-        public virtual Пикет Пикет { get; set; }
+        public int id { get; set; }
+        public string название { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Пикет> Пикет { get; set; }
     }
 }

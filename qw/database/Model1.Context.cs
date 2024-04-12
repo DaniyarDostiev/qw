@@ -34,7 +34,6 @@ namespace qw.database
         public virtual DbSet<Координаты_точки> Координаты_точки { get; set; }
         public virtual DbSet<Методика> Методика { get; set; }
         public virtual DbSet<Обработки_на_профиле> Обработки_на_профиле { get; set; }
-        public virtual DbSet<Пикет> Пикет { get; set; }
         public virtual DbSet<Пикет_ИзмерительноеОборудование> Пикет_ИзмерительноеОборудование { get; set; }
         public virtual DbSet<Пикет_ПромежуточныеИзмерения> Пикет_ПромежуточныеИзмерения { get; set; }
         public virtual DbSet<Пикет_ПромежуточныеТрансформантыИзмерения> Пикет_ПромежуточныеТрансформантыИзмерения { get; set; }
@@ -55,5 +54,7 @@ namespace qw.database
         public virtual DbSet<Трансформанта_измерения> Трансформанта_измерения { get; set; }
         public virtual DbSet<Фильтры_обработок> Фильтры_обработок { get; set; }
         public virtual DbSet<Электромагнитные_измерения> Электромагнитные_измерения { get; set; }
+        public virtual DbSet<Виды_пикетов> Виды_пикетов { get; set; }
+        public virtual DbSet<Пикет> Пикет { get; set; }
     }
 }

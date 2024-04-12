@@ -113,8 +113,17 @@
     <Compile Include="application_pages\additional_views\EmployeeCrudPage.xaml.cs">
       <DependentUpon>EmployeeCrudPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="application_pages\additional_views\EquipmentCrudPage.xaml.cs">
+      <DependentUpon>EquipmentCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\MethodologyCrudPage.xaml.cs">
+      <DependentUpon>MethodologyCrudPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\additional_views\PositionCrudPage.xaml.cs">
       <DependentUpon>PositionCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\ProfileStartAndEndCoordinates.xaml.cs">
+      <DependentUpon>ProfileStartAndEndCoordinates.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\additional_views\QualificationCrudPage.xaml.cs">
       <DependentUpon>QualificationCrudPage.xaml</DependentUpon>
@@ -124,6 +133,9 @@
     </Compile>
     <Compile Include="application_pages\edits\CustomerEditPage.xaml.cs">
       <DependentUpon>CustomerEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\edits\ProfileEditPage.xaml.cs">
+      <DependentUpon>ProfileEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\edits\ProjectEditPage.xaml.cs">
       <DependentUpon>ProjectEditPage.xaml</DependentUpon>
@@ -143,8 +155,14 @@
     <Compile Include="application_pages\utils\SqlServerSelection.xaml.cs">
       <DependentUpon>SqlServerSelection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="application_pages\views\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\views\ProjectPage.xaml.cs">
       <DependentUpon>ProjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="database\Виды_пикетов.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="util\AppFrame.cs" />
     <Compile Include="util\DbWorker.cs" />
@@ -163,7 +181,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="application_pages\additional_views\EquipmentCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\MethodologyCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="application_pages\additional_views\PositionCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\ProfileStartAndEndCoordinates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="application_pages\edits\CustomerEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\edits\ProfileEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="application_pages\utils\SqlServerSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\views\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

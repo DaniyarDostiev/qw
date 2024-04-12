@@ -17,11 +17,11 @@ namespace qw.database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Профиль()
         {
-            this.Пикет = new HashSet<Пикет>();
             this.Профиль_СписокОбработок = new HashSet<Профиль_СписокОбработок>();
             this.Профиль_ТелеметрическиеИзмерения = new HashSet<Профиль_ТелеметрическиеИзмерения>();
             this.Профиль_ТочкиИзломов = new HashSet<Профиль_ТочкиИзломов>();
             this.Профиль_ЭлектромагнитныеИзмерения = new HashSet<Профиль_ЭлектромагнитныеИзмерения>();
+            this.Пикет = new HashSet<Пикет>();
         }
     
         public int id { get; set; }
@@ -40,8 +40,6 @@ namespace qw.database
         public virtual Координаты_точки Координаты_точки { get; set; }
         public virtual Координаты_точки Координаты_точки1 { get; set; }
         public virtual Методика Методика { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Пикет> Пикет { get; set; }
         public virtual Площадь Площадь { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Профиль_СписокОбработок> Профиль_СписокОбработок { get; set; }
@@ -51,5 +49,7 @@ namespace qw.database
         public virtual ICollection<Профиль_ТочкиИзломов> Профиль_ТочкиИзломов { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Профиль_ЭлектромагнитныеИзмерения> Профиль_ЭлектромагнитныеИзмерения { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Пикет> Пикет { get; set; }
     }
 }

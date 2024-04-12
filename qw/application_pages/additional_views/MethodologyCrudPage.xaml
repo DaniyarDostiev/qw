@@ -1,4 +1,4 @@
-﻿<Page x:Class="qw.application_pages.additional_views.EmployeeCrudPage"
+﻿<Page x:Class="qw.application_pages.additional_views.MethodologyCrudPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:qw.application_pages.additional_views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="EmployeeCrudPage">
+      Title="MethodologyCrudPage">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,47 +21,54 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Content="Сотрудники" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"></Label>
+            <Label Grid.Column="0" Content="Методика" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"></Label>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <Button Content="Должность" Click="positionPageButtonCLick"></Button>
-                <Button Content="Квалификация" Click="qualificationPageButtonClick"></Button>
+                <Button Content="Оборудование" Click="equipmentPageButtonClick"></Button>
             </StackPanel>
         </Grid>
 
         <DataGrid Grid.Row="1" Name="dataGridOfEntries" CanUserResizeRows="True" 
                   AutoGenerateColumns="False" HorizontalScrollBarVisibility="Visible">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Width="150" Binding="{Binding логин}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название" Width="150" Binding="{Binding название_методики}"></DataGridTextColumn>
 
-                <!-- Столбец для выбора должности -->
-                <DataGridTemplateColumn Header="Должность" MinWidth="150" Width="*">
+                <!-- Столбец для выбора оборудования ген. установки -->
+                <DataGridTemplateColumn Header="Ген. установка" MinWidth="150" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding все_должности}"
-                              SelectedItem="{Binding Должность, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              DisplayMemberPath="название"/>
+                            <ComboBox ItemsSource="{Binding все_оборудование}"
+                              SelectedItem="{Binding Измерительное_оборудование, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              DisplayMemberPath="название_оборудования"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <!-- Столбец для выбора квалификации -->
-                <DataGridTemplateColumn Header="Квалификация" MinWidth="150" Width="*">
+                <!-- Столбец для выбора оборудования измерительной установки -->
+                <DataGridTemplateColumn Header="Измер. установка" MinWidth="150" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox ItemsSource="{Binding все_квалификации}"
-                              SelectedItem="{Binding Квалификация, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              DisplayMemberPath="название"/>
+                            <ComboBox ItemsSource="{Binding все_оборудование}"
+                              SelectedItem="{Binding Измерительное_оборудование1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              DisplayMemberPath="название_оборудования"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Header="Пароль" MinWidth="150" Width="*" Binding="{Binding пароль}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Опыт в коллективе" Width="150" Binding="{Binding опыт_работы_в_коллективе}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Опыт специальности" Width="150" Binding="{Binding опят_работы_по_специальности}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Медосмотр" Width="150" Binding="{Binding дата_прохождения_медосмотра}"></DataGridTextColumn>
+                <!-- Столбец для выбора оборудования телеметрической установки -->
+                <DataGridTemplateColumn Header="Измер. установка" MinWidth="150" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding все_оборудование}"
+                              SelectedItem="{Binding Измерительное_оборудование2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              DisplayMemberPath="название_оборудования"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Скорость БПЛА" MinWidth="150" Width="*" Binding="{Binding максимальная_скорость_БПЛА}"></DataGridTextColumn>
                 <DataGridTextColumn x:Name="dateOfBeginColumn" Header="Дата добавления" Width="150" Binding="{Binding дата_добавления_записи}" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn x:Name="dateOfEndColumn" Header="Дата зменения" Width="150" Binding="{Binding дата_последнего_изменения_записи}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn x:Name="dateOfEndColumn" Header="Дата изменения" Width="150" Binding="{Binding дата_последнего_изменения_записи}" IsReadOnly="True"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 

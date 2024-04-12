@@ -17,11 +17,11 @@ namespace qw.database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Координаты_точки()
         {
-            this.Пикет = new HashSet<Пикет>();
             this.Площадь_УглыПериметра = new HashSet<Площадь_УглыПериметра>();
             this.Профиль = new HashSet<Профиль>();
             this.Профиль1 = new HashSet<Профиль>();
             this.Профиль_ТочкиИзломов = new HashSet<Профиль_ТочкиИзломов>();
+            this.Пикет = new HashSet<Пикет>();
         }
     
         public int id { get; set; }
@@ -32,8 +32,6 @@ namespace qw.database
         public Nullable<bool> удален { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Пикет> Пикет { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Площадь_УглыПериметра> Площадь_УглыПериметра { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Профиль> Профиль { get; set; }
@@ -41,5 +39,7 @@ namespace qw.database
         public virtual ICollection<Профиль> Профиль1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Профиль_ТочкиИзломов> Профиль_ТочкиИзломов { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Пикет> Пикет { get; set; }
     }
 }
