@@ -3,10 +3,8 @@ using qw.database;
 using qw.util;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.SqlTypes;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,37 +20,40 @@ using System.Windows.Shapes;
 namespace qw.application_pages.additional_views
 {
     /// <summary>
-    /// Логика взаимодействия для AreaPerimeterAngles.xaml
+    /// Логика взаимодействия для FiltersCrudPage.xaml
     /// </summary>
-    public partial class AreaPerimeterAngles : Page
+    public partial class FiltersCrudPage : Page
     {
-        private Площадь area;
-        public AreaPerimeterAngles(Площадь area)
+        private Обработки_на_профиле processing;
+        private Профиль profile;
+        private Сотрудник employee;
+        public FiltersCrudPage(Обработки_на_профиле processing, Профиль profile, Сотрудник employee)
         {
             InitializeComponent();
 
-            this.area = area;
+            this.processing = processing;
+            this.profile = profile;
+            this.employee = employee;
 
             showNonDeletedEntries();
         }
 
         private void showNonDeletedEntries()
         {
-            // Запрос для выбора всех координат точек для определенной площади
-            List<Координаты_точки> allPointCoordinates = DbWorker.GetContext().Площадь_УглыПериметра
-                .Where(x => x.id_площади == area.id)
-                .Select(x => x.Координаты_точки)
+            List<Фильтры_обработок> allEntries = DbWorker.GetContext().Список_фильтров_над_обработкой
+                .Where(x => x.id_обработки_на_профиле == processing.id)
+                .Select(x => x.Фильтры_обработок)
                 .Where(x => x.удален != true)
                 .ToList();
 
-            dataGridOfEntries.ItemsSource = allPointCoordinates;
+            dataGridOfEntries.ItemsSource = allEntries;
         }
 
         private void saveChanges()
         {
             try
             {
-                var selectedItem = dataGridOfEntries.SelectedItem as Координаты_точки;
+                var selectedItem = dataGridOfEntries.SelectedItem as Фильтры_обработок;
                 if (selectedItem != null)
                 {
                     if (selectedItem.дата_добавления_записи != null)
@@ -67,16 +68,16 @@ namespace qw.application_pages.additional_views
                         selectedItem.дата_последнего_изменения_записи = (DateTime?)new SqlDateTime(DateTime.Now);
                         selectedItem.удален = false;
 
-                        var linkingEntry = new Площадь_УглыПериметра();
-                        linkingEntry.Площадь = area;
-                        linkingEntry.Координаты_точки = selectedItem;
-                        DbWorker.GetContext().Площадь_УглыПериметра.Add(linkingEntry);
+                        var linkingEntry = new Список_фильтров_над_обработкой();
+                        linkingEntry.Обработки_на_профиле = processing;
+                        linkingEntry.Фильтры_обработок = selectedItem;
+                        DbWorker.GetContext().Список_фильтров_над_обработкой.Add(linkingEntry);
                     }
 
                     // Добавляем новый элемент в контекст Entity Framework, если он не был добавлен ранее
-                    if (DbWorker.GetContext().Координаты_точки.Local.Contains(selectedItem) == false)
+                    if (DbWorker.GetContext().Фильтры_обработок.Local.Contains(selectedItem) == false)
                     {
-                        DbWorker.GetContext().Координаты_точки.Add(selectedItem);
+                        DbWorker.GetContext().Фильтры_обработок.Add(selectedItem);
                     }
 
                     DbWorker.GetContext().SaveChanges();
@@ -99,24 +100,23 @@ namespace qw.application_pages.additional_views
 
         private void showDeletedEntries()
         {
-            var allPointCoordinates = DbWorker.GetContext().Площадь_УглыПериметра
-                .Where(x => x.id_площади == area.id)
-                .Select(x => x.Координаты_точки)
+            List<Фильтры_обработок> allEntries = DbWorker.GetContext().Список_фильтров_над_обработкой
+                .Where(x => x.id_обработки_на_профиле == processing.id)
+                .Select(x => x.Фильтры_обработок)
                 .Where(x => x.удален == true)
                 .ToList();
 
-            dataGridOfEntries.ItemsSource = allPointCoordinates;
+            dataGridOfEntries.ItemsSource = allEntries;
         }
 
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            Проект project = DbWorker.GetContext().Проект.FirstOrDefault(x => x.id == area.id_проекта);
-            AppFrame.mainFrame.Navigate(new AreaEditPage(project, area));
+            AppFrame.mainFrame.Navigate(new ProfileProcessingPage(profile, employee));
         }
 
         private void deleteButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = dataGridOfEntries.SelectedItem as Координаты_точки;
+            var selectedElement = dataGridOfEntries.SelectedItem as Фильтры_обработок;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
@@ -155,7 +155,7 @@ namespace qw.application_pages.additional_views
 
         private void recoverEntryButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = dataGridOfEntries.SelectedItem as Координаты_точки;
+            var selectedElement = dataGridOfEntries.SelectedItem as Фильтры_обработок;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");

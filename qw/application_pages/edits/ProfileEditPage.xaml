@@ -18,52 +18,75 @@
         <Label Grid.Row="0" Content="Работа с данными: Профиль" HorizontalAlignment="Center"></Label>
 
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="110"></RowDefinition>
+            </Grid.RowDefinitions>
 
-            <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <TextBlock Text="Название" ></TextBlock>
-                    <TextBox Name="nameTextBox"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <TextBlock Text="Методика" ></TextBlock>
-                    <ComboBox Name="methodologyComboBox"></ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Все методики" Width="150" Click="methodologyButtonCLick"></Button>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Name="startCoordinatesButton" Content="Координаты начала" Width="150" Click="startCoordinatesButtonClick"></Button>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Name="endCoordinatesButton" Content="Координаты конца" Width="150" Click="endCoordinatesButtonClick"></Button>
-                </StackPanel>
-            </StackPanel>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
-                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <TextBlock Text="Длина профиля" ></TextBlock>
-                    <TextBox Name="profileLengthTextBox"></TextBox>
+                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <TextBlock Text="Название" ></TextBlock>
+                        <TextBox Name="nameTextBox"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <TextBlock Text="Методика" ></TextBlock>
+                        <ComboBox Name="methodologyComboBox"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <Button Content="Все методики" Width="150" Click="methodologyButtonCLick"></Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <Button Name="startCoordinatesButton" Content="Координаты начала" Width="150" Click="startCoordinatesButtonClick"></Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <Button Name="endCoordinatesButton" Content="Координаты конца" Width="150" Click="endCoordinatesButtonClick"></Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <Button Name="breakpointsPageButton" Content="Точки изломов" Width="150" Click="breakpointsButtonClick"></Button>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <TextBlock Text="Дата начала" ></TextBlock>
-                    <TextBox Name="dateOfBeginTextBox"></TextBox>
+
+                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <TextBlock Text="Длина профиля" ></TextBlock>
+                        <TextBox Name="profileLengthTextBox"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <TextBlock Text="Дата начала" ></TextBlock>
+                        <TextBox Name="dateOfBeginTextBox"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <TextBlock Text="Дата окончания" ></TextBlock>
+                        <TextBox Name="dateOfEndTextBox"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <TextBlock Text="Дата добавления"></TextBlock>
+                        <TextBox Name="addDateTextBox" IsReadOnly="True" IsEnabled="False"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                        <TextBlock Text="Дата изменения" ></TextBlock>
+                        <TextBox Name="editDateTextBox" IsReadOnly="True" IsEnabled="False"></TextBox>
+                    </StackPanel>
                 </StackPanel>
+            </Grid>
+
+            <StackPanel Name="additionalButtonStackPanel" Grid.Row="1" HorizontalAlignment="Center" 
+                        VerticalAlignment="Top" Orientation="Horizontal">
+                <Button Content="Тел. записи" Width="150" Click="telemetricPageClick"></Button>
+                
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <TextBlock Text="Дата окончания" ></TextBlock>
-                    <TextBox Name="dateOfEndTextBox"></TextBox>
+                    <TextBlock Text="Обработчик" ></TextBlock>
+                    <ComboBox Name="profileHandlerComboBox"></ComboBox>
+                    <Button Content="Все обработки" Width="150" Click="processingPageButtonClick"></Button>
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <TextBlock Text="Дата добавления"></TextBlock>
-                    <TextBox Name="addDateTextBox" IsReadOnly="True" IsEnabled="False"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <TextBlock Text="Дата изменения" ></TextBlock>
-                    <TextBox Name="editDateTextBox" IsReadOnly="True" IsEnabled="False"></TextBox>
-                </StackPanel>
+
+                <Button Content="Эл. записи" Width="150" Click="electromagneticMeasurementsPage"></Button>
             </StackPanel>
         </Grid>
 

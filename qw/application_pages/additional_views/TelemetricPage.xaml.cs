@@ -3,10 +3,8 @@ using qw.database;
 using qw.util;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.SqlTypes;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,37 +20,34 @@ using System.Windows.Shapes;
 namespace qw.application_pages.additional_views
 {
     /// <summary>
-    /// Логика взаимодействия для AreaPerimeterAngles.xaml
+    /// Логика взаимодействия для TelemetricPage.xaml
     /// </summary>
-    public partial class AreaPerimeterAngles : Page
+    public partial class TelemetricPage : Page
     {
-        private Площадь area;
-        public AreaPerimeterAngles(Площадь area)
+        private Профиль profile;
+        public TelemetricPage(Профиль profile)
         {
             InitializeComponent();
-
-            this.area = area;
-
+            this.profile = profile;
             showNonDeletedEntries();
         }
 
         private void showNonDeletedEntries()
         {
-            // Запрос для выбора всех координат точек для определенной площади
-            List<Координаты_точки> allPointCoordinates = DbWorker.GetContext().Площадь_УглыПериметра
-                .Where(x => x.id_площади == area.id)
-                .Select(x => x.Координаты_точки)
+            List<Телеметрические_измерения> allEntries = DbWorker.GetContext().Профиль_ТелеметрическиеИзмерения
+                .Where(x => x.id_профиля == profile.id)
+                .Select(x => x.Телеметрические_измерения)
                 .Where(x => x.удален != true)
                 .ToList();
 
-            dataGridOfEntries.ItemsSource = allPointCoordinates;
+            dataGridOfEntries.ItemsSource = allEntries;
         }
 
         private void saveChanges()
         {
             try
             {
-                var selectedItem = dataGridOfEntries.SelectedItem as Координаты_точки;
+                var selectedItem = dataGridOfEntries.SelectedItem as Телеметрические_измерения;
                 if (selectedItem != null)
                 {
                     if (selectedItem.дата_добавления_записи != null)
@@ -67,16 +62,16 @@ namespace qw.application_pages.additional_views
                         selectedItem.дата_последнего_изменения_записи = (DateTime?)new SqlDateTime(DateTime.Now);
                         selectedItem.удален = false;
 
-                        var linkingEntry = new Площадь_УглыПериметра();
-                        linkingEntry.Площадь = area;
-                        linkingEntry.Координаты_точки = selectedItem;
-                        DbWorker.GetContext().Площадь_УглыПериметра.Add(linkingEntry);
+                        var linkingEntry = new Профиль_ТелеметрическиеИзмерения();
+                        linkingEntry.Профиль = profile;
+                        linkingEntry.Телеметрические_измерения = selectedItem;
+                        DbWorker.GetContext().Профиль_ТелеметрическиеИзмерения.Add(linkingEntry);
                     }
 
                     // Добавляем новый элемент в контекст Entity Framework, если он не был добавлен ранее
-                    if (DbWorker.GetContext().Координаты_точки.Local.Contains(selectedItem) == false)
+                    if (DbWorker.GetContext().Телеметрические_измерения.Local.Contains(selectedItem) == false)
                     {
-                        DbWorker.GetContext().Координаты_точки.Add(selectedItem);
+                        DbWorker.GetContext().Телеметрические_измерения.Add(selectedItem);
                     }
 
                     DbWorker.GetContext().SaveChanges();
@@ -99,24 +94,24 @@ namespace qw.application_pages.additional_views
 
         private void showDeletedEntries()
         {
-            var allPointCoordinates = DbWorker.GetContext().Площадь_УглыПериметра
-                .Where(x => x.id_площади == area.id)
-                .Select(x => x.Координаты_точки)
+            List<Телеметрические_измерения> allEntries = DbWorker.GetContext().Профиль_ТелеметрическиеИзмерения
+                .Where(x => x.id_профиля == profile.id)
+                .Select(x => x.Телеметрические_измерения)
                 .Where(x => x.удален == true)
                 .ToList();
 
-            dataGridOfEntries.ItemsSource = allPointCoordinates;
+            dataGridOfEntries.ItemsSource = allEntries;
         }
 
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            Проект project = DbWorker.GetContext().Проект.FirstOrDefault(x => x.id == area.id_проекта);
-            AppFrame.mainFrame.Navigate(new AreaEditPage(project, area));
+            var linkingEntry = DbWorker.GetContext().Площадь.FirstOrDefault(x => x.id == profile.id_площади);
+            AppFrame.mainFrame.Navigate(new ProfileEditPage(linkingEntry, profile));
         }
 
         private void deleteButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = dataGridOfEntries.SelectedItem as Координаты_точки;
+            var selectedElement = dataGridOfEntries.SelectedItem as Телеметрические_измерения;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
@@ -155,7 +150,7 @@ namespace qw.application_pages.additional_views
 
         private void recoverEntryButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = dataGridOfEntries.SelectedItem as Координаты_точки;
+            var selectedElement = dataGridOfEntries.SelectedItem as Телеметрические_измерения;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");

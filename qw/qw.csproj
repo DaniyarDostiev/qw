@@ -107,8 +107,14 @@
     <Compile Include="application_pages\additional_views\AreaPerimeterAngles.xaml.cs">
       <DependentUpon>AreaPerimeterAngles.xaml</DependentUpon>
     </Compile>
+    <Compile Include="application_pages\additional_views\BreakpointsPage.xaml.cs">
+      <DependentUpon>BreakpointsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\additional_views\ContractCrudPage.xaml.cs">
       <DependentUpon>ContractCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\ElectromagneticMeasurementsPage.xaml.cs">
+      <DependentUpon>ElectromagneticMeasurementsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\additional_views\EmployeeCrudPage.xaml.cs">
       <DependentUpon>EmployeeCrudPage.xaml</DependentUpon>
@@ -116,17 +122,26 @@
     <Compile Include="application_pages\additional_views\EquipmentCrudPage.xaml.cs">
       <DependentUpon>EquipmentCrudPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="application_pages\additional_views\FiltersCrudPage.xaml.cs">
+      <DependentUpon>FiltersCrudPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\additional_views\MethodologyCrudPage.xaml.cs">
       <DependentUpon>MethodologyCrudPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\additional_views\PositionCrudPage.xaml.cs">
       <DependentUpon>PositionCrudPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="application_pages\additional_views\ProfileProcessingPage.xaml.cs">
+      <DependentUpon>ProfileProcessingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\additional_views\ProfileStartAndEndCoordinates.xaml.cs">
       <DependentUpon>ProfileStartAndEndCoordinates.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\additional_views\QualificationCrudPage.xaml.cs">
       <DependentUpon>QualificationCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\TelemetricPage.xaml.cs">
+      <DependentUpon>TelemetricPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\edits\AreaEditPage.xaml.cs">
       <DependentUpon>AreaEditPage.xaml</DependentUpon>
@@ -173,7 +188,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="application_pages\additional_views\BreakpointsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="application_pages\additional_views\ContractCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\ElectromagneticMeasurementsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,6 +208,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="application_pages\additional_views\FiltersCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="application_pages\additional_views\MethodologyCrudPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,11 +220,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="application_pages\additional_views\ProfileProcessingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="application_pages\additional_views\ProfileStartAndEndCoordinates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="application_pages\additional_views\QualificationCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\TelemetricPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
