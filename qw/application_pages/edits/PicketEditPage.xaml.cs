@@ -44,7 +44,9 @@ namespace qw.application_pages.edits
             this.profile = profile;
             this.picket = picket;
 
-            picketTypeComboBox.ItemsSource = DbWorker.GetContext().Виды_пикетов.Select(x => x.название).ToList();
+            picketTypeComboBox.ItemsSource = DbWorker.GetContext().Виды_пикетов
+                .Where(x => x.удален != true)
+                .Select(x => x.название).ToList();
 
             fieldFill();
         }

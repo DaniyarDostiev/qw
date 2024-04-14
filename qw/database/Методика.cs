@@ -14,7 +14,7 @@ namespace qw.database
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
-
+    
     public partial class Методика
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

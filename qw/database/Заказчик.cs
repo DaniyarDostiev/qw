@@ -13,7 +13,7 @@ namespace qw.database
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+    
     public partial class Заказчик
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -42,10 +42,10 @@ namespace qw.database
 
         public int количество_проектов
         {
-            get 
+            get
             {
-                return this.Проект.Where(x => x.удален != true).Count(); 
-            } 
+                return this.Проект.Where(x => x.удален != true).Count();
+            }
         }
     }
 }

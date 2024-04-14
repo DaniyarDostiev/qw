@@ -54,7 +54,7 @@ namespace qw.database
         public virtual DbSet<Трансформанта_измерения> Трансформанта_измерения { get; set; }
         public virtual DbSet<Фильтры_обработок> Фильтры_обработок { get; set; }
         public virtual DbSet<Электромагнитные_измерения> Электромагнитные_измерения { get; set; }
-        public virtual DbSet<Виды_пикетов> Виды_пикетов { get; set; }
         public virtual DbSet<Пикет> Пикет { get; set; }
+        public virtual DbSet<Виды_пикетов> Виды_пикетов { get; set; }
     }
 }
