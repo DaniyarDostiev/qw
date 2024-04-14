@@ -20,20 +20,12 @@ using System.Windows.Shapes;
 namespace qw.application_pages.additional_views
 {
     /// <summary>
-    /// Логика взаимодействия для EquipmentCrudPage.xaml
+    /// Логика взаимодействия для PicketTypesCrudPage.xaml
     /// </summary>
-    public partial class EquipmentCrudPage : Page
+    public partial class PicketTypesCrudPage : Page
     {
-        private Профиль profile;
         private Пикет picket;
-        public EquipmentCrudPage(Профиль profile)
-        {
-            InitializeComponent();
-            this.profile = profile;
-            showNonDeletedEntries();
-        }
-
-        public EquipmentCrudPage(Пикет picket)
+        public PicketTypesCrudPage(Пикет picket)
         {
             InitializeComponent();
             this.picket = picket;
@@ -42,14 +34,14 @@ namespace qw.application_pages.additional_views
 
         private void showNonDeletedEntries()
         {
-            dataGridOfEntries.ItemsSource = DbWorker.GetContext().Измерительное_оборудование.Where(x => x.удален != true).ToList();
+            dataGridOfEntries.ItemsSource = DbWorker.GetContext().Виды_пикетов.Where(x => x.удален != true).ToList();
         }
 
         private void saveChanges()
         {
             try
             {
-                var selectedItem = dataGridOfEntries.SelectedItem as Измерительное_оборудование;
+                var selectedItem = dataGridOfEntries.SelectedItem as Виды_пикетов;
                 if (selectedItem != null)
                 {
                     if (selectedItem.дата_добавления_записи != null)
@@ -64,9 +56,9 @@ namespace qw.application_pages.additional_views
                     }
 
                     // Добавляем новый элемент в контекст Entity Framework, если он не был добавлен ранее
-                    if (DbWorker.GetContext().Измерительное_оборудование.Local.Contains(selectedItem) == false)
+                    if (DbWorker.GetContext().Виды_пикетов.Local.Contains(selectedItem) == false)
                     {
-                        DbWorker.GetContext().Измерительное_оборудование.Add(selectedItem);
+                        DbWorker.GetContext().Виды_пикетов.Add(selectedItem);
                     }
 
                     DbWorker.GetContext().SaveChanges();
@@ -89,24 +81,18 @@ namespace qw.application_pages.additional_views
 
         private void showDeletedEntries()
         {
-            dataGridOfEntries.ItemsSource = DbWorker.GetContext().Измерительное_оборудование.Where(x => x.удален == true).ToList();
+            dataGridOfEntries.ItemsSource = DbWorker.GetContext().Виды_пикетов.Where(x => x.удален == true).ToList();
         }
 
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            if (profile != null)
-            {
-                AppFrame.mainFrame.Navigate(new MethodologyCrudPage(profile));
-            }
-            else
-            {
-                AppFrame.mainFrame.Navigate(new PicketEquipmentCrudPage(picket));
-            }
+            var linkingEntry = DbWorker.GetContext().Профиль.FirstOrDefault(x => x.id == picket.id_профиля);
+            AppFrame.mainFrame.Navigate(new PicketEditPage(linkingEntry, picket));
         }
 
         private void deleteButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = dataGridOfEntries.SelectedItem as Измерительное_оборудование;
+            var selectedElement = dataGridOfEntries.SelectedItem as Виды_пикетов;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
@@ -145,7 +131,7 @@ namespace qw.application_pages.additional_views
 
         private void recoverEntryButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = dataGridOfEntries.SelectedItem as Измерительное_оборудование;
+            var selectedElement = dataGridOfEntries.SelectedItem as Виды_пикетов;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");

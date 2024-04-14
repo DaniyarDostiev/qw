@@ -23,13 +23,12 @@ namespace qw.application_pages.additional_views
     /// </summary>
     public partial class QualificationCrudPage : Page
     {
-        private Площадь area;
-        public QualificationCrudPage(Площадь area)
+        private Сотрудник admin;
+        public QualificationCrudPage(Сотрудник admin)
         {
             InitializeComponent();
+            this.admin = admin;
             showNonDeletedEntries();
-
-            this.area = area;
         }
 
         private void showNonDeletedEntries()
@@ -85,7 +84,7 @@ namespace qw.application_pages.additional_views
 
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            AppFrame.mainFrame.Navigate(new EmployeeCrudPage(area));
+            AppFrame.mainFrame.Navigate(new EmployeeCrudPage(admin));
         }
 
         private void deleteButtonClick(object sender, RoutedEventArgs e)

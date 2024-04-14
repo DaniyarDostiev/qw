@@ -305,8 +305,8 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="частота" Type="nvarchar" MaxLength="255" />
-          <Property Name="значение ЭДС" Type="datetime" />
-          <Property Name="дата добавления записи" Type="nchar" MaxLength="10" />
+          <Property Name="значение ЭДС" Type="nvarchar" MaxLength="255" />
+          <Property Name="дата добавления записи" Type="datetime" />
           <Property Name="дата последнего изменения записи" Type="datetime" />
           <Property Name="удален" Type="bit" />
         </EntityType>
@@ -1095,7 +1095,6 @@
           <EntitySet Name="Профиль_ТелеметрическиеИзмерения" EntityType="qw2Model.Профиль_ТелеметрическиеИзмерения" />
           <EntitySet Name="Профиль_ТочкиИзломов" EntityType="qw2Model.Профиль_ТочкиИзломов" />
           <EntitySet Name="Профиль_ЭлектромагнитныеИзмерения" EntityType="qw2Model.Профиль_ЭлектромагнитныеИзмерения" />
-          <EntitySet Name="Результаты_измерения" EntityType="qw2Model.Результаты_измерения" />
           <EntitySet Name="Сотрудник" EntityType="qw2Model.Сотрудник" />
           <EntitySet Name="Список_фильтров_над_обработкой" EntityType="qw2Model.Список_фильтров_над_обработкой" />
           <EntitySet Name="Телеметрические_измерения" EntityType="qw2Model.Телеметрические_измерения" />
@@ -1161,10 +1160,6 @@
           <AssociationSet Name="FK_Список_фильтров_над_обработкой_Обработки_на_профиле" Association="qw2Model.FK_Список_фильтров_над_обработкой_Обработки_на_профиле">
             <End Role="Обработки_на_профиле" EntitySet="Обработки_на_профиле" />
             <End Role="Список_фильтров_над_обработкой" EntitySet="Список_фильтров_над_обработкой" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" Association="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения">
-            <End Role="Результаты_измерения" EntitySet="Результаты_измерения" />
-            <End Role="Пикет_ПромежуточныеИзмерения" EntitySet="Пикет_ПромежуточныеИзмерения" />
           </AssociationSet>
           <AssociationSet Name="FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения" Association="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения">
             <End Role="Трансформанта_измерения" EntitySet="Трансформанта_измерения" />
@@ -1251,10 +1246,6 @@
             <End Role="Профиль" EntitySet="Профиль" />
             <End Role="Пикет" EntitySet="Пикет" />
           </AssociationSet>
-          <AssociationSet Name="FK_Пикет_Результаты_измерения" Association="qw2Model.FK_Пикет_Результаты_измерения">
-            <End Role="Результаты_измерения" EntitySet="Результаты_измерения" />
-            <End Role="Пикет" EntitySet="Пикет" />
-          </AssociationSet>
           <AssociationSet Name="FK_Пикет_Сотрудники_Пикет" Association="qw2Model.FK_Пикет_Сотрудники_Пикет">
             <End Role="Пикет" EntitySet="Пикет" />
             <End Role="Пикет_Сотрудники" EntitySet="Пикет_Сотрудники" />
@@ -1267,6 +1258,15 @@
           <AssociationSet Name="FK_Пикет_Виды_пикетов" Association="qw2Model.FK_Пикет_Виды_пикетов">
             <End Role="Виды_пикетов" EntitySet="Виды_пикетов" />
             <End Role="Пикет" EntitySet="Пикет" />
+          </AssociationSet>
+          <EntitySet Name="Результаты_измерения" EntityType="qw2Model.Результаты_измерения" />
+          <AssociationSet Name="FK_Пикет_Результаты_измерения" Association="qw2Model.FK_Пикет_Результаты_измерения">
+            <End Role="Результаты_измерения" EntitySet="Результаты_измерения" />
+            <End Role="Пикет" EntitySet="Пикет" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" Association="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения">
+            <End Role="Результаты_измерения" EntitySet="Результаты_измерения" />
+            <End Role="Пикет_ПромежуточныеИзмерения" EntitySet="Пикет_ПромежуточныеИзмерения" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagrams">
@@ -1423,8 +1423,8 @@
           <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
           <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
           <Property Name="удален" Type="Boolean" />
-          <NavigationProperty Name="Результаты_измерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" FromRole="Пикет_ПромежуточныеИзмерения" ToRole="Результаты_измерения" />
           <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Пикет" FromRole="Пикет_ПромежуточныеИзмерения" ToRole="Пикет" />
+          <NavigationProperty Name="Результаты_измерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" FromRole="Пикет_ПромежуточныеИзмерения" ToRole="Результаты_измерения" />
         </EntityType>
         <EntityType Name="Пикет_ПромежуточныеТрансформантыИзмерения">
           <Key>
@@ -1594,19 +1594,6 @@
           <Property Name="удален" Type="Boolean" />
           <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Профиль" FromRole="Профиль_ЭлектромагнитныеИзмерения" ToRole="Профиль" />
           <NavigationProperty Name="Электромагнитные_измерения" Relationship="qw2Model.FK_Профиль_ЭлектромагнитныеИзмерения_Электромагнитные_измерения" FromRole="Профиль_ЭлектромагнитныеИзмерения" ToRole="Электромагнитные_измерения" />
-        </EntityType>
-        <EntityType Name="Результаты_измерения">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="частота" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="значение_ЭДС" Type="DateTime" Precision="3" />
-          <Property Name="дата_добавления_записи" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
-          <Property Name="удален" Type="Boolean" />
-          <NavigationProperty Name="Пикет_ПромежуточныеИзмерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" FromRole="Результаты_измерения" ToRole="Пикет_ПромежуточныеИзмерения" />
-          <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_Результаты_измерения" FromRole="Результаты_измерения" ToRole="Пикет" />
         </EntityType>
         <EntityType Name="Сотрудник">
           <Key>
@@ -1870,18 +1857,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения">
-          <End Type="qw2Model.Результаты_измерения" Role="Результаты_измерения" Multiplicity="0..1" />
-          <End Type="qw2Model.Пикет_ПромежуточныеИзмерения" Role="Пикет_ПромежуточныеИзмерения" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Результаты_измерения">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Пикет_ПромежуточныеИзмерения">
-              <PropertyRef Name="id_результатов_измерения" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Пикет_ПромежуточныеТрансформантыИзмерения_Трансформанта_измерения">
           <End Type="qw2Model.Трансформанта_измерения" Role="Трансформанта_измерения" Multiplicity="0..1" />
           <End Type="qw2Model.Пикет_ПромежуточныеТрансформантыИзмерения" Role="Пикет_ПромежуточныеТрансформантыИзмерения" Multiplicity="*" />
@@ -2093,10 +2068,10 @@
           <NavigationProperty Name="Пикет_ПромежуточныеИзмерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Пикет" FromRole="Пикет" ToRole="Пикет_ПромежуточныеИзмерения" />
           <NavigationProperty Name="Пикет_ПромежуточныеТрансформантыИзмерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеТрансформантыИзмерения_Пикет" FromRole="Пикет" ToRole="Пикет_ПромежуточныеТрансформантыИзмерения" />
           <NavigationProperty Name="Профиль" Relationship="qw2Model.FK_Пикет_Профиль" FromRole="Пикет" ToRole="Профиль" />
-          <NavigationProperty Name="Результаты_измерения" Relationship="qw2Model.FK_Пикет_Результаты_измерения" FromRole="Пикет" ToRole="Результаты_измерения" />
           <NavigationProperty Name="Пикет_Сотрудники" Relationship="qw2Model.FK_Пикет_Сотрудники_Пикет" FromRole="Пикет" ToRole="Пикет_Сотрудники" />
           <NavigationProperty Name="Пикет_ТрансформантаИзмерения" Relationship="qw2Model.FK_Пикет_ТрансформантаИзмерения_Пикет" FromRole="Пикет" ToRole="Пикет_ТрансформантаИзмерения" />
           <NavigationProperty Name="Виды_пикетов" Relationship="qw2Model.FK_Пикет_Виды_пикетов" FromRole="Пикет" ToRole="Виды_пикетов" />
+          <NavigationProperty Name="Результаты_измерения" Relationship="qw2Model.FK_Пикет_Результаты_измерения" FromRole="Пикет" ToRole="Результаты_измерения" />
         </EntityType>
         <Association Name="FK_Пикет_Координаты_точки">
           <End Type="qw2Model.Координаты_точки" Role="Координаты_точки" Multiplicity="0..1" />
@@ -2158,18 +2133,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Пикет_Результаты_измерения">
-          <End Type="qw2Model.Результаты_измерения" Role="Результаты_измерения" Multiplicity="0..1" />
-          <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Результаты_измерения">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Пикет">
-              <PropertyRef Name="id_окончательного_результата" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Пикет_Сотрудники_Пикет">
           <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="0..1" />
           <End Type="qw2Model.Пикет_Сотрудники" Role="Пикет_Сотрудники" Multiplicity="*" />
@@ -2214,6 +2177,43 @@
             </Principal>
             <Dependent Role="Пикет">
               <PropertyRef Name="вид_пикета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Результаты_измерения">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="частота" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="значение_ЭДС" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="дата_добавления_записи" Type="DateTime" Precision="3" />
+          <Property Name="дата_последнего_изменения_записи" Type="DateTime" Precision="3" />
+          <Property Name="удален" Type="Boolean" />
+          <NavigationProperty Name="Пикет" Relationship="qw2Model.FK_Пикет_Результаты_измерения" FromRole="Результаты_измерения" ToRole="Пикет" />
+          <NavigationProperty Name="Пикет_ПромежуточныеИзмерения" Relationship="qw2Model.FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения" FromRole="Результаты_измерения" ToRole="Пикет_ПромежуточныеИзмерения" />
+        </EntityType>
+        <Association Name="FK_Пикет_Результаты_измерения">
+          <End Type="qw2Model.Результаты_измерения" Role="Результаты_измерения" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет" Role="Пикет" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Результаты_измерения">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Пикет">
+              <PropertyRef Name="id_окончательного_результата" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Пикет_ПромежуточныеИзмерения_Результаты_измерения">
+          <End Type="qw2Model.Результаты_измерения" Role="Результаты_измерения" Multiplicity="0..1" />
+          <End Type="qw2Model.Пикет_ПромежуточныеИзмерения" Role="Пикет_ПромежуточныеИзмерения" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Результаты_измерения">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Пикет_ПромежуточныеИзмерения">
+              <PropertyRef Name="id_результатов_измерения" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2514,18 +2514,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Результаты_измерения">
-            <EntityTypeMapping TypeName="qw2Model.Результаты_измерения">
-              <MappingFragment StoreEntitySet="Результаты измерения">
-                <ScalarProperty Name="удален" ColumnName="удален" />
-                <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
-                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
-                <ScalarProperty Name="значение_ЭДС" ColumnName="значение ЭДС" />
-                <ScalarProperty Name="частота" ColumnName="частота" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Сотрудник">
             <EntityTypeMapping TypeName="qw2Model.Сотрудник">
               <MappingFragment StoreEntitySet="Сотрудник">
@@ -2624,6 +2612,18 @@
                 <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
                 <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
                 <ScalarProperty Name="название" ColumnName="название" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Результаты_измерения">
+            <EntityTypeMapping TypeName="qw2Model.Результаты_измерения">
+              <MappingFragment StoreEntitySet="Результаты измерения">
+                <ScalarProperty Name="удален" ColumnName="удален" />
+                <ScalarProperty Name="дата_последнего_изменения_записи" ColumnName="дата последнего изменения записи" />
+                <ScalarProperty Name="дата_добавления_записи" ColumnName="дата добавления записи" />
+                <ScalarProperty Name="значение_ЭДС" ColumnName="значение ЭДС" />
+                <ScalarProperty Name="частота" ColumnName="частота" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

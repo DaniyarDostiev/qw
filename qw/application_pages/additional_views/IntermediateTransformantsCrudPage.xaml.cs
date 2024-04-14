@@ -20,20 +20,12 @@ using System.Windows.Shapes;
 namespace qw.application_pages.additional_views
 {
     /// <summary>
-    /// Логика взаимодействия для EquipmentCrudPage.xaml
+    /// Логика взаимодействия для IntermediateTransformantsCrudPage.xaml
     /// </summary>
-    public partial class EquipmentCrudPage : Page
+    public partial class IntermediateTransformantsCrudPage : Page
     {
-        private Профиль profile;
         private Пикет picket;
-        public EquipmentCrudPage(Профиль profile)
-        {
-            InitializeComponent();
-            this.profile = profile;
-            showNonDeletedEntries();
-        }
-
-        public EquipmentCrudPage(Пикет picket)
+        public IntermediateTransformantsCrudPage(Пикет picket)
         {
             InitializeComponent();
             this.picket = picket;
@@ -42,31 +34,44 @@ namespace qw.application_pages.additional_views
 
         private void showNonDeletedEntries()
         {
-            dataGridOfEntries.ItemsSource = DbWorker.GetContext().Измерительное_оборудование.Where(x => x.удален != true).ToList();
+            List<Трансформанта_измерения> allEntries = DbWorker.GetContext().Пикет_ПромежуточныеТрансформантыИзмерения
+                .Where(x => x.id_пикета == picket.id)
+                .Select(x => x.Трансформанта_измерения)
+                .Where(x => x.удален != true)
+                .ToList();
+
+            dataGridOfEntries.ItemsSource = allEntries;
         }
 
         private void saveChanges()
         {
             try
             {
-                var selectedItem = dataGridOfEntries.SelectedItem as Измерительное_оборудование;
+                var selectedItem = dataGridOfEntries.SelectedItem as Трансформанта_измерения;
                 if (selectedItem != null)
                 {
                     if (selectedItem.дата_добавления_записи != null)
                     {
+                        // изменение сущесвтующей записи
                         selectedItem.дата_последнего_изменения_записи = (DateTime?)new SqlDateTime(DateTime.Now);
                     }
                     else
                     {
+                        // добавление новой записи
                         selectedItem.дата_добавления_записи = (DateTime?)new SqlDateTime(DateTime.Now);
                         selectedItem.дата_последнего_изменения_записи = (DateTime?)new SqlDateTime(DateTime.Now);
                         selectedItem.удален = false;
+
+                        var linkingEntry = new Пикет_ПромежуточныеТрансформантыИзмерения();
+                        linkingEntry.Пикет = picket;
+                        linkingEntry.Трансформанта_измерения = selectedItem;
+                        DbWorker.GetContext().Пикет_ПромежуточныеТрансформантыИзмерения.Add(linkingEntry);
                     }
 
                     // Добавляем новый элемент в контекст Entity Framework, если он не был добавлен ранее
-                    if (DbWorker.GetContext().Измерительное_оборудование.Local.Contains(selectedItem) == false)
+                    if (DbWorker.GetContext().Трансформанта_измерения.Local.Contains(selectedItem) == false)
                     {
-                        DbWorker.GetContext().Измерительное_оборудование.Add(selectedItem);
+                        DbWorker.GetContext().Трансформанта_измерения.Add(selectedItem);
                     }
 
                     DbWorker.GetContext().SaveChanges();
@@ -89,24 +94,24 @@ namespace qw.application_pages.additional_views
 
         private void showDeletedEntries()
         {
-            dataGridOfEntries.ItemsSource = DbWorker.GetContext().Измерительное_оборудование.Where(x => x.удален == true).ToList();
+            List<Трансформанта_измерения> allEntries = DbWorker.GetContext().Пикет_ПромежуточныеТрансформантыИзмерения
+                .Where(x => x.id_пикета == picket.id)
+                .Select(x => x.Трансформанта_измерения)
+                .Where(x => x.удален == true)
+                .ToList();
+
+            dataGridOfEntries.ItemsSource = allEntries;
         }
 
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            if (profile != null)
-            {
-                AppFrame.mainFrame.Navigate(new MethodologyCrudPage(profile));
-            }
-            else
-            {
-                AppFrame.mainFrame.Navigate(new PicketEquipmentCrudPage(picket));
-            }
+            var linkingEntry = DbWorker.GetContext().Профиль.FirstOrDefault(x => x.id == picket.id_профиля);
+            AppFrame.mainFrame.Navigate(new PicketEditPage(linkingEntry, picket));
         }
 
         private void deleteButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = dataGridOfEntries.SelectedItem as Измерительное_оборудование;
+            var selectedElement = dataGridOfEntries.SelectedItem as Трансформанта_измерения;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
@@ -145,7 +150,7 @@ namespace qw.application_pages.additional_views
 
         private void recoverEntryButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = dataGridOfEntries.SelectedItem as Измерительное_оборудование;
+            var selectedElement = dataGridOfEntries.SelectedItem as Трансформанта_измерения;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");

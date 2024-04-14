@@ -21,7 +21,7 @@ namespace qw.database
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
         public Nullable<bool> удален { get; set; }
     
-        public virtual Результаты_измерения Результаты_измерения { get; set; }
         public virtual Пикет Пикет { get; set; }
+        public virtual Результаты_измерения Результаты_измерения { get; set; }
     }
 }

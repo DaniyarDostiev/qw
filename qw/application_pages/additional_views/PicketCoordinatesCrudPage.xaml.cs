@@ -16,24 +16,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static qw.application_pages.additional_views.ProfileStartAndEndCoordinates;
 
 namespace qw.application_pages.additional_views
 {
     /// <summary>
-    /// Логика взаимодействия для EquipmentCrudPage.xaml
+    /// Логика взаимодействия для PicketCoordinatesCrudPage.xaml
     /// </summary>
-    public partial class EquipmentCrudPage : Page
+    public partial class PicketCoordinatesCrudPage : Page
     {
-        private Профиль profile;
         private Пикет picket;
-        public EquipmentCrudPage(Профиль profile)
-        {
-            InitializeComponent();
-            this.profile = profile;
-            showNonDeletedEntries();
-        }
-
-        public EquipmentCrudPage(Пикет picket)
+        public PicketCoordinatesCrudPage(Пикет picket)
         {
             InitializeComponent();
             this.picket = picket;
@@ -42,31 +35,50 @@ namespace qw.application_pages.additional_views
 
         private void showNonDeletedEntries()
         {
-            dataGridOfEntries.ItemsSource = DbWorker.GetContext().Измерительное_оборудование.Where(x => x.удален != true).ToList();
+            dataGridOfEntries.ItemsSource = DbWorker.GetContext().Координаты_точки
+                .Where(x => x.id == picket.id_координат_нахождения && x.удален != true).ToList();
+
         }
 
         private void saveChanges()
         {
             try
             {
-                var selectedItem = dataGridOfEntries.SelectedItem as Измерительное_оборудование;
+                var selectedItem = dataGridOfEntries.SelectedItem as Координаты_точки;
                 if (selectedItem != null)
                 {
                     if (selectedItem.дата_добавления_записи != null)
                     {
+                        // изменение сущесвтующей записи
                         selectedItem.дата_последнего_изменения_записи = (DateTime?)new SqlDateTime(DateTime.Now);
                     }
                     else
                     {
+                        // добавление новой записи
                         selectedItem.дата_добавления_записи = (DateTime?)new SqlDateTime(DateTime.Now);
                         selectedItem.дата_последнего_изменения_записи = (DateTime?)new SqlDateTime(DateTime.Now);
                         selectedItem.удален = false;
+
+                        // пикет по отношению, к которому производятся все операции
+                        var linkingEntry = picket;
+                        var buffer = linkingEntry.id_координат_нахождения;
+                        linkingEntry.id_координат_нахождения = selectedItem.id;
+
+                        // если при добавлении новых координат, к профилю уже были привязаны другие координаты
+                        // старые координаты необходимо удалить
+                        if (buffer != null)
+                        {
+                            var oldCoordinates = DbWorker.GetContext().Координаты_точки
+                                .FirstOrDefault(x => x.id == buffer);
+                            DbWorker.GetContext().Координаты_точки.Remove(oldCoordinates);
+                        }
                     }
 
                     // Добавляем новый элемент в контекст Entity Framework, если он не был добавлен ранее
-                    if (DbWorker.GetContext().Измерительное_оборудование.Local.Contains(selectedItem) == false)
+                    if (DbWorker.GetContext().Координаты_точки.Local.Contains(selectedItem) == false)
                     {
-                        DbWorker.GetContext().Измерительное_оборудование.Add(selectedItem);
+                        // добавление точки, которой до этого не было в контексте и в БД
+                        DbWorker.GetContext().Координаты_точки.Add(selectedItem);
                     }
 
                     DbWorker.GetContext().SaveChanges();
@@ -89,24 +101,19 @@ namespace qw.application_pages.additional_views
 
         private void showDeletedEntries()
         {
-            dataGridOfEntries.ItemsSource = DbWorker.GetContext().Измерительное_оборудование.Where(x => x.удален == true).ToList();
+            dataGridOfEntries.ItemsSource = DbWorker.GetContext().Координаты_точки
+                .Where(x => x.id == picket.id_координат_нахождения && x.удален == true).ToList();
         }
 
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            if (profile != null)
-            {
-                AppFrame.mainFrame.Navigate(new MethodologyCrudPage(profile));
-            }
-            else
-            {
-                AppFrame.mainFrame.Navigate(new PicketEquipmentCrudPage(picket));
-            }
+            var linkingEntry = DbWorker.GetContext().Профиль.FirstOrDefault(x => x.id == picket.id_профиля);
+            AppFrame.mainFrame.Navigate(new PicketEditPage(linkingEntry, picket));
         }
 
         private void deleteButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = dataGridOfEntries.SelectedItem as Измерительное_оборудование;
+            var selectedElement = dataGridOfEntries.SelectedItem as Координаты_точки;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
@@ -145,7 +152,7 @@ namespace qw.application_pages.additional_views
 
         private void recoverEntryButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = dataGridOfEntries.SelectedItem as Измерительное_оборудование;
+            var selectedElement = dataGridOfEntries.SelectedItem as Координаты_точки;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");

@@ -17,20 +17,20 @@ namespace qw.database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Результаты_измерения()
         {
-            this.Пикет_ПромежуточныеИзмерения = new HashSet<Пикет_ПромежуточныеИзмерения>();
             this.Пикет = new HashSet<Пикет>();
+            this.Пикет_ПромежуточныеИзмерения = new HashSet<Пикет_ПромежуточныеИзмерения>();
         }
     
         public int id { get; set; }
         public string частота { get; set; }
-        public Nullable<System.DateTime> значение_ЭДС { get; set; }
-        public string дата_добавления_записи { get; set; }
+        public string значение_ЭДС { get; set; }
+        public Nullable<System.DateTime> дата_добавления_записи { get; set; }
         public Nullable<System.DateTime> дата_последнего_изменения_записи { get; set; }
         public Nullable<bool> удален { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Пикет_ПромежуточныеИзмерения> Пикет_ПромежуточныеИзмерения { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Пикет> Пикет { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Пикет_ПромежуточныеИзмерения> Пикет_ПромежуточныеИзмерения { get; set; }
     }
 }

@@ -20,7 +20,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label Content="Договоры" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"></Label>
+            <Label Content="Договоры" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"></Label>
         </Grid>
 
         <DataGrid Grid.Row="1" Name="dataGridOfEntries" CanUserResizeRows="True" 

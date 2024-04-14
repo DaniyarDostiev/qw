@@ -43,11 +43,11 @@ namespace qw.database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Пикет_ПромежуточныеТрансформантыИзмерения> Пикет_ПромежуточныеТрансформантыИзмерения { get; set; }
         public virtual Профиль Профиль { get; set; }
-        public virtual Результаты_измерения Результаты_измерения { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Пикет_Сотрудники> Пикет_Сотрудники { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Пикет_ТрансформантаИзмерения> Пикет_ТрансформантаИзмерения { get; set; }
         public virtual Виды_пикетов Виды_пикетов { get; set; }
+        public virtual Результаты_измерения Результаты_измерения { get; set; }
     }
 }

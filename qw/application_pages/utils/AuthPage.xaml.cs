@@ -1,4 +1,5 @@
-﻿using qw.application_pages.views;
+﻿using qw.application_pages.additional_views;
+using qw.application_pages.views;
 using qw.util;
 using System;
 using System.Collections.Generic;
@@ -41,9 +42,9 @@ namespace qw.application_pages.utils
                 }
                 else
                 {
-
-                    var userObj = DbWorker.GetContext().Сотрудник.
-                        FirstOrDefault(x => x.логин == loginTextbox.Text && x.пароль == passwordTextbox.Text);
+                    var userObj = DbWorker.GetContext().Сотрудник
+                        .Where(x => x.удален != true)
+                        .FirstOrDefault(x => x.логин == loginTextbox.Text && x.пароль == passwordTextbox.Text);
 
                     if (userObj == null)
                     {
@@ -54,7 +55,14 @@ namespace qw.application_pages.utils
                         loginTextbox.Text = null;
                         passwordTextbox.Text = null;
 
-                        AppFrame.mainFrame.Navigate(new Customer());
+                        if (userObj.Должность.название.Equals("Админ"))
+                        {
+                            AppFrame.mainFrame.Navigate(new EmployeeCrudPage(userObj));
+                        }
+                        else
+                        {
+                            AppFrame.mainFrame.Navigate(new Customer());
+                        }
                     }
                 }
             }

@@ -37,9 +37,6 @@
                     <ComboBox Name="dataProcessingSupervisorComboBox"></ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Все сотрудники" Click="employeePageButtonClick" Width="150"></Button>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
                     <TextBlock Text="Длина периметра" ></TextBlock>
                     <TextBox Name="perimeterLengthTextBox"></TextBox>
                 </StackPanel>

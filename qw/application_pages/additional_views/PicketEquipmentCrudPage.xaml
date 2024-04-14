@@ -1,4 +1,4 @@
-﻿<Page x:Class="qw.application_pages.additional_views.QualificationCrudPage"
+﻿<Page x:Class="qw.application_pages.additional_views.PicketEquipmentCrudPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:qw.application_pages.additional_views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="QualificationCrudPage">
+      Title="PicketEquipmentCrudPage">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,17 +18,25 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Content="Квалификация" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"></Label>
+            <Label Grid.Column="0" Content="Оборудование на пикете" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"></Label>
+            
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <ComboBox Name="entriesComboBox"></ComboBox>
+                <Button Content="Добавить" Click="addButtonClick"></Button>
+                <Button Content="Оборудование" Click="equipmentPageButtonClick"></Button>
+            </StackPanel>
         </Grid>
 
         <DataGrid Grid.Row="1" Name="dataGridOfEntries" CanUserResizeRows="True" 
-                  AutoGenerateColumns="False" HorizontalScrollBarVisibility="Visible">
+                  AutoGenerateColumns="False" HorizontalScrollBarVisibility="Visible"
+                  IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" MinWidth="150" Width="*" Binding="{Binding название}"></DataGridTextColumn>
-                <DataGridTextColumn x:Name="dateOfBeginColumn" Header="Дата добавления" MinWidth="150" Width="*" Binding="{Binding дата_добавления_записи}" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn x:Name="dateOfEndColumn" Header="Дата зменения" MinWidth="150" Width="*" Binding="{Binding дата_последнего_изменения_записи}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название" Width="150" Binding="{Binding название_оборудования}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Инв. номер" MinWidth="150" Width="*" Binding="{Binding инв_номер}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Хар-ки" MinWidth="150" Width="*" Binding="{Binding характеристики_описание}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -43,17 +51,7 @@
 
             <StackPanel Name="crudButtonStackPanel" Grid.Column="1" Orientation="Horizontal" 
                         HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
-                <Button Click="deletedEntriesButtonClick">
-                    <TextBlock Text="Скрытые записи" TextWrapping="Wrap" FontSize="11"/>
-                </Button>
-                <Button Content="Сохранить" Click="saveButtonClick"></Button>
                 <Button Content="Удалить" Click="deleteButtonClick"></Button>
-            </StackPanel>
-
-            <StackPanel Name="deletedEntriesButtonStackPanel" Visibility="Hidden" Grid.Column="1" Orientation="Horizontal" 
-                        HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
-                <Button Content="Закрыть" Click="closeDeletedEntriesButtonClick"></Button>
-                <Button Content="Восстановить" Click="recoverEntryButtonClick"></Button>
             </StackPanel>
         </Grid>
     </Grid>

@@ -110,6 +110,9 @@
     <Compile Include="application_pages\additional_views\BreakpointsPage.xaml.cs">
       <DependentUpon>BreakpointsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="application_pages\additional_views\CommonTransformantsCrudPage.xaml.cs">
+      <DependentUpon>CommonTransformantsCrudPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\additional_views\ContractCrudPage.xaml.cs">
       <DependentUpon>ContractCrudPage.xaml</DependentUpon>
     </Compile>
@@ -125,8 +128,29 @@
     <Compile Include="application_pages\additional_views\FiltersCrudPage.xaml.cs">
       <DependentUpon>FiltersCrudPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="application_pages\additional_views\IntermediateResultsCrudPage.xaml.cs">
+      <DependentUpon>IntermediateResultsCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\IntermediateTransformantsCrudPage.xaml.cs">
+      <DependentUpon>IntermediateTransformantsCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\MeasurementResultCrudPage.xaml.cs">
+      <DependentUpon>MeasurementResultCrudPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\additional_views\MethodologyCrudPage.xaml.cs">
       <DependentUpon>MethodologyCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\PicketCoordinatesCrudPage.xaml.cs">
+      <DependentUpon>PicketCoordinatesCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\PicketEmployeeCrudPage.xaml.cs">
+      <DependentUpon>PicketEmployeeCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\PicketEquipmentCrudPage.xaml.cs">
+      <DependentUpon>PicketEquipmentCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\PicketTypesCrudPage.xaml.cs">
+      <DependentUpon>PicketTypesCrudPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\additional_views\PositionCrudPage.xaml.cs">
       <DependentUpon>PositionCrudPage.xaml</DependentUpon>
@@ -195,6 +219,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="application_pages\additional_views\CommonTransformantsCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="application_pages\additional_views\ContractCrudPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,7 +243,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="application_pages\additional_views\IntermediateResultsCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\IntermediateTransformantsCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\MeasurementResultCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="application_pages\additional_views\MethodologyCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\PicketCoordinatesCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\PicketEmployeeCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\PicketEquipmentCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\PicketTypesCrudPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -53,7 +53,7 @@ namespace qw.application_pages.edits
                 .Where(x => x.удален != true)
                 .Select(x => x.название_методики).ToList();
             profileHandlerComboBox.ItemsSource = DbWorker.GetContext().Сотрудник
-                .Where(x => x.удален != true)
+                .Where(x => x.удален != true && x.Должность.название != "Админ")
                 .Select(x => x.логин).ToList();
             profileHandlerComboBox.SelectedIndex = 0;
 

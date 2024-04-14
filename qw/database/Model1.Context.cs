@@ -47,7 +47,6 @@ namespace qw.database
         public virtual DbSet<Профиль_ТелеметрическиеИзмерения> Профиль_ТелеметрическиеИзмерения { get; set; }
         public virtual DbSet<Профиль_ТочкиИзломов> Профиль_ТочкиИзломов { get; set; }
         public virtual DbSet<Профиль_ЭлектромагнитныеИзмерения> Профиль_ЭлектромагнитныеИзмерения { get; set; }
-        public virtual DbSet<Результаты_измерения> Результаты_измерения { get; set; }
         public virtual DbSet<Сотрудник> Сотрудник { get; set; }
         public virtual DbSet<Список_фильтров_над_обработкой> Список_фильтров_над_обработкой { get; set; }
         public virtual DbSet<Телеметрические_измерения> Телеметрические_измерения { get; set; }
@@ -56,5 +55,6 @@ namespace qw.database
         public virtual DbSet<Электромагнитные_измерения> Электромагнитные_измерения { get; set; }
         public virtual DbSet<Пикет> Пикет { get; set; }
         public virtual DbSet<Виды_пикетов> Виды_пикетов { get; set; }
+        public virtual DbSet<Результаты_измерения> Результаты_измерения { get; set; }
     }
 }

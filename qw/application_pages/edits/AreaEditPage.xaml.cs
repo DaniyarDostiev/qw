@@ -47,10 +47,10 @@ namespace qw.application_pages.edits
             this.area = area;
 
             fieldSupervisorComboBox.ItemsSource = DbWorker.GetContext().Сотрудник
-                .Where(x => x.удален != true)
+                .Where(x => x.удален != true && x.Должность.название != "Админ")
                 .Select(x => x.логин).ToList();
             dataProcessingSupervisorComboBox.ItemsSource = DbWorker.GetContext().Сотрудник
-                .Where(x => x.удален != true)
+                .Where(x => x.удален != true && x.Должность.название != "Админ")
                 .Select(x => x.логин).ToList();
 
             fieldFill();
@@ -116,11 +116,6 @@ namespace qw.application_pages.edits
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
             AppFrame.mainFrame.Navigate(new AreaPage(project));
-        }
-        
-        private void employeePageButtonClick(object sender, RoutedEventArgs e)
-        {
-            AppFrame.mainFrame.Navigate(new EmployeeCrudPage(area));
         }
 
         private void coordinatesPageClick(object sender, RoutedEventArgs e)

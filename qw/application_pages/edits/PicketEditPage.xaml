@@ -29,7 +29,7 @@
                     <TextBox Name="nameTextBox"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <TextBlock Text="Дата получения результа" ></TextBlock>
+                    <TextBlock Text="Дата получения результата" ></TextBlock>
                     <TextBox Name="resultDateTextBox"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
@@ -37,16 +37,16 @@
                     <ComboBox Name="picketTypeComboBox"></ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Все виды" Width="150"></Button>
+                    <Button Content="Все виды" Width="150" Click="picketTypesButtonClick"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Координаты пикета" Width="150"></Button>
+                    <Button Name="picketCoordinatesButton" Content="Координаты пикета" Width="150" Click="picketCoordinatesButtonClick"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Результат измерений" Width="150"></Button>
+                    <Button Name="measurementResultButton" Content="Результат измерений" Width="150" Click="measurementResultPageClick"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Промежуточные изм." Width="150"></Button>
+                    <Button Name="intermediateResultsButton" Content="Промежуточные изм." Width="150" Click="intermediateResultsButtonClick"></Button>
                 </StackPanel>
             </StackPanel>
 
@@ -60,16 +60,16 @@
                     <TextBox Name="editDateTextBox" IsReadOnly="True" IsEnabled="False"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Трансформанты" Width="150"></Button>
+                    <Button Name="commonTransformantsButton" Content="Трансформанты" Width="150" Click="commonTransformantsButtonClick"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Промежуточные транс." Width="150"></Button>
+                    <Button Name="intermediateTransformantsButton" Content="Промежуточные транс." Width="150" Click="intermediateTransformantsButtonClick"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Оборудование" Width="150"></Button>
+                    <Button Name="picketEquipmentPageButton" Content="Оборудование" Width="150" Click="picketEquipmentPageButtonClick"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Сотрудники" Width="150"></Button>
+                    <Button Name="picketEmployeePageButton" Content="Сотрудники" Width="150" Click="picketEmployeePageButtonClick"></Button>
                 </StackPanel>
             </StackPanel>
         </Grid>

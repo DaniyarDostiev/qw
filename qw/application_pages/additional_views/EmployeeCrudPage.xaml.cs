@@ -1,4 +1,5 @@
 ﻿using qw.application_pages.edits;
+using qw.application_pages.utils;
 using qw.database;
 using qw.util;
 using System;
@@ -24,13 +25,12 @@ namespace qw.application_pages.additional_views
     /// </summary>
     public partial class EmployeeCrudPage : Page
     {
-        private Площадь area;
-        public EmployeeCrudPage(Площадь area)
+        private Сотрудник admin;
+        public EmployeeCrudPage(Сотрудник admin)
         {
             InitializeComponent();
+            this.admin = admin;
             showNonDeletedEntries();
-
-            this.area = area;
         }
 
         private void showNonDeletedEntries()
@@ -87,8 +87,7 @@ namespace qw.application_pages.additional_views
 
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            Проект project = DbWorker.GetContext().Проект.FirstOrDefault(x => x.id == area.id_проекта);
-            AppFrame.mainFrame.Navigate(new AreaEditPage(project, area));
+            AppFrame.mainFrame.Navigate(new AuthPage());
         }
 
         private void deleteButtonClick(object sender, RoutedEventArgs e)
@@ -97,6 +96,10 @@ namespace qw.application_pages.additional_views
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
+            }
+            else if(selectedElement.Equals(admin))
+            {
+                MessageBox.Show("нельзя удалить самого себя");
             }
             else
             {
@@ -151,12 +154,12 @@ namespace qw.application_pages.additional_views
         }
         private void positionPageButtonCLick(object sender, RoutedEventArgs e)
         {
-            AppFrame.mainFrame.Navigate(new PositionCrudPage(area));
+            AppFrame.mainFrame.Navigate(new PositionCrudPage(admin));
         }
 
         private void qualificationPageButtonClick(object sender, RoutedEventArgs e)
         {
-            AppFrame.mainFrame.Navigate(new QualificationCrudPage(area));
+            AppFrame.mainFrame.Navigate(new QualificationCrudPage(admin));
         }
     }
 }
