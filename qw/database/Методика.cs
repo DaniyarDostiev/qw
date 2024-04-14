@@ -45,7 +45,7 @@ namespace qw.database
             get
             {
                 DbWorker.GetContext().Измерительное_оборудование.Load();
-                return DbWorker.GetContext().Измерительное_оборудование.ToList();
+                return DbWorker.GetContext().Измерительное_оборудование.Where(x => x.удален != true).ToList();
             }
         }
     }

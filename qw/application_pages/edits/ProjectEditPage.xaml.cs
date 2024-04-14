@@ -43,7 +43,8 @@ namespace qw.application_pages.edits
             this.customer = customer;
             this.project = project;
 
-            contractComboBox.ItemsSource = DbWorker.GetContext().Договор.Select(x => x.название).ToList();
+            contractComboBox.ItemsSource = DbWorker.GetContext().Договор
+                .Where(x => x.удален != true).Select(x => x.название).ToList();
 
             fieldFill();
         }

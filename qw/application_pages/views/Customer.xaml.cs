@@ -1,5 +1,4 @@
 ﻿using qw.application_pages.edits;
-using qw.application_pages.is_deleted;
 using qw.application_pages.utils;
 using qw.database;
 using qw.util;
@@ -101,11 +100,6 @@ namespace qw.application_pages.views
             }
         }
 
-        private void deletedEntriesButtonClick(object sender, RoutedEventArgs e)
-        {
-            AppFrame.mainFrame.Navigate(new DeletedCustomers());
-        }
-
         private void logoutButtonClick(object sender, RoutedEventArgs e)
         {
             AppFrame.mainFrame.Navigate(new AuthPage());
@@ -121,6 +115,49 @@ namespace qw.application_pages.views
             else
             {
                 AppFrame.mainFrame.Navigate(new ProjectPage(selectedElement));
+            }
+        }
+
+        private void showDeletedEntries()
+        {
+            ListBoxCustomers.ItemsSource = DbWorker.GetContext().Заказчик.Where(x => x.удален == true).ToList();
+        }
+
+        private void deletedEntriesButtonClick(object sender, RoutedEventArgs e)
+        {
+            crudButtonStackPanel.Visibility = Visibility.Hidden;
+            deletedEntriesButtonStackPanel.Visibility = Visibility.Visible;
+            navigationStackPanel.Visibility = Visibility.Hidden;
+            nextButton.Visibility = Visibility.Hidden;
+            showDeletedEntries();
+        }
+
+        private void closeDeletedEntriesButtonClick(object sender, RoutedEventArgs e)
+        {
+            crudButtonStackPanel.Visibility = Visibility.Visible;
+            deletedEntriesButtonStackPanel.Visibility = Visibility.Hidden;
+            navigationStackPanel.Visibility = Visibility.Visible;
+            nextButton.Visibility = Visibility.Visible;
+            updateElementList();
+        }
+
+        private void recoverEntryButtonClick(object sender, RoutedEventArgs e)
+        {
+            var selectedElement = ListBoxCustomers.SelectedItem as Заказчик;
+            if (selectedElement == null)
+            {
+                MessageBox.Show("выберите элемент из списка");
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите восстановить запись?", "Подтверждение",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    selectedElement.удален = false;
+                    DbWorker.GetContext().SaveChanges();
+                    showDeletedEntries();
+                }
             }
         }
     }

@@ -11,7 +11,8 @@ namespace qw.database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class Профиль
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -51,5 +52,13 @@ namespace qw.database
         public virtual ICollection<Профиль_ЭлектромагнитныеИзмерения> Профиль_ЭлектромагнитныеИзмерения { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Пикет> Пикет { get; set; }
+
+        //public int количество_пикетов
+        //{
+        //    get
+        //    {
+        //        //return this.Пикет.Where(x => x.);
+        //    }
+        //}
     }
 }

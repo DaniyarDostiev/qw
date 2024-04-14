@@ -149,14 +149,14 @@
     <Compile Include="application_pages\edits\CustomerEditPage.xaml.cs">
       <DependentUpon>CustomerEditPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="application_pages\edits\PicketEditPage.xaml.cs">
+      <DependentUpon>PicketEditPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\edits\ProfileEditPage.xaml.cs">
       <DependentUpon>ProfileEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\edits\ProjectEditPage.xaml.cs">
       <DependentUpon>ProjectEditPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="application_pages\is_deleted\DeletedCustomers.xaml.cs">
-      <DependentUpon>DeletedCustomers.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\utils\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
@@ -169,6 +169,9 @@
     </Compile>
     <Compile Include="application_pages\utils\SqlServerSelection.xaml.cs">
       <DependentUpon>SqlServerSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\views\PicketPage.xaml.cs">
+      <DependentUpon>PicketPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\views\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -244,15 +247,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="application_pages\edits\PicketEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="application_pages\edits\ProfileEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="application_pages\edits\ProjectEditPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="application_pages\is_deleted\DeletedCustomers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -269,6 +272,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="application_pages\utils\SqlServerSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\views\PicketPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

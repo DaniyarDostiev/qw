@@ -11,7 +11,8 @@ namespace qw.database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class Площадь
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -44,7 +45,10 @@ namespace qw.database
 
         public int количество_профилей
         {
-            get { return this.Профиль.Count; }
+            get 
+            { 
+                return this.Профиль.Where(x => x.удален != true).Count(); 
+            }
         }
     }
 }

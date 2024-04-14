@@ -110,13 +110,16 @@ namespace qw.application_pages.views
 
         private void showDeletedEntries()
         {
-            ListBoxOfEntries.ItemsSource = DbWorker.GetContext().Проект.Where(x => x.удален == true).ToList();
+            ListBoxOfEntries.ItemsSource = DbWorker.GetContext().Проект.
+                Where(x => x.удален == true && x.id_заказчика == customer.id).ToList();
         }
 
         private void deletedEntriesButtonClick(object sender, RoutedEventArgs e)
         {
             crudButtonStackPanel.Visibility = Visibility.Hidden;
             deletedEntriesButtonStackPanel.Visibility = Visibility.Visible;
+            navigationStackPanel.Visibility = Visibility.Hidden;
+            nextButton.Visibility = Visibility.Hidden;
             showDeletedEntries();
         }
 
@@ -124,6 +127,8 @@ namespace qw.application_pages.views
         {
             crudButtonStackPanel.Visibility = Visibility.Visible;
             deletedEntriesButtonStackPanel.Visibility = Visibility.Hidden;
+            navigationStackPanel.Visibility = Visibility.Visible;
+            nextButton.Visibility = Visibility.Visible;
             updateElementList();
         }
 

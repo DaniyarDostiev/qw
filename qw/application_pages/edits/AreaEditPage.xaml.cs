@@ -46,8 +46,12 @@ namespace qw.application_pages.edits
             this.project = prject;
             this.area = area;
 
-            fieldSupervisorComboBox.ItemsSource = DbWorker.GetContext().Сотрудник.Select(x => x.логин).ToList();
-            dataProcessingSupervisorComboBox.ItemsSource = DbWorker.GetContext().Сотрудник.Select(x => x.логин).ToList();
+            fieldSupervisorComboBox.ItemsSource = DbWorker.GetContext().Сотрудник
+                .Where(x => x.удален != true)
+                .Select(x => x.логин).ToList();
+            dataProcessingSupervisorComboBox.ItemsSource = DbWorker.GetContext().Сотрудник
+                .Where(x => x.удален != true)
+                .Select(x => x.логин).ToList();
 
             fieldFill();
         }

@@ -55,7 +55,7 @@ namespace qw.database
             get
             {
                 DbWorker.GetContext().Должность.Load();
-                return DbWorker.GetContext().Должность.ToList();
+                return DbWorker.GetContext().Должность.Where(x => x.удален != true).ToList();
             }
         }
 
@@ -65,7 +65,7 @@ namespace qw.database
             get
             {
                 DbWorker.GetContext().Квалификация.Load();
-                return DbWorker.GetContext().Квалификация.ToList();
+                return DbWorker.GetContext().Квалификация.Where(x => x.удален != true).ToList();
             }
         }
     }

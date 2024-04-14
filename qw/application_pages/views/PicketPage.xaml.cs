@@ -19,16 +19,16 @@ using System.Windows.Shapes;
 namespace qw.application_pages.views
 {
     /// <summary>
-    /// Логика взаимодействия для AreaPage.xaml
+    /// Логика взаимодействия для PicketPage.xaml
     /// </summary>
-    public partial class AreaPage : Page
+    public partial class PicketPage : Page
     {
-        private Проект project;
-        public AreaPage(Проект project)
+        private Профиль profile;
+        public PicketPage(Профиль profile)
         {
             InitializeComponent();
 
-            this.project = project;
+            this.profile = profile;
 
             comboBoxSort.Items.Add("Сортировка");
             comboBoxSort.Items.Add("По возрастанию");
@@ -38,14 +38,14 @@ namespace qw.application_pages.views
 
         private void updateElementList()
         {
-            List<Площадь> listBoxItems = DbWorker.GetContext().Площадь.
-                Where(x => x.название.Contains(textBoxFinder.Text) && x.удален != true && x.id_проекта == project.id).ToList();
+            List<Пикет> listBoxItems = DbWorker.GetContext().Пикет.
+                Where(x => x.название_пикета.Contains(textBoxFinder.Text) && x.удален != true && x.id_профиля == profile.id).ToList();
 
             switch (comboBoxSort.SelectedIndex)
             {
                 case 0:; break;
-                case 1: listBoxItems = listBoxItems.OrderBy(x => x.название).ToList(); break;
-                case 2: listBoxItems = listBoxItems.OrderByDescending(x => x.название).ToList(); break;
+                case 1: listBoxItems = listBoxItems.OrderBy(x => x.название_пикета).ToList(); break;
+                case 2: listBoxItems = listBoxItems.OrderByDescending(x => x.название_пикета).ToList(); break;
             }
 
             ListBoxOfEntries.ItemsSource = listBoxItems;
@@ -53,8 +53,8 @@ namespace qw.application_pages.views
 
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            Заказчик customer = DbWorker.GetContext().Заказчик.FirstOrDefault(x => x.id == project.id_заказчика);
-            AppFrame.mainFrame.Navigate(new ProjectPage(customer));
+            var linkingEntry = DbWorker.GetContext().Площадь.FirstOrDefault(x => x.id == profile.id_площади);
+            AppFrame.mainFrame.Navigate(new ProfilePage(linkingEntry));
         }
 
         private void textBoxFinderChanged(object sender, TextChangedEventArgs e)
@@ -69,8 +69,9 @@ namespace qw.application_pages.views
 
         private void showDeletedEntries()
         {
-            ListBoxOfEntries.ItemsSource = DbWorker.GetContext().Площадь.
-                Where(x => x.удален == true && x.id_проекта == project.id).ToList();
+            List<Пикет> listBoxItems = DbWorker.GetContext().Пикет.
+                Where(x => x.удален == true && x.id_профиля == profile.id).ToList();
+            ListBoxOfEntries.ItemsSource = listBoxItems;
         }
 
         private void deletedEntriesButtonClick(object sender, RoutedEventArgs e)
@@ -78,7 +79,6 @@ namespace qw.application_pages.views
             crudButtonStackPanel.Visibility = Visibility.Hidden;
             deletedEntriesButtonStackPanel.Visibility = Visibility.Visible;
             navigationStackPanel.Visibility = Visibility.Hidden;
-            nextButton.Visibility = Visibility.Hidden;
             showDeletedEntries();
         }
 
@@ -87,13 +87,12 @@ namespace qw.application_pages.views
             crudButtonStackPanel.Visibility = Visibility.Visible;
             deletedEntriesButtonStackPanel.Visibility = Visibility.Hidden;
             navigationStackPanel.Visibility = Visibility.Visible;
-            nextButton.Visibility = Visibility.Visible;
             updateElementList();
         }
 
         private void recoverEntryButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = ListBoxOfEntries.SelectedItem as Площадь;
+            var selectedElement = ListBoxOfEntries.SelectedItem as Пикет;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
@@ -113,25 +112,25 @@ namespace qw.application_pages.views
 
         private void editButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = ListBoxOfEntries.SelectedItem as Площадь;
+            var selectedElement = ListBoxOfEntries.SelectedItem as Пикет;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
             }
             else
             {
-                AppFrame.mainFrame.Navigate(new AreaEditPage(project, selectedElement));
+                AppFrame.mainFrame.Navigate(new PicketEditPage(profile, selectedElement));
             }
         }
 
         private void addButtonClick(object sender, RoutedEventArgs e)
         {
-            AppFrame.mainFrame.Navigate(new AreaEditPage(project, new Площадь()));
+            AppFrame.mainFrame.Navigate(new PicketEditPage(profile, new Пикет()));
         }
 
         private void deleteButtonClick(object sender, RoutedEventArgs e)
         {
-            var selectedElement = ListBoxOfEntries.SelectedItem as Площадь;
+            var selectedElement = ListBoxOfEntries.SelectedItem as Пикет;
             if (selectedElement == null)
             {
                 MessageBox.Show("выберите элемент из списка");
@@ -146,19 +145,6 @@ namespace qw.application_pages.views
                     DbWorker.GetContext().SaveChanges();
                     updateElementList();
                 }
-            }
-        }
-
-        private void nextButtonClick(object sender, RoutedEventArgs e)
-        {
-            var selectedElement = ListBoxOfEntries.SelectedItem as Площадь;
-            if (selectedElement == null)
-            {
-                MessageBox.Show("выберите элемент из списка");
-            }
-            else
-            {
-                AppFrame.mainFrame.Navigate(new ProfilePage(selectedElement));
             }
         }
     }

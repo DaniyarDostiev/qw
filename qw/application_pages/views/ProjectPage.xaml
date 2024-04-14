@@ -27,7 +27,7 @@
 
             <Label Grid.Column="1" Content="Проекты" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"></Label>
 
-            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">
+            <StackPanel Name="navigationStackPanel" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">
                 <TextBox Name="textBoxFinder" TextChanged="textBoxFinderChanged"></TextBox>
                 <ComboBox Name="comboBoxSort" SelectionChanged="comboBoxSortChanged"></ComboBox>
             </StackPanel>
@@ -62,7 +62,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Площади" Click="nextButtonClick" Margin="10" 
+            <Button Name="nextButton" Grid.Column="0" Content="Площади" Click="nextButtonClick" Margin="10" 
                     VerticalAlignment="Center" HorizontalAlignment="Left"></Button>
 
             <StackPanel Name="crudButtonStackPanel" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">

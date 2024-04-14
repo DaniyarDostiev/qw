@@ -49,8 +49,12 @@ namespace qw.application_pages.edits
             this.area = area;
             this.profile = profile;
 
-            methodologyComboBox.ItemsSource = DbWorker.GetContext().Методика.Select(x => x.название_методики).ToList();
-            profileHandlerComboBox.ItemsSource = DbWorker.GetContext().Сотрудник.Select(x => x.логин).ToList();
+            methodologyComboBox.ItemsSource = DbWorker.GetContext().Методика
+                .Where(x => x.удален != true)
+                .Select(x => x.название_методики).ToList();
+            profileHandlerComboBox.ItemsSource = DbWorker.GetContext().Сотрудник
+                .Where(x => x.удален != true)
+                .Select(x => x.логин).ToList();
             profileHandlerComboBox.SelectedIndex = 0;
 
             fieldFill();

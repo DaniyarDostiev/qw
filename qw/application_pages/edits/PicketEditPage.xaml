@@ -1,0 +1,92 @@
+﻿<Page x:Class="qw.application_pages.edits.PicketEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:qw.application_pages.edits"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="PicketEditPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Работа с данными: Пикет" HorizontalAlignment="Center"></Label>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <TextBlock Text="Название" ></TextBlock>
+                    <TextBox Name="nameTextBox"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <TextBlock Text="Дата получения результа" ></TextBlock>
+                    <TextBox Name="resultDateTextBox"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <TextBlock Text="Вид пикета" ></TextBlock>
+                    <ComboBox Name="picketTypeComboBox"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <Button Content="Все виды" Width="150"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <Button Content="Координаты пикета" Width="150"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <Button Content="Результат измерений" Width="150"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <Button Content="Промежуточные изм." Width="150"></Button>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <TextBlock Text="Дата добавления"></TextBlock>
+                    <TextBox Name="addDateTextBox" IsReadOnly="True" IsEnabled="False"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <TextBlock Text="Дата изменения" ></TextBlock>
+                    <TextBox Name="editDateTextBox" IsReadOnly="True" IsEnabled="False"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <Button Content="Трансформанты" Width="150"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <Button Content="Промежуточные транс." Width="150"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <Button Content="Оборудование" Width="150"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <Button Content="Сотрудники" Width="150"></Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Click="backButtonClick" Grid.Column="0" Content="Назад" HorizontalAlignment="Left" Margin="5"></Button>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Button Name="importInfoButton" Click="importInfoButtonClick" Content="Руководство"></Button>
+                <Button Name="importButton" Click="importButtonClick" Content="Импорт"></Button>
+                <Button Click="saveButtonClick" Content="Сохранить"></Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

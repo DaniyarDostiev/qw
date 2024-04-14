@@ -69,13 +69,17 @@ namespace qw.application_pages.views
 
         private void showDeletedEntries()
         {
-            ListBoxOfEntries.ItemsSource = DbWorker.GetContext().Профиль.Where(x => x.удален == true).ToList();
+            List<Профиль> listBoxItems = DbWorker.GetContext().Профиль.
+                Where(x => x.удален == true && x.id_площади == area.id).ToList();
+            ListBoxOfEntries.ItemsSource = listBoxItems;
         }
 
         private void deletedEntriesButtonClick(object sender, RoutedEventArgs e)
         {
             crudButtonStackPanel.Visibility = Visibility.Hidden;
             deletedEntriesButtonStackPanel.Visibility = Visibility.Visible;
+            navigationStackPanel.Visibility = Visibility.Hidden;
+            nextButton.Visibility = Visibility.Hidden;
             showDeletedEntries();
         }
 
@@ -83,6 +87,8 @@ namespace qw.application_pages.views
         {
             crudButtonStackPanel.Visibility = Visibility.Visible;
             deletedEntriesButtonStackPanel.Visibility = Visibility.Hidden;
+            navigationStackPanel.Visibility = Visibility.Visible;
+            nextButton.Visibility = Visibility.Visible;
             updateElementList();
         }
 
@@ -146,7 +152,15 @@ namespace qw.application_pages.views
 
         private void nextButtonClick(object sender, RoutedEventArgs e)
         {
-
+            var selectedElement = ListBoxOfEntries.SelectedItem as Профиль;
+            if (selectedElement == null)
+            {
+                MessageBox.Show("выберите элемент из списка");
+            }
+            else
+            {
+                AppFrame.mainFrame.Navigate(new PicketPage(selectedElement));
+            }
         }
     }
 }
