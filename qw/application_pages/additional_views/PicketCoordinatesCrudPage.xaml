@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:qw.application_pages.additional_views"
+      xmlns:oxy="clr-namespace:OxyPlot.Wpf;assembly=OxyPlot.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PicketCoordinatesCrudPage">
@@ -11,6 +12,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
@@ -23,7 +25,9 @@
             <Label Grid.Column="0" Content="Координаты пикета" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5"></Label>
         </Grid>
 
-        <DataGrid Grid.Row="1" Name="dataGridOfEntries" CanUserResizeRows="True" 
+        <oxy:PlotView x:Name="plotView" Grid.Row="1" Margin="10"/>
+
+        <DataGrid Grid.Row="2" Name="dataGridOfEntries" CanUserResizeRows="True" 
                   AutoGenerateColumns="False" HorizontalScrollBarVisibility="Visible">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="X" MinWidth="150" Width="*" Binding="{Binding x, Mode=TwoWay}" IsReadOnly="False"></DataGridTextColumn>
@@ -33,7 +37,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>

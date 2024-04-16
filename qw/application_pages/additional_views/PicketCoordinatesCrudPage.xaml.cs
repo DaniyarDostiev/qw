@@ -1,4 +1,6 @@
-﻿using qw.application_pages.edits;
+﻿using OxyPlot;
+using OxyPlot.Legends;
+using qw.application_pages.edits;
 using qw.database;
 using qw.util;
 using System;
@@ -31,6 +33,30 @@ namespace qw.application_pages.additional_views
             InitializeComponent();
             this.picket = picket;
             showNonDeletedEntries();
+            graphDisplay();
+        }
+
+        private void graphDisplay()
+        {
+            // Создаем модель графика
+            var plotModel = new PlotModel();
+
+            // Добавляем легенду
+            plotModel.Legends.Add(new Legend()
+            {
+                LegendTitle = "Легенда",
+                LegendPosition = LegendPosition.LeftMiddle,
+            });
+
+            // Создаем серию данных
+            var profile = DbWorker.GetContext().Профиль.FirstOrDefault(x => x.id == picket.id_профиля);
+            var area = DbWorker.GetContext().Площадь.FirstOrDefault(x => x.id == profile.id_площади);
+            plotModel.Series.Add(GraphModel.areaModel(area));
+            plotModel.Series.Add(GraphModel.profileModel(profile));
+            plotModel.Series.Add(GraphModel.picketModel(picket));
+
+            // Привязываем модель к PlotView для отображения
+            plotView.Model = plotModel;
         }
 
         private void showNonDeletedEntries()
@@ -127,6 +153,7 @@ namespace qw.application_pages.additional_views
                     selectedElement.удален = true;
                     DbWorker.GetContext().SaveChanges();
                     showNonDeletedEntries();
+                    graphDisplay();
                 }
             }
         }
@@ -134,6 +161,7 @@ namespace qw.application_pages.additional_views
         private void saveButtonClick(object sender, RoutedEventArgs e)
         {
             saveChanges();
+            graphDisplay();
         }
 
         private void deletedEntriesButtonClick(object sender, RoutedEventArgs e)
@@ -166,6 +194,7 @@ namespace qw.application_pages.additional_views
                     selectedElement.удален = false;
                     DbWorker.GetContext().SaveChanges();
                     showDeletedEntries();
+                    graphDisplay();
                 }
             }
         }

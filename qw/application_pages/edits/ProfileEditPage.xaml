@@ -20,7 +20,7 @@
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
-                <RowDefinition Height="110"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -29,7 +29,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                     <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
                         <TextBlock Text="Название" ></TextBlock>
                         <TextBox Name="nameTextBox"></TextBox>
@@ -52,7 +52,7 @@
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Left">
                     <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
                         <TextBlock Text="Длина профиля" ></TextBlock>
                         <TextBox Name="profileLengthTextBox"></TextBox>
@@ -81,6 +81,7 @@
                 <Button Content="Тел. записи" Width="150" Click="telemetricPageClick"></Button>
                 
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
+                    <Button Content="График" Width="150" Click="graphPageButtonClick"></Button>
                     <TextBlock Text="Обработчик" ></TextBlock>
                     <ComboBox Name="profileHandlerComboBox"></ComboBox>
                     <Button Content="Все обработки" Width="150" Click="processingPageButtonClick"></Button>

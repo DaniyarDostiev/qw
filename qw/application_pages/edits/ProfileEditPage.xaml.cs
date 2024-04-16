@@ -162,6 +162,11 @@ namespace qw.application_pages.edits
             AppFrame.mainFrame.Navigate(new BreakpointsPage(profile));
         }
 
+        private void graphPageButtonClick(object sender, RoutedEventArgs e)
+        {
+            AppFrame.mainFrame.Navigate(new ProfileGraph(area, profile));
+        }
+
         private void importInfoButtonClick(object sender, RoutedEventArgs e)
         {
             new ImportWindow().Show();
