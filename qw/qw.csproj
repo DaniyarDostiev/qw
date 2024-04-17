@@ -115,6 +115,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="application_pages\additional_views\AreaDifferencesGraphPage.xaml.cs">
+      <DependentUpon>AreaDifferencesGraphPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\additional_views\AreaPerimeterAngles.xaml.cs">
       <DependentUpon>AreaPerimeterAngles.xaml</DependentUpon>
     </Compile>
@@ -233,6 +236,10 @@
     <Compile Include="util\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="application_pages\additional_views\AreaDifferencesGraphPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="application_pages\additional_views\AreaPerimeterAngles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

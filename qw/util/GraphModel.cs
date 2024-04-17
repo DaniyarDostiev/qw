@@ -87,17 +87,23 @@ namespace qw.util
             return series;
         }
 
-        public static LineSeries divergenceModelProfile(Профиль profile, string picketType)
+        public static LineSeries divergenceModelProfile(Профиль profile, string picketType, bool forArea)
         {
             // Создаем серию данных
             var series = new LineSeries
             {
                 Title = picketType,
-                MarkerType = MarkerType.Circle // Тип маркера точек на графике
+                MarkerType = MarkerType.Circle, // Тип маркера точек на графике
+                InterpolationAlgorithm = InterpolationAlgorithms.CanonicalSpline
             };
+            if (forArea == true)
+            {
+                series.Title = profile.название_профиля;
+            }
 
             List<Пикет> allPickets = DbWorker.GetContext().Пикет
-                .Where(x => x.удален != true && x.id_профиля == profile.id && x.Виды_пикетов.название == picketType).ToList();
+                .Where(x => x.удален != true && x.id_профиля == profile.id && x.Виды_пикетов.название == picketType)
+                .ToList();
 
             foreach(Пикет picket in allPickets)
             {
@@ -119,6 +125,21 @@ namespace qw.util
 
             // Добавляем серию в модель
             return series;
-        } 
+        }
+
+        public static PlotModel divergenceModelArea(Площадь area, string picketType)
+        {
+            var plotModel = new PlotModel();
+
+            List<Профиль> allProfiles = DbWorker.GetContext().Профиль
+                .Where(x => x.удален != true && x.id_площади == area.id)
+                .ToList();
+            foreach(var profile in allProfiles)
+            {
+                plotModel.Series.Add(divergenceModelProfile(profile, picketType, true));
+            }
+
+            return plotModel;
+        }
     }
 }

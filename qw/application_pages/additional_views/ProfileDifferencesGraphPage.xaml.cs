@@ -65,12 +65,12 @@ namespace qw.application_pages.additional_views
                 .ToList();
                 foreach(var type in allTypes)
                 {
-                    plotModel.Series.Add(GraphModel.divergenceModelProfile(profile, type));
+                    plotModel.Series.Add(GraphModel.divergenceModelProfile(profile, type, false));
                 }
             }
             else
             {
-                plotModel.Series.Add(GraphModel.divergenceModelProfile(profile, chartTypesCombobox.SelectedItem.ToString()));
+                plotModel.Series.Add(GraphModel.divergenceModelProfile(profile, chartTypesCombobox.SelectedItem.ToString(), false));
             }
             plotView.Model = plotModel;
         }

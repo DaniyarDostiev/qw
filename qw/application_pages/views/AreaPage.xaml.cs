@@ -1,4 +1,5 @@
-﻿using qw.application_pages.edits;
+﻿using qw.application_pages.additional_views;
+using qw.application_pages.edits;
 using qw.database;
 using qw.util;
 using System;
@@ -159,6 +160,19 @@ namespace qw.application_pages.views
             else
             {
                 AppFrame.mainFrame.Navigate(new ProfilePage(selectedElement));
+            }
+        }
+
+        private void graphButtonClick(object sender, RoutedEventArgs e)
+        {
+            var selectedElement = ListBoxOfEntries.SelectedItem as Площадь;
+            if (selectedElement == null)
+            {
+                MessageBox.Show("выберите элемент из списка");
+            }
+            else
+            {
+                AppFrame.mainFrame.Navigate(new AreaDifferencesGraphPage(selectedElement));
             }
         }
     }
