@@ -127,6 +127,9 @@
     <Compile Include="application_pages\additional_views\ContractCrudPage.xaml.cs">
       <DependentUpon>ContractCrudPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="application_pages\additional_views\DifferencesDisplayAndExportPage.xaml.cs">
+      <DependentUpon>DifferencesDisplayAndExportPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="application_pages\additional_views\ElectromagneticMeasurementsPage.xaml.cs">
       <DependentUpon>ElectromagneticMeasurementsPage.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,9 @@
     </Compile>
     <Compile Include="application_pages\additional_views\PositionCrudPage.xaml.cs">
       <DependentUpon>PositionCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="application_pages\additional_views\ProfileDifferencesGraphPage.xaml.cs">
+      <DependentUpon>ProfileDifferencesGraphPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="application_pages\additional_views\ProfileGraph.xaml.cs">
       <DependentUpon>ProfileGraph.xaml</DependentUpon>
@@ -222,6 +228,7 @@
     </Compile>
     <Compile Include="util\AppFrame.cs" />
     <Compile Include="util\DbWorker.cs" />
+    <Compile Include="util\DiscrepancyCalculation.cs" />
     <Compile Include="util\GraphModel.cs" />
     <Compile Include="util\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
@@ -239,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="application_pages\additional_views\ContractCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\DifferencesDisplayAndExportPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -291,6 +302,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="application_pages\additional_views\PositionCrudPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="application_pages\additional_views\ProfileDifferencesGraphPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

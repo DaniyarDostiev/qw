@@ -1,4 +1,5 @@
-﻿using qw.application_pages.edits;
+﻿using qw.application_pages.additional_views;
+using qw.application_pages.edits;
 using qw.database;
 using qw.util;
 using System;
@@ -80,6 +81,7 @@ namespace qw.application_pages.views
             deletedEntriesButtonStackPanel.Visibility = Visibility.Visible;
             navigationStackPanel.Visibility = Visibility.Hidden;
             nextButton.Visibility = Visibility.Hidden;
+            graphButton.Visibility = Visibility.Hidden;
             showDeletedEntries();
         }
 
@@ -89,6 +91,7 @@ namespace qw.application_pages.views
             deletedEntriesButtonStackPanel.Visibility = Visibility.Hidden;
             navigationStackPanel.Visibility = Visibility.Visible;
             nextButton.Visibility = Visibility.Visible;
+            graphButton.Visibility = Visibility.Visible;
             updateElementList();
         }
 
@@ -160,6 +163,19 @@ namespace qw.application_pages.views
             else
             {
                 AppFrame.mainFrame.Navigate(new PicketPage(selectedElement));
+            }
+        }
+
+        private void graphButtonClick(object sender, RoutedEventArgs e)
+        {
+            var selectedElement = ListBoxOfEntries.SelectedItem as Профиль;
+            if (selectedElement == null)
+            {
+                MessageBox.Show("выберите элемент из списка");
+            }
+            else
+            {
+                AppFrame.mainFrame.Navigate(new ProfileDifferencesGraphPage(selectedElement));
             }
         }
     }

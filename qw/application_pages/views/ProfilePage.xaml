@@ -58,12 +58,16 @@
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="300"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Name="nextButton" Grid.Column="0" Content="Пикеты" Click="nextButtonClick" Margin="10" 
-                    VerticalAlignment="Center" HorizontalAlignment="Left"></Button>
+            <StackPanel Name="nextAndGraphButtons" Orientation="Horizontal" Grid.Column="0">
+                <Button Name="nextButton" Content="Пикеты" Click="nextButtonClick" Margin="10" 
+                        VerticalAlignment="Center" HorizontalAlignment="Left"></Button>
+                <Button Name="graphButton" Content="Графики" Click="graphButtonClick" Margin="10" 
+                        VerticalAlignment="Center" HorizontalAlignment="Left"></Button>
+            </StackPanel>
 
             <StackPanel Name="crudButtonStackPanel" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
                 <Button Click="deletedEntriesButtonClick">

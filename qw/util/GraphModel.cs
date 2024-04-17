@@ -86,5 +86,39 @@ namespace qw.util
             // Добавляем серию в модель
             return series;
         }
+
+        public static LineSeries divergenceModelProfile(Профиль profile, string picketType)
+        {
+            // Создаем серию данных
+            var series = new LineSeries
+            {
+                Title = picketType,
+                MarkerType = MarkerType.Circle // Тип маркера точек на графике
+            };
+
+            List<Пикет> allPickets = DbWorker.GetContext().Пикет
+                .Where(x => x.удален != true && x.id_профиля == profile.id && x.Виды_пикетов.название == picketType).ToList();
+
+            foreach(Пикет picket in allPickets)
+            {
+                List<Результаты_измерения> allMeasurements = DbWorker.GetContext().Пикет_ПромежуточныеИзмерения
+                    .Where(x => x.id_пикета == picket.id)
+                    .Select(x => x.Результаты_измерения)
+                    .Where(x => x.удален != true)
+                    .ToList();
+                double averageFrequency = allMeasurements
+                    .Select(x => Double.Parse(x.частота))
+                    .DefaultIfEmpty()
+                    .Average();
+                double averageEDS = allMeasurements
+                    .Select(x => Double.Parse(x.значение_ЭДС))
+                    .DefaultIfEmpty()
+                    .Average();
+                series.Points.Add(new DataPoint(averageFrequency, averageEDS));
+            }
+
+            // Добавляем серию в модель
+            return series;
+        } 
     }
 }
