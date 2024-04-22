@@ -71,27 +71,5 @@ namespace qw.application_pages.utils
                 MessageBox.Show("Ошибка");
             }
         }
-
-        private void backClick(object sender, RoutedEventArgs e)
-        {
-            restartApplication();
-            AppFrame.mainFrame.Navigate(new SqlServerSelection());
-        }
-
-        private void restartApplication()
-        {
-            // Получаем путь к текущему исполняемому файлу приложения
-            string appPath = Assembly.GetEntryAssembly().Location;
-
-            // Перезапускаем приложение
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = appPath,
-                UseShellExecute = true
-            });
-
-            // Закрываем текущее приложение
-            Application.Current.Shutdown();
-        }
     }
 }

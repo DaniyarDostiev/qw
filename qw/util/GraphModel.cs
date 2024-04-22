@@ -29,7 +29,10 @@ namespace qw.util
                 .ToList();
             foreach (Координаты_точки point in allPointCoordinates)
             {
-                series.Points.Add(new DataPoint((double)point.x, (double)point.y));
+                if (point != null)
+                {
+                    series.Points.Add(new DataPoint((double)point.x, (double)point.y));
+                }
             }
 
             // Добавляем серию в модель
@@ -52,13 +55,16 @@ namespace qw.util
                 .Where(x => x.удален != true)
                 .ToList();
             allPointCoordinates.Insert(0, DbWorker.GetContext().Координаты_точки
-                .Where(x => x.id == profile.id_координат_начала && x.удален != true).ToList().Single());
+                .FirstOrDefault(x => x.id == profile.id_координат_начала && x.удален != true));
             allPointCoordinates.Add(DbWorker.GetContext().Координаты_точки
-                .Where(x => x.id == profile.Id_координат_конца && x.удален != true).ToList().Single());
+                .FirstOrDefault(x => x.id == profile.Id_координат_конца && x.удален != true));
 
             foreach (Координаты_точки point in allPointCoordinates)
             {
-                series.Points.Add(new DataPoint((double)point.x, (double)point.y));
+                if (point != null)
+                {
+                    series.Points.Add(new DataPoint((double)point.x, (double)point.y));
+                }
             }
 
             // Добавляем серию в модель
@@ -80,7 +86,10 @@ namespace qw.util
 
             foreach (Координаты_точки point in allPointCoordinates)
             {
-                series.Points.Add(new ScatterPoint((double)point.x, (double)point.y));
+                if ( point != null)
+                {
+                    series.Points.Add(new ScatterPoint((double)point.x, (double)point.y));
+                }
             }
 
             // Добавляем серию в модель

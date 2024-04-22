@@ -53,7 +53,7 @@ namespace qw.application_pages.additional_views
             double controlEds = avgFromControl[1];
             double percentDiffEds = percentDifference(privateEds, controlEds);
 
-            string result = $"Частота: {percentDiffFreq:F2}%; ЭДС: {percentDiffEds:F2}%";
+            string result = $"ЭДС: {percentDiffEds:F2}%";
             return result;
         }
 
@@ -72,7 +72,7 @@ namespace qw.application_pages.additional_views
             double opEds = avgFromOp[1];
             double percentDiffEds = percentDifference(privateEds, opEds);
 
-            string result = $"Частота: {percentDiffFreq:F2}%; ЭДС: {percentDiffEds:F2}%";
+            string result = $"ЭДС: {percentDiffEds:F2}%";
             return result;
         }
 

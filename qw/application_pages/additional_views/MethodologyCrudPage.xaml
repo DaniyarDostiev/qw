@@ -56,7 +56,7 @@
                 </DataGridTemplateColumn>
 
                 <!-- Столбец для выбора оборудования телеметрической установки -->
-                <DataGridTemplateColumn Header="Измер. установка" MinWidth="150" Width="*">
+                <DataGridTemplateColumn Header="Тел. установка" MinWidth="150" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ComboBox ItemsSource="{Binding все_оборудование}"

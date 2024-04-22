@@ -27,7 +27,7 @@
                 <ComboBox Name="contractComboBox"></ComboBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                <Button Content="Все договоры" Click="contractPageButtonClick" Width="150"></Button>
+                <Button Name="allContractsButtonClick"  Content="Все договоры" Click="contractPageButtonClick" Width="150"></Button>
             </StackPanel>
             <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
                 <TextBlock Text="Дата добавления"></TextBlock>

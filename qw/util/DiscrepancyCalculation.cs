@@ -36,8 +36,8 @@ namespace qw.util
                     .Average());
             }
 
-            double avgFreqPrivate = allAveragesFrequencyFromPicket.Average();
-            double avgEdsPrivate = allAveragesEdsFromPicket.Average();
+            double avgFreqPrivate = allAveragesFrequencyFromPicket.DefaultIfEmpty().Average();
+            double avgEdsPrivate = allAveragesEdsFromPicket.DefaultIfEmpty().Average();
 
             return new List<double> { avgFreqPrivate, avgEdsPrivate };
         }

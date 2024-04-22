@@ -55,7 +55,7 @@ namespace qw.application_pages.additional_views
             var selectedElement = DbWorker.GetContext().Измерительное_оборудование
                 .FirstOrDefault(x => x.название_оборудования == entriesComboBox.Text);
             var checkEquipmentsOnPicket = DbWorker.GetContext().Пикет_ИзмерительноеОборудование
-                .FirstOrDefault(x => x.id_измерительного_оборудования == selectedElement.id);
+                .FirstOrDefault(x => x.id_измерительного_оборудования == selectedElement.id && x.id_пикета == picket.id);
 
             if (checkEquipmentsOnPicket == null)
             {
@@ -67,7 +67,7 @@ namespace qw.application_pages.additional_views
             }
             else
             {
-                MessageBox.Show("Сотрудник уже добавлен");
+                MessageBox.Show("Оборудование уже добавлено");
             }
 
             showEntries();

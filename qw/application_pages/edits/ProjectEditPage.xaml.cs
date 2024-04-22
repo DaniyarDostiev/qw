@@ -73,7 +73,7 @@ namespace qw.application_pages.edits
                 project.название = nameTextBox.Text;
                 project.id_заказчика = customer.id;
                 project.id_договора = DbWorker.GetContext().Договор
-                    .FirstOrDefault(x => x.название == contractComboBox.Text).id;
+                    .FirstOrDefault(x => x.название == contractComboBox.Text)?.id;
 
                 if (project.дата_добавления_записи != null)
                 {

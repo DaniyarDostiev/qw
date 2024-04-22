@@ -29,7 +29,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
                     <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
                         <TextBlock Text="Название" ></TextBlock>
                         <TextBox Name="nameTextBox"></TextBox>
@@ -39,7 +39,7 @@
                         <ComboBox Name="methodologyComboBox"></ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                        <Button Content="Все методики" Width="150" Click="methodologyButtonCLick"></Button>
+                        <Button Name="allMethodologyButton" Content="Все методики" Width="150" Click="methodologyButtonCLick"></Button>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
                         <Button Name="startCoordinatesButton" Content="Координаты начала" Width="150" Click="startCoordinatesButtonClick"></Button>
@@ -52,7 +52,7 @@
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
                         <TextBlock Text="Длина профиля" ></TextBlock>
                         <TextBox Name="profileLengthTextBox"></TextBox>

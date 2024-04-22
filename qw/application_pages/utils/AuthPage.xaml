@@ -25,7 +25,6 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="backButton" Click="backClick" Content="Назад"></Button>
             <Button x:Name="loginButton" Click="loginClick" Content="Войти"></Button>
         </StackPanel>
     </Grid>

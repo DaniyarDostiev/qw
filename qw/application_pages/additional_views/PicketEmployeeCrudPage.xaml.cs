@@ -54,7 +54,7 @@ namespace qw.application_pages.additional_views
             var selectedElement = DbWorker.GetContext().Сотрудник
                 .FirstOrDefault(x => x.логин == employeeComboBox.Text);
             var checkEmployeesOnPicket = DbWorker.GetContext().Пикет_Сотрудники
-                .FirstOrDefault(x => x.id_сотрудника == selectedElement.id);
+                .FirstOrDefault(x => x.id_сотрудника == selectedElement.id && x.id_пикета == picket.id);
 
             if (checkEmployeesOnPicket == null)
             {

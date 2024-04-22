@@ -48,6 +48,7 @@ namespace qw.application_pages.edits
                 intermediateTransformantsButton.Visibility = Visibility.Hidden;
                 picketEquipmentPageButton.Visibility = Visibility.Hidden;
                 picketEmployeePageButton.Visibility= Visibility.Hidden;
+                allPicketTypesButton.Visibility = Visibility.Hidden;
             }
             this.profile = profile;
             this.picket = picket;
@@ -82,8 +83,11 @@ namespace qw.application_pages.edits
                 picket.название_пикета = nameTextBox.Text;
                 picket.id_профиля = profile.id;
                 picket.вид_пикета = DbWorker.GetContext().Виды_пикетов
-                    .FirstOrDefault(x => x.название == picketTypeComboBox.Text).id;
-                picket.дата_и_время_получения_окончательного_результата_измерения = DateTime.Parse(resultDateTextBox.Text);
+                    .FirstOrDefault(x => x.название == picketTypeComboBox.Text)?.id;
+                picket.дата_и_время_получения_окончательного_результата_измерения =
+                    string.IsNullOrEmpty(resultDateTextBox.Text) ?
+                    (DateTime?)null :
+                    DateTime.Parse(resultDateTextBox.Text);
 
                 if (picket.дата_добавления_записи != null)
                 {

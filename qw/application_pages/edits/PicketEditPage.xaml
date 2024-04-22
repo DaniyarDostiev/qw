@@ -37,7 +37,7 @@
                     <ComboBox Name="picketTypeComboBox"></ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
-                    <Button Content="Все виды" Width="150" Click="picketTypesButtonClick"></Button>
+                    <Button Name="allPicketTypesButton" Content="Все виды" Width="150" Click="picketTypesButtonClick"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelEditData}">
                     <Button Name="picketCoordinatesButton" Content="Координаты пикета" Width="150" Click="picketCoordinatesButtonClick"></Button>

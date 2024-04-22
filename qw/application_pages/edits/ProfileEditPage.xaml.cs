@@ -45,6 +45,7 @@ namespace qw.application_pages.edits
                 endCoordinatesButton.Visibility= Visibility.Hidden;
                 breakpointsPageButton.Visibility= Visibility.Hidden;
                 additionalButtonStackPanel.Visibility = Visibility.Hidden;
+                allMethodologyButton.Visibility = Visibility.Hidden;
             }
             this.area = area;
             this.profile = profile;
@@ -85,10 +86,11 @@ namespace qw.application_pages.edits
                 profile.название_профиля = nameTextBox.Text;
                 profile.id_площади = area.id;
                 profile.id_методики = DbWorker.GetContext().Методика
-                    .FirstOrDefault(x => x.название_методики == methodologyComboBox.Text).id;
+                    .FirstOrDefault(x => x.название_методики == methodologyComboBox.Text)?.id;
                 profile.длина_профиля = Double.Parse(profileLengthTextBox.Text);
                 profile.дата_начала_работ = DateTime.Parse(dateOfBeginTextBox.Text);
-                profile.дата_окончания_работ = DateTime.Parse(dateOfEndTextBox.Text);
+                profile.дата_окончания_работ = string.IsNullOrEmpty(dateOfEndTextBox.Text) ?
+                    (DateTime?)null : DateTime.Parse(dateOfEndTextBox.Text);
 
                 if (profile.дата_добавления_записи != null)
                 {

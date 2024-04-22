@@ -35,26 +35,7 @@ namespace qw.application_pages.utils
 
         private void populateServerList()
         {
-            try
-            {
-                DataTable servers = SqlDataSourceEnumerator.Instance.GetDataSources();
-
-                foreach (DataRow row in servers.Rows)
-                {
-                    string serverName = row["ServerName"].ToString();
-                    string instanceName = row["InstanceName"].ToString();
-
-                    // Если у сервера есть инстанс, добавляем его к имени сервера
-                    if (!string.IsNullOrEmpty(instanceName))
-                        serverName += "\\" + instanceName;
-
-                    serverComboBox.Items.Add(serverName);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ошибка при получении списка серверов: " + ex.Message);
-            }
+            serverComboBox.ItemsSource = App.listOfServers;
         }
 
         private void chooseSqlServerButtonClick(object sender, RoutedEventArgs e)

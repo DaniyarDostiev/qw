@@ -84,13 +84,14 @@ namespace qw.application_pages.edits
                 area.название = nameTextBox.Text;
                 area.id_проекта = project.id;
                 area.id_супервайзера_полевых_работ = DbWorker.GetContext().Сотрудник
-                    .FirstOrDefault(x => x.логин == fieldSupervisorComboBox.Text).id;
+                    .FirstOrDefault(x => x.логин == fieldSupervisorComboBox.Text)?.id;
                 area.id_супервайзера_обработки_данных = DbWorker.GetContext().Сотрудник
-                    .FirstOrDefault(x => x.логин == fieldSupervisorComboBox.Text).id;
+                    .FirstOrDefault(x => x.логин == fieldSupervisorComboBox.Text)?.id;
                 area.длина_периметра = Double.Parse(perimeterLengthTextBox.Text);
                 area.площадь_периметра = Double.Parse(perimeterAreaTextBox.Text);
                 area.дата_начала_работ = DateTime.Parse(dateOfBeginTextBox.Text);
-                area.дата_окончания_работ = DateTime.Parse(dateOfEndTextBox.Text);
+                area.дата_окончания_работ = string.IsNullOrEmpty(dateOfEndTextBox.Text) ? 
+                    (DateTime?)null : DateTime.Parse(dateOfEndTextBox.Text);
 
                 if (area.дата_добавления_записи != null)
                 {
