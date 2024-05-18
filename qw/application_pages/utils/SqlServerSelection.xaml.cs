@@ -29,26 +29,42 @@ namespace qw.application_pages.utils
         public SqlServerSelection()
         {
             InitializeComponent();
-            populateServerList();
-            serverComboBox.SelectedIndex = 0;
-        }
 
-        private void populateServerList()
-        {
-            serverComboBox.ItemsSource = App.listOfServers;
+            // Загрузка последнего введенного SQL сервера при запуске приложения
+            string lastSqlServer = ConfigurationManager.AppSettings["LastSqlServer"];
+            if (!string.IsNullOrEmpty(lastSqlServer))
+            {
+                // Вставка последнего введенного SQL сервера в соответствующее поле
+                serverTextBox.Text = lastSqlServer;
+            }
         }
 
         private void chooseSqlServerButtonClick(object sender, RoutedEventArgs e)
         {
-            string selectedServer = serverComboBox.SelectedItem as string;
+            string selectedServer = serverTextBox.Text;
             if (selectedServer != null)
             {
                 saveConfigWithSelectedSqlServer(selectedServer);
+                saveLastSqlServer(selectedServer);
                 AppFrame.mainFrame.Navigate(new AuthPage());
             }
             else
             {
                 MessageBox.Show("выберите элемент из списка");
+            }
+        }
+
+        private void saveLastSqlServer(string sqlServer)
+        {
+            string lastSqlServer = ConfigurationManager.AppSettings["LastSqlServer"];
+            if (!lastSqlServer.Equals(sqlServer))
+            {
+                // Сохранение последнего введенного SQL сервера в конфигурацию
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.AppSettings.Settings["LastSqlServer"].Value = sqlServer;
+                config.Save(ConfigurationSaveMode.Modified);
+
+                ConfigurationManager.RefreshSection("appSettings");
             }
         }
 
